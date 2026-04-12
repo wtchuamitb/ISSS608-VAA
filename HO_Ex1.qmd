@@ -1,0 +1,15 @@
+---
+title: "Hands On Exercise 1"
+author: "Chua Wee Tian"
+date: "April 10, 2026"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+```{r}
+pacman::p_load(tidyverse)
+
+```
