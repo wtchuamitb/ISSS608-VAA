@@ -2,15 +2,7 @@
 title: "ISSS608-VAA"
 ---
 
-YOU HAVE DID IT!
-
-welcome index test
-
-FINALLY!!!
-
-test after
-
-redo again
+**YOU HAVE DID IT!**
 
 This is a Quarto website.
 

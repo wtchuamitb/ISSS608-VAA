@@ -2,13 +2,7 @@
 title: "About"
 ---
 
-GREAT JOB!
-
-welcome about test
-
-test after
-
-test again again
+**GREAT JOB!**
 
 About this site
 
