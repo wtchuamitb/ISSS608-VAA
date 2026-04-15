@@ -18,6 +18,27 @@
     "href": "HO_Ex1.html",
     "title": "Hands On Exercise 1",
     "section": "",
-    "text": "Getting Started\nInstall and Launch R Packages\n\npacman::p_load(tidyverse)\n\n\nexam_data &lt;- read_csv(\"data/Exam_data.csv\")\n\n\nggplot(data = exam_data, \n       aes(x = RACE)) +\n    geom_bar()"
+    "text": "pacman::p_load(tidyverse)\n\n\n\n\n\nexam_data &lt;- read_csv(\"data/Exam_data.csv\")\n\n\n\n\n\nggplot(data = exam_data, \n       aes(x = RACE)) +\n    geom_bar()"
+  },
+  {
+    "objectID": "HO_Ex1.html#install-and-launch-r-packages",
+    "href": "HO_Ex1.html#install-and-launch-r-packages",
+    "title": "Hands On Exercise 1",
+    "section": "",
+    "text": "pacman::p_load(tidyverse)"
+  },
+  {
+    "objectID": "HO_Ex1.html#import-data",
+    "href": "HO_Ex1.html#import-data",
+    "title": "Hands On Exercise 1",
+    "section": "",
+    "text": "exam_data &lt;- read_csv(\"data/Exam_data.csv\")"
+  },
+  {
+    "objectID": "HO_Ex1.html#simple-bar-chart",
+    "href": "HO_Ex1.html#simple-bar-chart",
+    "title": "Hands On Exercise 1",
+    "section": "",
+    "text": "ggplot(data = exam_data, \n       aes(x = RACE)) +\n    geom_bar()"
   }
 ]
