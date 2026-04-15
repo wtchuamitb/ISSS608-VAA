@@ -10,21 +10,21 @@ execute:
   freeze: true
 ---
 
-# **Getting Started**
+# Getting Started
 
-## **Install and Launch R Packages**
+## Install and Launch R Packages
 
 ```{r}
 pacman::p_load(tidyverse)
 ```
 
-## **Import Data**
+## Import Data
 
 ```{r}
 exam_data <- read_csv("data/Exam_data.csv")
 ```
 
-## **Simple Bar Chart**
+## Simple Bar Chart
 
 ```{r}
 ggplot(data = exam_data, 

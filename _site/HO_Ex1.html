@@ -166,11 +166,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started"><strong>Getting Started</strong></a>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a>
   <ul class="collapse">
-  <li><a href="#install-and-launch-r-packages" id="toc-install-and-launch-r-packages" class="nav-link" data-scroll-target="#install-and-launch-r-packages"><strong>Install and Launch R Packages</strong></a></li>
-  <li><a href="#import-data" id="toc-import-data" class="nav-link" data-scroll-target="#import-data"><strong>Import Data</strong></a></li>
-  <li><a href="#simple-bar-chart" id="toc-simple-bar-chart" class="nav-link" data-scroll-target="#simple-bar-chart"><strong>Simple Bar Chart</strong></a></li>
+  <li><a href="#install-and-launch-r-packages" id="toc-install-and-launch-r-packages" class="nav-link" data-scroll-target="#install-and-launch-r-packages">Install and Launch R Packages</a></li>
+  <li><a href="#import-data" id="toc-import-data" class="nav-link" data-scroll-target="#import-data">Import Data</a></li>
+  <li><a href="#simple-bar-chart" id="toc-simple-bar-chart" class="nav-link" data-scroll-target="#simple-bar-chart">Simple Bar Chart</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -216,21 +216,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <section id="getting-started" class="level1">
-<h1><strong>Getting Started</strong></h1>
+<h1>Getting Started</h1>
 <section id="install-and-launch-r-packages" class="level2">
-<h2 class="anchored" data-anchor-id="install-and-launch-r-packages"><strong>Install and Launch R Packages</strong></h2>
+<h2 class="anchored" data-anchor-id="install-and-launch-r-packages">Install and Launch R Packages</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="import-data" class="level2">
-<h2 class="anchored" data-anchor-id="import-data"><strong>Import Data</strong></h2>
+<h2 class="anchored" data-anchor-id="import-data">Import Data</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Exam_data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="simple-bar-chart" class="level2">
-<h2 class="anchored" data-anchor-id="simple-bar-chart"><strong>Simple Bar Chart</strong></h2>
+<h2 class="anchored" data-anchor-id="simple-bar-chart">Simple Bar Chart</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> exam_data, </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> RACE)) <span class="sc">+</span></span>
