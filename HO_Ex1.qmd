@@ -10,16 +10,12 @@ execute:
   freeze: true
 ---
 
+Getting Started
+
+Install and Launch R Packages
+
 ```{r}
 pacman::p_load(tidyverse)
-```
-
-``` r
-pacman::p_load(tidyverse)
-```
-
-``` r
-exam_data <- read_csv("data/Exam_data.csv")
 ```
 
 ```{r}
