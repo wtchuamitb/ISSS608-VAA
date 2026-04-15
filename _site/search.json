@@ -18,6 +18,6 @@
     "href": "HO_Ex1.html",
     "title": "Hands On Exercise 1",
     "section": "",
-    "text": "pacman::p_load(tidyverse)\n\npacman::p_load(tidyverse)"
+    "text": "pacman::p_load(tidyverse)\n\npacman::p_load(tidyverse)\nexam_data &lt;- read_csv(\"data/Exam_data.csv\")\n\nexam_data &lt;- read_csv(\"data/Exam_data.csv\")"
   }
 ]
