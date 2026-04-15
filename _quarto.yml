@@ -16,7 +16,7 @@ website:
 
 format:
   html:
-    theme: morph
+    theme: cerulean
     css: styles.css
     toc: true
 
