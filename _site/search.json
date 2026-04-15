@@ -4,41 +4,20 @@
     "href": "index.html",
     "title": "ISSS608-VAA",
     "section": "",
-    "text": "YOU HAVE DID IT!\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "I HAVE DID IT!\nThis is my Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "GREAT JOB!\nAbout this site\n\n1 + 1\n\n[1] 2"
+    "text": "About this site\nGREAT JOB!"
   },
   {
     "objectID": "HO_Ex1.html",
     "href": "HO_Ex1.html",
     "title": "Hands On Exercise 1",
     "section": "",
-    "text": "pacman::p_load(tidyverse)\n\n\n\n\n\nexam_data &lt;- read_csv(\"data/Exam_data.csv\")\n\n\n\n\n\nggplot(data = exam_data, \n       aes(x = RACE)) +\n    geom_bar()"
-  },
-  {
-    "objectID": "HO_Ex1.html#install-and-launch-r-packages",
-    "href": "HO_Ex1.html#install-and-launch-r-packages",
-    "title": "Hands On Exercise 1",
-    "section": "",
-    "text": "pacman::p_load(tidyverse)"
-  },
-  {
-    "objectID": "HO_Ex1.html#import-data",
-    "href": "HO_Ex1.html#import-data",
-    "title": "Hands On Exercise 1",
-    "section": "",
-    "text": "exam_data &lt;- read_csv(\"data/Exam_data.csv\")"
-  },
-  {
-    "objectID": "HO_Ex1.html#simple-bar-chart",
-    "href": "HO_Ex1.html#simple-bar-chart",
-    "title": "Hands On Exercise 1",
-    "section": "",
-    "text": "ggplot(data = exam_data, \n       aes(x = RACE)) +\n    geom_bar()"
+    "text": "Getting Started\n\n\nInstall and Launch R Packages\n\npacman::p_load(tidyverse)\n\n\n\nImport Data\n\nexam_data &lt;- read_csv(\"data/Exam_data.csv\")\n\n\n\nSimple Bar Chart\n\nhist(exam_data$MATHS)\n\n\n\n\n\n\n\n\n\n\nggplot2\n\nData: The dataset being plotted.\nAesthetics take attributes of the data and use them to influence visual characteristics, such as position, colours, size, shape, or transparency.\nGeometrics: The visual elements used for our data, such as point, bar or line.\nFacets split the data into subsets to create multiple variations of the same graph (paneling, multiple plots).\nStatistics, statiscal transformations that summarise data (e.g. mean, confidence intervals).\nCoordinate systems define the plane on which data are mapped on the graphic.\nThemes modify all non-data components of a plot, such as main title, sub-title, y-aixs title, or legend background.\n\n\ngeom_bar\n\nggplot(data = exam_data, \n       aes(x = RACE)) +\n    geom_bar()\n\n\n\n\n\n\n\n\n\n\ngeom_dotplot\n\nggplot(data=exam_data, \n       aes(x = MATHS)) +\n  geom_dotplot(dotsize = 0.5)\n\n\n\n\n\n\n\nggplot(data=exam_data, \n       aes(x = MATHS)) +\n  geom_dotplot(binwidth=2.5,         \n               dotsize = 0.5) +      \n  scale_y_continuous(NULL,           \n                     breaks = NULL)  \n\n\n\n\n\n\n\n\n\n\ngeom_histogram\n\nggplot(data=exam_data, \n       aes(x = MATHS)) +\n  geom_histogram()       \n\n\n\n\n\n\n\nggplot(data=exam_data, \n       aes(x= MATHS)) +\n  geom_histogram(bins=20,            \n                 color=\"black\",      \n                 fill=\"light blue\")  \n\n\n\n\n\n\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           fill = GENDER)) +\n  geom_histogram(bins=20, \n                 color=\"grey30\")"
   }
 ]

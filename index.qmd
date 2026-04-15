@@ -2,12 +2,8 @@
 title: "ISSS608-VAA"
 ---
 
-**YOU HAVE DID IT!**
+**I HAVE DID IT!**
 
-This is a Quarto website.
+This is my Quarto website.
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```

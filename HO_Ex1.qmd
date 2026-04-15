@@ -10,24 +10,87 @@ execute:
   freeze: true
 ---
 
-# Getting Started
+### Getting Started
 
-## Install and Launch R Packages
+### Install and Launch R Packages
 
 ```{r}
 pacman::p_load(tidyverse)
 ```
 
-## Import Data
+### Import Data
 
 ```{r}
 exam_data <- read_csv("data/Exam_data.csv")
 ```
 
-## Simple Bar Chart
+### Simple Bar Chart
+
+```{r}
+hist(exam_data$MATHS)
+```
+
+### ggplot2</br>
+
+-   **Data**: The dataset being plotted.
+
+-   **Aesthetics** take attributes of the data and use them to influence visual characteristics, such as position, colours, size, shape, or transparency.
+
+-   **Geometrics**: The visual elements used for our data, such as point, bar or line.
+
+-   **Facets** split the data into subsets to create multiple variations of the same graph (paneling, multiple plots).
+
+-   **Statistics**, statiscal transformations that summarise data (e.g. mean, confidence intervals).
+
+-   **Coordinate systems** define the plane on which data are mapped on the graphic.
+
+-   **Themes** modify all non-data components of a plot, such as main title, sub-title, y-aixs title, or legend background.
+
+#### geom_bar
 
 ```{r}
 ggplot(data = exam_data, 
        aes(x = RACE)) +
     geom_bar()
+```
+
+#### geom_dotplot
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x = MATHS)) +
+  geom_dotplot(dotsize = 0.5)
+
+ggplot(data=exam_data, 
+       aes(x = MATHS)) +
+  geom_dotplot(binwidth=2.5,         
+               dotsize = 0.5) +      
+  scale_y_continuous(NULL,           
+                     breaks = NULL)  
+```
+
+#### geom_histogram
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x = MATHS)) +
+  geom_histogram()       
+
+ggplot(data=exam_data, 
+       aes(x= MATHS)) +
+  geom_histogram(bins=20,            
+                 color="black",      
+                 fill="light blue")  
+
+ggplot(data=exam_data, 
+       aes(x= MATHS, 
+           fill = GENDER)) +
+  geom_histogram(bins=20, 
+                 color="grey30")
+```
+
+```{r}
+```
+
+```{r}
 ```
