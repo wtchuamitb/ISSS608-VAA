@@ -18,7 +18,7 @@ execute:
 pacman::p_load(tidyverse)
 ```
 
-## Import Data
+## Import Datasss
 
 ```{r}
 exam_data <- read_csv("data/Exam_data.csv")
