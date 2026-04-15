@@ -1,8 +1,8 @@
 {
-  "hash": "c71c3f2230d424aeb7443db59f0babb8",
+  "hash": "e160d99ac9b0c327dfa455376a8ca0b2",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Hands On Exercise 1\"\nauthor: \"Chua Wee Tian\"\ndate: \"April 10, 2026\"\ndate-modified: \"last-modified\"\nexecute: \n  eval: true\n  echo: true\n  warning: false\n  freeze: true\n---\n\n# Getting Started\n\n## Install and Launch R Packages\n\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(tidyverse)\n```\n:::\n\n\n## Import Datasss\n\n\n::: {.cell}\n\n```{.r .cell-code}\nexam_data <- read_csv(\"data/Exam_data.csv\")\n```\n:::\n\n\n## Simple Bar Chart\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(data = exam_data, \n       aes(x = RACE)) +\n    geom_bar()\n```\n\n::: {.cell-output-display}\n![](HO_Ex1_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n\n",
+    "markdown": "---\ntitle: \"Hands On Exercise 1\"\nauthor: \"Chua Wee Tian\"\ndate: \"April 10, 2026\"\ndate-modified: \"last-modified\"\nexecute: \n  eval: true\n  echo: true\n  warning: false\n  freeze: true\n---\n\n# Getting Started\n\n## Install and Launch R Packages\n\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(tidyverse)\n```\n:::\n\n\n## Import Data\n\n\n::: {.cell}\n\n```{.r .cell-code}\nexam_data <- read_csv(\"data/Exam_data.csv\")\n```\n:::\n\n\n## Simple Bar Chart\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(data = exam_data, \n       aes(x = RACE)) +\n    geom_bar()\n```\n\n::: {.cell-output-display}\n![](HO_Ex1_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n\n",
     "supporting": [
       "HO_Ex1_files"
     ],

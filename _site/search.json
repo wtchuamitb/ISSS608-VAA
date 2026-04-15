@@ -40,12 +40,5 @@
     "title": "Hands On Exercise 1",
     "section": "",
     "text": "ggplot(data = exam_data, \n       aes(x = RACE)) +\n    geom_bar()"
-  },
-  {
-    "objectID": "HO_Ex1.html#import-datasss",
-    "href": "HO_Ex1.html#import-datasss",
-    "title": "Hands On Exercise 1",
-    "section": "",
-    "text": "exam_data &lt;- read_csv(\"data/Exam_data.csv\")"
   }
 ]
