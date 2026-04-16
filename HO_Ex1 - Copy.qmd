@@ -57,6 +57,7 @@ exam_data <- read_csv("data/Exam_data.csv")
 First, let us compare how R Graphics, the core graphical functions of Base R and ggplot plot a simple histogram.
 
 ::: panel-tabset
+
 ### R Graphics
 
 ```{r}

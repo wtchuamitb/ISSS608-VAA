@@ -2,7 +2,7 @@
 title: "About"
 ---
 
-Welcome to my about page on Visual Analytics and Applications.
+Welcome to my about page.
 
 In this website, you will find my course work.
 

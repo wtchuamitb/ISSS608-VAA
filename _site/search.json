@@ -7,11 +7,46 @@
     "text": "Welcome to my home page on Visual Analytics and Applications.\nIn this website, you will find my course work.\nHang on, working in progress…"
   },
   {
+    "objectID": "HO_Ex1 - Copy.html",
+    "href": "HO_Ex1 - Copy.html",
+    "title": "Hands-On Exercise 1:A Layered Grammar of Graphics: ggplot2 methods",
+    "section": "",
+    "text": "In this chapter, you will learn the basic principles and essential components of ggplot2. At the same time, you will gain hands-on experience on using these components to plot statistical graphics based on the principle of Layered Grammar of Graphics. By then end of this chapter you will be able to apply the essential graphical elements provided by ggplot2 to create elegant and yet functional statistical graphics."
+  },
+  {
+    "objectID": "HO_Ex1 - Copy.html#learning-outcome",
+    "href": "HO_Ex1 - Copy.html#learning-outcome",
+    "title": "Hands-On Exercise 1:A Layered Grammar of Graphics: ggplot2 methods",
+    "section": "",
+    "text": "In this chapter, you will learn the basic principles and essential components of ggplot2. At the same time, you will gain hands-on experience on using these components to plot statistical graphics based on the principle of Layered Grammar of Graphics. By then end of this chapter you will be able to apply the essential graphical elements provided by ggplot2 to create elegant and yet functional statistical graphics."
+  },
+  {
+    "objectID": "HO_Ex1 - Copy.html#getting-started",
+    "href": "HO_Ex1 - Copy.html#getting-started",
+    "title": "Hands-On Exercise 1:A Layered Grammar of Graphics: ggplot2 methods",
+    "section": "1.2 Getting started",
+    "text": "1.2 Getting started\n\n1.2.1 Installing and loading the required libraries\nBefore we get started, it is important for us to ensure that the required R packages have been installed. If yes, we will load the R packages. If they have yet to be installed, we will install the R packages and load them onto R environment.\n\n\n\n\n\n\nNote\n\n\n\nThe code chunk on the right assumes that you already have pacman package installed. If not, please go ahead install pacman first.\n\n\n\npacman::p_load(tidyverse)\n\n\n\n1.2.2 Import Data\n\nThe code chunk below imports exam_data.csv into R environment by using read_csv() function of readr package.\nreadr is one of the tidyverse package.\n\n\nexam_data &lt;- read_csv(\"data/Exam_data.csv\")\n\n\nYear end examination grades of a cohort of primary 3 students from a local school.\nThere are a total of seven attributes. Four of them are categorical data type and the other three are in continuous data type.\n\nThe categorical attributes are: ID, CLASS, GENDER and RACE.\nThe continuous attributes are: MATHS, ENGLISH and SCIENCE."
+  },
+  {
+    "objectID": "HO_Ex1 - Copy.html#introducing-ggplot",
+    "href": "HO_Ex1 - Copy.html#introducing-ggplot",
+    "title": "Hands-On Exercise 1:A Layered Grammar of Graphics: ggplot2 methods",
+    "section": "1.3 Introducing ggplot",
+    "text": "1.3 Introducing ggplot\n\nggplot2 is an R package for declaratively creating data-driven graphics based on The Grammar of Graphics. It is also part of the tidyverse family specially designed for visual exploration and communication.\n\n1.3.1 R Graphics VS ggplot\nFirst, let us compare how R Graphics, the core graphical functions of Base R and ggplot plot a simple histogram.\n\nR Graphicsggplot2\n\n\n\nhist(exam_data$MATHS)\n\n\n\n\n\n\n\n\n\n\n\nggplot(data=exam_data, aes(x = MATHS)) +\n  geom_histogram(bins=10, \n                 boundary = 100,\n                 color=\"black\", \n                 fill=\"grey\") +\n  ggtitle(\"Distribution of Maths scores\")\n\n\n\n\n\n\n\n\n\n\n\nAs you can see that the code chunk is relatively simple if R Graphics is used. Then, the question is why ggplot2 is recommended?\nAs pointed out by Hadley Wickham\n\n\n\n\n\n\nImportant\n\n\n\nThe transferable skills from ggplot2 are not the idiosyncrasies of plotting syntax, but a powerful way of thinking about visualisation, as a way of mapping between variables and the visual properties of geometric objects that you can perceive."
+  },
+  {
+    "objectID": "HO_Ex1 - Copy.html#grammar-of-graphics",
+    "href": "HO_Ex1 - Copy.html#grammar-of-graphics",
+    "title": "Hands-On Exercise 1:A Layered Grammar of Graphics: ggplot2 methods",
+    "section": "1.4 Grammar of Graphics",
+    "text": "1.4 Grammar of Graphics"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Welcome to my about page on Visual Analytics and Applications.\nIn this website, you will find my course work.\nHang on, working in progress…"
+    "text": "Welcome to my about page.\nIn this website, you will find my course work.\nHang on, working in progress…"
   },
   {
     "objectID": "HO_Ex1.html",
@@ -21,17 +56,31 @@
     "text": "In this chapter, you will learn the basic principles and essential components of ggplot2. At the same time, you will gain hands-on experience on using these components to plot statistical graphics based on the principle of Layered Grammar of Graphics. By then end of this chapter you will be able to apply the essential graphical elements provided by ggplot2 to create elegant and yet functional statistical graphics."
   },
   {
-    "objectID": "HO_Ex1.html#getting-started",
-    "href": "HO_Ex1.html#getting-started",
-    "title": "Hands-On Exercise 1:A Layered Grammar of Graphics: ggplot2 methods",
-    "section": "1.2 Getting started",
-    "text": "1.2 Getting started\n\n1.2.1 Installing and loading the required libraries\nBefore we get started, it is important for us to ensure that the required R packages have been installed. If yes, we will load the R packages. If they have yet to be installed, we will install the R packages and load them onto R environment.\nThe code chunk on the right assumes that you already have pacman package installed. If not, please go ahead install pacman first.\n\npacman::p_load(tidyverse)\n\n\n\nImport Data\n\nexam_data &lt;- read_csv(\"data/Exam_data.csv\")\n\n\n\nSimple Bar Chart\n\nhist(exam_data$MATHS)\n\n\n\n\n\n\n\n\n\n\nggplot2\n\nData: The dataset being plotted.\nAesthetics take attributes of the data and use them to influence visual characteristics, such as position, colours, size, shape, or transparency.\nGeometrics: The visual elements used for our data, such as point, bar or line.\nFacets split the data into subsets to create multiple variations of the same graph (paneling, multiple plots).\nStatistics, statiscal transformations that summarise data (e.g. mean, confidence intervals).\nCoordinate systems define the plane on which data are mapped on the graphic.\nThemes modify all non-data components of a plot, such as main title, sub-title, y-aixs title, or legend background.\n\n\ngeom_bar\n\nggplot(data = exam_data, \n       aes(x = RACE)) +\n    geom_bar()\n\n\n\n\n\n\n\n\n\n\ngeom_dotplot\n\nggplot(data=exam_data, \n       aes(x = MATHS)) +\n  geom_dotplot(dotsize = 0.5)\n\n\n\n\n\n\n\nggplot(data=exam_data, \n       aes(x = MATHS)) +\n  geom_dotplot(binwidth=2.5,         \n               dotsize = 0.5) +      \n  scale_y_continuous(NULL,           \n                     breaks = NULL)  \n\n\n\n\n\n\n\n\n\n\ngeom_histogram\n\nggplot(data=exam_data, \n       aes(x = MATHS)) +\n  geom_histogram()       \n\n\n\n\n\n\n\nggplot(data=exam_data, \n       aes(x= MATHS)) +\n  geom_histogram(bins=20,            \n                 color=\"black\",      \n                 fill=\"light blue\")  \n\n\n\n\n\n\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           fill = GENDER)) +\n  geom_histogram(bins=20, \n                 color=\"grey30\")"
-  },
-  {
     "objectID": "HO_Ex1.html#learning-outcome",
     "href": "HO_Ex1.html#learning-outcome",
     "title": "Hands-On Exercise 1:A Layered Grammar of Graphics: ggplot2 methods",
     "section": "",
     "text": "In this chapter, you will learn the basic principles and essential components of ggplot2. At the same time, you will gain hands-on experience on using these components to plot statistical graphics based on the principle of Layered Grammar of Graphics. By then end of this chapter you will be able to apply the essential graphical elements provided by ggplot2 to create elegant and yet functional statistical graphics."
+  },
+  {
+    "objectID": "HO_Ex1.html#getting-started",
+    "href": "HO_Ex1.html#getting-started",
+    "title": "Hands-On Exercise 1:A Layered Grammar of Graphics: ggplot2 methods",
+    "section": "1.2 Getting started",
+    "text": "1.2 Getting started\n\n1.2.1 Installing and loading the required libraries\nBefore we get started, it is important for us to ensure that the required R packages have been installed. If yes, we will load the R packages. If they have yet to be installed, we will install the R packages and load them onto R environment.\n\n\n\n\n\n\nNote\n\n\n\nThe code chunk on the right assumes that you already have pacman package installed. If not, please go ahead install pacman first.\n\n\n\npacman::p_load(tidyverse)\n\n\n\n1.2.2 Import Data\n\nThe code chunk below imports exam_data.csv into R environment by using read_csv() function of readr package.\nreadr is one of the tidyverse package.\n\n\nexam_data &lt;- read_csv(\"data/Exam_data.csv\")\n\n\nYear end examination grades of a cohort of primary 3 students from a local school.\nThere are a total of seven attributes. Four of them are categorical data type and the other three are in continuous data type.\n\nThe categorical attributes are: ID, CLASS, GENDER and RACE.\nThe continuous attributes are: MATHS, ENGLISH and SCIENCE."
+  },
+  {
+    "objectID": "HO_Ex1.html#introducing-ggplot",
+    "href": "HO_Ex1.html#introducing-ggplot",
+    "title": "Hands-On Exercise 1:A Layered Grammar of Graphics: ggplot2 methods",
+    "section": "1.3 Introducing ggplot",
+    "text": "1.3 Introducing ggplot\n\nggplot2 is an R package for declaratively creating data-driven graphics based on The Grammar of Graphics. It is also part of the tidyverse family specially designed for visual exploration and communication.\n\n1.3.1 R Graphics VS ggplot\nFirst, let us compare how R Graphics, the core graphical functions of Base R and ggplot plot a simple histogram.\n\nR Graphicsggplot2\n\n\n\nhist(exam_data$MATHS)\n\n\n\n\n\n\n\n\n\n\n\nggplot(data=exam_data, aes(x = MATHS)) +\n  geom_histogram(bins=10, \n                 boundary = 100,\n                 color=\"black\", \n                 fill=\"grey\") +\n  ggtitle(\"Distribution of Maths scores\")\n\n\n\n\n\n\n\n\n\n\n\nAs you can see that the code chunk is relatively simple if R Graphics is used. Then, the question is why ggplot2 is recommended?\nAs pointed out by Hadley Wickham\n\n\n\n\n\n\nImportant\n\n\n\nThe transferable skills from ggplot2 are not the idiosyncrasies of plotting syntax, but a powerful way of thinking about visualisation, as a way of mapping between variables and the visual properties of geometric objects that you can perceive."
+  },
+  {
+    "objectID": "HO_Ex1.html#grammar-of-graphics",
+    "href": "HO_Ex1.html#grammar-of-graphics",
+    "title": "Hands-On Exercise 1:A Layered Grammar of Graphics: ggplot2 methods",
+    "section": "1.4 Grammar of Graphics",
+    "text": "1.4 Grammar of Graphics"
   }
 ]
