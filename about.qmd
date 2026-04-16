@@ -2,6 +2,8 @@
 title: "About"
 ---
 
-About this site
+Welcome to my about page on Visual Analytics and Applications.
 
-**GREAT JOB!**
+In this website, you will find my course work.
+
+Hang on, working in progress...
