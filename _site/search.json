@@ -7,13 +7,6 @@
     "text": "Welcome to my home page on Visual Analytics and Applications.\nIn this website, you will find my course work.\nHang on, working in progress…"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "Welcome to my about page.\nIn this website, you will find my course work.\nHang on, working in progress…"
-  },
-  {
     "objectID": "HO_Ex1.html",
     "href": "HO_Ex1.html",
     "title": "Hands-On Exercise 1:A Layered Grammar of Graphics: ggplot2 methods",
@@ -38,8 +31,8 @@
     "objectID": "HO_Ex1.html#introducing-ggplot",
     "href": "HO_Ex1.html#introducing-ggplot",
     "title": "Hands-On Exercise 1:A Layered Grammar of Graphics: ggplot2 methods",
-    "section": "1.3 Introducing ggplot",
-    "text": "1.3 Introducing ggplot\n\nggplot2 is an R package for declaratively creating data-driven graphics based on The Grammar of Graphics. It is also part of the tidyverse family specially designed for visual exploration and communication.\n\n1.3.1 R Graphics VS ggplot\nFirst, let us compare how R Graphics, the core graphical functions of Base R and ggplot plot a simple histogram.\n\nR Graphicsggplot2\n\n\n\nhist(exam_data$MATHS)\n\n\n\n\n\n\n\n\n\n\n\nggplot(data=exam_data, aes(x = MATHS)) +\n  geom_histogram(bins=10, \n                 boundary = 100,\n                 color=\"black\", \n                 fill=\"grey\") +\n  ggtitle(\"Distribution of Maths scores\")\n\n\n\n\n\n\n\n\n\n\n\nAs you can see that the code chunk is relatively simple if R Graphics is used. Then, the question is why ggplot2 is recommended?\nAs pointed out by Hadley Wickham\n\n\n\n\n\n\nImportant\n\n\n\nThe transferable skills from ggplot2 are not the idiosyncrasies of plotting syntax, but a powerful way of thinking about visualisation, as a way of mapping between variables and the visual properties of geometric objects that you can perceive."
+    "section": "1.3 Introducing ggplot ",
+    "text": "1.3 Introducing ggplot \nggplot2 is an R package for declaratively creating data-driven graphics based on The Grammar of Graphics. It is also part of the tidyverse family specially designed for visual exploration and communication.\n\n1.3.1 R Graphics VS ggplot\nFirst, let us compare how R Graphics, the core graphical functions of Base R and ggplot plot a simple histogram.\n\nR Graphicsggplot2\n\n\n\nhist(exam_data$MATHS)\n\n\n\n\n\n\n\n\n\n\n\nggplot(data=exam_data, aes(x = MATHS)) +\n  geom_histogram(bins=10, \n                 boundary = 100,\n                 color=\"black\", \n                 fill=\"grey\") +\n  ggtitle(\"Distribution of Maths scores\")\n\n\n\n\n\n\n\n\n\n\n\nAs you can see that the code chunk is relatively simple if R Graphics is used. Then, the question is why ggplot2 is recommended?\nAs pointed out by Hadley Wickham\n\n\n\n\n\n\nImportant\n\n\n\nThe transferable skills from ggplot2 are not the idiosyncrasies of plotting syntax, but a powerful way of thinking about visualisation, as a way of mapping between variables and the visual properties of geometric objects that you can perceive."
   },
   {
     "objectID": "HO_Ex1.html#grammar-of-graphics",
@@ -102,6 +95,27 @@
     "href": "HO_Ex1.html#reference",
     "title": "Hands-On Exercise 1:A Layered Grammar of Graphics: ggplot2 methods",
     "section": "1.12 Reference",
-    "text": "1.12 Reference\n\nHadley Wickham (2023) ggplot2: Elegant Graphics for Data Analysis. Online 3rd edition.\nWinston Chang (2013) R Graphics Cookbook 2nd edition. Online version.\nHealy, Kieran (2019) Data Visualization: A practical introduction. Online version\nLearning ggplot2 on Paper – Components\nLearning ggplot2 on Paper – Layer\nLearning ggplot2 on Paper – Scale"
+    "text": "1.12 Reference\n\nHadley Wickham (2023) ggplot2: Elegant Graphics for Data Analysis. Online 3rd edition.\nWinston Chang (2013) R Graphics Cookbook 2nd edition. Online version.\nHealy, Kieran (2019) Data Visualization: A practical introduction. Online version\nLearning ggplot2 on Paper – Components\nLearning ggplot2 on Paper – Layer\nLearning ggplot2 on Paper – Scale\n\n\nNext: Hands-On Exercise 2"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Welcome to my about page.\nIn this website, you will find my course work.\nHang on, working in progress…"
+  },
+  {
+    "objectID": "HO_Ex2.html",
+    "href": "HO_Ex2.html",
+    "title": "Hands-On Exercise 2:Beyond ggplot2 Fundamentals",
+    "section": "",
+    "text": "In this chapter, you will be introduced to several ggplot2 extensions for creating more elegant and effective statistical graphics. By the end of this exercise, you will be able to:\n\ncontrol the placement of annotation on a graph by using functions provided in ggrepel package,\ncreate professional publication quality figure by using functions provided in ggthemes and hrbrthemes packages,\nplot composite figure by combining ggplot2 graphs by using patchwork package.\n\n\nNext: Hands-On Exercise 3"
+  },
+  {
+    "objectID": "HO_Ex2.html#overview",
+    "href": "HO_Ex2.html#overview",
+    "title": "Hands-On Exercise 2:Beyond ggplot2 Fundamentals",
+    "section": "",
+    "text": "In this chapter, you will be introduced to several ggplot2 extensions for creating more elegant and effective statistical graphics. By the end of this exercise, you will be able to:\n\ncontrol the placement of annotation on a graph by using functions provided in ggrepel package,\ncreate professional publication quality figure by using functions provided in ggthemes and hrbrthemes packages,\nplot composite figure by combining ggplot2 graphs by using patchwork package.\n\n\nNext: Hands-On Exercise 3"
   }
 ]
