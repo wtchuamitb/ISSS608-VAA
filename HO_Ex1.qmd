@@ -450,7 +450,7 @@ Facetting generates small multiples (sometimes also called trellis plot), each d
 
 [`facet_wrap`](https://ggplot2.tidyverse.org/reference/facet_wrap.html) wraps a 1d sequence of panels into 2d. This is generally a better use of screen space than facet_grid because most displays are roughly rectangular.
 
-The code chunk below plots a trellis plot using `facet-wrap()`.
+The code chunk below plots a trellis plot using `facet_wrap()`.
 
 ```{r}
 ggplot(data=exam_data, 
