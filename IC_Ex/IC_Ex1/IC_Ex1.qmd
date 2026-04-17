@@ -1,0 +1,17 @@
+---
+title: "In-Class Exercise 1:</br>"
+author: "CHUA Wee Tian"
+date: "April 18, 2026"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+## 1.1 In-Class Exercise 1 Learning Outcome
+
+::: {style="text-align: right;"}
+[***Next: In-Class Exercise 2***](./IC_Ex2.html)
+:::

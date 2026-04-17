@@ -8,9 +8,23 @@ website:
     - text: "Hands-On Exercise"
       menu:
       - text: "Hands-On Exercise 1"
-        href: "HO_Ex1.html"
+        href: "HO_Ex/HO_Ex1/HO_Ex1.html"
       - text: "Hands-On Exercise 2"
-        href: "HO_Ex2.html"
+        href: "HO_Ex/HO_Ex2/HO_Ex2.html"
+    - text: "In-Class Exercise"
+      menu:
+      - text: "In-Class Exercise 1"
+        href: "IC_Ex/IC_Ex1/IC_Ex1.html"
+      - text: "In-Class Exercise 2"
+        href: "IC_Ex/IC_Ex1/IC_Ex2.html"
+    - text: "Take-Home Exercise"
+      menu:
+      - text: "Take-Home Exercise 1"
+        href: "TH_Ex/TH_Ex1/TH_Ex1.html"
+      - text: "Take-Home Exercise 2"
+        href: "TH_Ex/TH_Ex2/TH_Ex2.html"
+    - text: "Group Project"
+      href: "https://isss-608-vaa-pi.vercel.app/"
     right:
       - href: index.qmd
         text: Home

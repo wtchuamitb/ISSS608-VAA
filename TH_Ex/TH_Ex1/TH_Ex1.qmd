@@ -1,0 +1,17 @@
+---
+title: "Take-Home Exercise 1:</br>"
+author: "CHUA Wee Tian"
+date: "April 18, 2026"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+## 1.1 Take-Home Exercise 1 Learning Outcome
+
+::: {style="text-align: right;"}
+[***Next: Take-Home Exercise 2***](./TH_Ex2.html)
+:::
