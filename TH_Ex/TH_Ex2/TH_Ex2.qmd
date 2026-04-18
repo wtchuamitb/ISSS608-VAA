@@ -11,7 +11,3 @@ execute:
 ---
 
 ## 2.1 Take-Home Exercise 2 Overview
-
-::: {style="text-align: right;"}
-[***Next: Take-Home Exercise 3***](./)
-:::

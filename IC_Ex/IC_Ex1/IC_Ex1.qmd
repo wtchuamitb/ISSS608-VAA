@@ -11,7 +11,3 @@ execute:
 ---
 
 ## 1.1 In-Class Exercise 1 Learning Outcome
-
-::: {style="text-align: right;"}
-[***Next: In-Class Exercise 2***](./IC_Ex2.html)
-:::

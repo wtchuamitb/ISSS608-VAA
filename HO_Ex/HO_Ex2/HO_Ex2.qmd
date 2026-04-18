@@ -19,7 +19,3 @@ In this chapter, you will be introduced to several ggplot2 extensions for creati
 -   create professional publication quality figure by using functions provided in ggthemes and hrbrthemes packages,
 
 -   plot composite figure by combining ggplot2 graphs by using patchwork package.
-
-::: {style="text-align: right;"}
-[***Next: Hands-On Exercise 3***](./)
-:::

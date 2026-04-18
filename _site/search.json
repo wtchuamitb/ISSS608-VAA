@@ -1,38 +1,10 @@
 [
   {
-    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html",
-    "href": "TH_Ex/TH_Ex2/TH_Ex2.html",
-    "title": "Take-Home Exercise 2:",
-    "section": "",
-    "text": "Next: Take-Home Exercise 3"
-  },
-  {
-    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#take-home-exercise-2-overview",
-    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#take-home-exercise-2-overview",
-    "title": "Take-Home Exercise 2:",
-    "section": "",
-    "text": "Next: Take-Home Exercise 3"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "ISSS608 Visual Analytics and Applications",
     "section": "",
     "text": "Welcome to my home page on Visual Analytics and Applications.\nIn this website, you will find my course work.\nHang on, working in progress…"
-  },
-  {
-    "objectID": "IC_Ex/IC_Ex1/IC_Ex1.html",
-    "href": "IC_Ex/IC_Ex1/IC_Ex1.html",
-    "title": "In-Class Exercise 1:",
-    "section": "",
-    "text": "Next: In-Class Exercise 2"
-  },
-  {
-    "objectID": "IC_Ex/IC_Ex1/IC_Ex1.html#in-class-exercise-1-learning-outcome",
-    "href": "IC_Ex/IC_Ex1/IC_Ex1.html#in-class-exercise-1-learning-outcome",
-    "title": "In-Class Exercise 1:",
-    "section": "",
-    "text": "Next: In-Class Exercise 2"
   },
   {
     "objectID": "HO_Ex/HO_Ex1/HO_Ex1.html",
@@ -123,7 +95,7 @@
     "href": "HO_Ex/HO_Ex1/HO_Ex1.html#reference",
     "title": "Hands-On Exercise 1:A Layered Grammar of Graphics: ggplot2 methods",
     "section": "1.12 Reference",
-    "text": "1.12 Reference\n\nHadley Wickham (2023) ggplot2: Elegant Graphics for Data Analysis. Online 3rd edition.\nWinston Chang (2013) R Graphics Cookbook 2nd edition. Online version.\nHealy, Kieran (2019) Data Visualization: A practical introduction. Online version\nLearning ggplot2 on Paper – Components\nLearning ggplot2 on Paper – Layer\nLearning ggplot2 on Paper – Scale\n\n\nNext: Hands-On Exercise 2"
+    "text": "1.12 Reference\n\nHadley Wickham (2023) ggplot2: Elegant Graphics for Data Analysis. Online 3rd edition.\nWinston Chang (2013) R Graphics Cookbook 2nd edition. Online version.\nHealy, Kieran (2019) Data Visualization: A practical introduction. Online version\nLearning ggplot2 on Paper – Components\nLearning ggplot2 on Paper – Layer\nLearning ggplot2 on Paper – Scale"
   },
   {
     "objectID": "about.html",
@@ -137,41 +109,13 @@
     "href": "HO_Ex/HO_Ex2/HO_Ex2.html",
     "title": "Hands-On Exercise 2:Beyond ggplot2 Fundamentals",
     "section": "",
-    "text": "In this chapter, you will be introduced to several ggplot2 extensions for creating more elegant and effective statistical graphics. By the end of this exercise, you will be able to:\n\ncontrol the placement of annotation on a graph by using functions provided in ggrepel package,\ncreate professional publication quality figure by using functions provided in ggthemes and hrbrthemes packages,\nplot composite figure by combining ggplot2 graphs by using patchwork package.\n\n\nNext: Hands-On Exercise 3"
+    "text": "In this chapter, you will be introduced to several ggplot2 extensions for creating more elegant and effective statistical graphics. By the end of this exercise, you will be able to:\n\ncontrol the placement of annotation on a graph by using functions provided in ggrepel package,\ncreate professional publication quality figure by using functions provided in ggthemes and hrbrthemes packages,\nplot composite figure by combining ggplot2 graphs by using patchwork package."
   },
   {
     "objectID": "HO_Ex/HO_Ex2/HO_Ex2.html#overview",
     "href": "HO_Ex/HO_Ex2/HO_Ex2.html#overview",
     "title": "Hands-On Exercise 2:Beyond ggplot2 Fundamentals",
     "section": "",
-    "text": "In this chapter, you will be introduced to several ggplot2 extensions for creating more elegant and effective statistical graphics. By the end of this exercise, you will be able to:\n\ncontrol the placement of annotation on a graph by using functions provided in ggrepel package,\ncreate professional publication quality figure by using functions provided in ggthemes and hrbrthemes packages,\nplot composite figure by combining ggplot2 graphs by using patchwork package.\n\n\nNext: Hands-On Exercise 3"
-  },
-  {
-    "objectID": "IC_Ex/IC_Ex2/IC_Ex2.html",
-    "href": "IC_Ex/IC_Ex2/IC_Ex2.html",
-    "title": "In-Class Exercise 2:",
-    "section": "",
-    "text": "Next: In-Class Exercise 3"
-  },
-  {
-    "objectID": "IC_Ex/IC_Ex2/IC_Ex2.html#in-class-exercise-2-overview",
-    "href": "IC_Ex/IC_Ex2/IC_Ex2.html#in-class-exercise-2-overview",
-    "title": "In-Class Exercise 2:",
-    "section": "",
-    "text": "Next: In-Class Exercise 3"
-  },
-  {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1.html",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1.html",
-    "title": "Take-Home Exercise 1:",
-    "section": "",
-    "text": "Next: Take-Home Exercise 2"
-  },
-  {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1.html#take-home-exercise-1-learning-outcome",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1.html#take-home-exercise-1-learning-outcome",
-    "title": "Take-Home Exercise 1:",
-    "section": "",
-    "text": "Next: Take-Home Exercise 2"
+    "text": "In this chapter, you will be introduced to several ggplot2 extensions for creating more elegant and effective statistical graphics. By the end of this exercise, you will be able to:\n\ncontrol the placement of annotation on a graph by using functions provided in ggrepel package,\ncreate professional publication quality figure by using functions provided in ggthemes and hrbrthemes packages,\nplot composite figure by combining ggplot2 graphs by using patchwork package."
   }
 ]

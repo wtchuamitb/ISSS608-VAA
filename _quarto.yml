@@ -16,7 +16,7 @@ website:
       - text: "In-Class Exercise 1"
         href: "IC_Ex/IC_Ex1/IC_Ex1.html"
       - text: "In-Class Exercise 2"
-        href: "IC_Ex/IC_Ex1/IC_Ex2.html"
+        href: "IC_Ex/IC_Ex2/IC_Ex2.html"
     - text: "Take-Home Exercise"
       menu:
       - text: "Take-Home Exercise 1"
