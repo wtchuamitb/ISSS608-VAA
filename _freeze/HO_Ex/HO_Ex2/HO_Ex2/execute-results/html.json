@@ -1,0 +1,15 @@
+{
+  "hash": "929622c1c34e02cc6704ff3d003b5811",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Hands-On Exercise 2:</br>Beyond ggplot2 Fundamentals\"\nauthor: \"CHUA Wee Tian\"\ndate: \"April 18, 2026\"\ndate-modified: \"last-modified\"\nexecute: \n  eval: true\n  echo: true\n  warning: false\n  freeze: true\n---\n\n## 2.1 Learning Objectives\n\nBy the end of this exercise, you will be able to:\n\n-   control the placement of annotation on a graph by using functions provided in ggrepel package\n\n-   create professional publication quality figure by using functions provided in ggthemes and hrbrthemes packages\n\n-   plot composite figure by combining ggplot2 graphs by using patchwork package\n\n## 2.2 Getting started\n\n### 2.2.1 Installing and loading the required libraries\n\nBesides tidyverse, the following R packages will be used.\n\nggrepel: an R package provides geoms for ggplot2 to repel overlapping text labels.\n\nggthemes: an R package provides some extra themes, geoms, and scales for ‘ggplot2’.\n\nhrbrthemes: an R package provides typography-centric themes and theme components for ggplot2.\n\npatchwork: an R package for preparing composite figure created using ggplot2.\n\nCode chunk below will be used to check if these packages have been installed and also will load them into the working R environment.\n\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(ggrepel, patchwork, \n               ggthemes, hrbrthemes,\n               tidyverse)\n```\n:::\n\n\n### 2.2.2 Importing data\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -7,6 +7,20 @@
     "text": "Welcome to my home page on Visual Analytics and Applications.\nIn this website, you will find my course work.\nHang on, working in progress…"
   },
   {
+    "objectID": "IC_Ex/IC_Ex1/IC_Ex1.html",
+    "href": "IC_Ex/IC_Ex1/IC_Ex1.html",
+    "title": "In-Class Exercise 1:Exercise Name",
+    "section": "",
+    "text": "In this exercise… Tableau\n\n\n\n\n\n\nNote\n\n\n\nSuperstore.xls"
+  },
+  {
+    "objectID": "IC_Ex/IC_Ex1/IC_Ex1.html#in-class-exercise-1-overview",
+    "href": "IC_Ex/IC_Ex1/IC_Ex1.html#in-class-exercise-1-overview",
+    "title": "In-Class Exercise 1:Exercise Name",
+    "section": "",
+    "text": "In this exercise… Tableau\n\n\n\n\n\n\nNote\n\n\n\nSuperstore.xls"
+  },
+  {
     "objectID": "HO_Ex/HO_Ex1/HO_Ex1.html",
     "href": "HO_Ex/HO_Ex1/HO_Ex1.html",
     "title": "Hands-On Exercise 1:A Layered Grammar of Graphics: ggplot2 methods",
@@ -109,13 +123,20 @@
     "href": "HO_Ex/HO_Ex2/HO_Ex2.html",
     "title": "Hands-On Exercise 2:Beyond ggplot2 Fundamentals",
     "section": "",
-    "text": "In this chapter, you will be introduced to several ggplot2 extensions for creating more elegant and effective statistical graphics. By the end of this exercise, you will be able to:\n\ncontrol the placement of annotation on a graph by using functions provided in ggrepel package,\ncreate professional publication quality figure by using functions provided in ggthemes and hrbrthemes packages,\nplot composite figure by combining ggplot2 graphs by using patchwork package."
+    "text": "By the end of this exercise, you will be able to:\n\ncontrol the placement of annotation on a graph by using functions provided in ggrepel package\ncreate professional publication quality figure by using functions provided in ggthemes and hrbrthemes packages\nplot composite figure by combining ggplot2 graphs by using patchwork package"
   },
   {
-    "objectID": "HO_Ex/HO_Ex2/HO_Ex2.html#overview",
-    "href": "HO_Ex/HO_Ex2/HO_Ex2.html#overview",
+    "objectID": "HO_Ex/HO_Ex2/HO_Ex2.html#learning-objectives",
+    "href": "HO_Ex/HO_Ex2/HO_Ex2.html#learning-objectives",
     "title": "Hands-On Exercise 2:Beyond ggplot2 Fundamentals",
     "section": "",
-    "text": "In this chapter, you will be introduced to several ggplot2 extensions for creating more elegant and effective statistical graphics. By the end of this exercise, you will be able to:\n\ncontrol the placement of annotation on a graph by using functions provided in ggrepel package,\ncreate professional publication quality figure by using functions provided in ggthemes and hrbrthemes packages,\nplot composite figure by combining ggplot2 graphs by using patchwork package."
+    "text": "By the end of this exercise, you will be able to:\n\ncontrol the placement of annotation on a graph by using functions provided in ggrepel package\ncreate professional publication quality figure by using functions provided in ggthemes and hrbrthemes packages\nplot composite figure by combining ggplot2 graphs by using patchwork package"
+  },
+  {
+    "objectID": "HO_Ex/HO_Ex2/HO_Ex2.html#getting-started",
+    "href": "HO_Ex/HO_Ex2/HO_Ex2.html#getting-started",
+    "title": "Hands-On Exercise 2:Beyond ggplot2 Fundamentals",
+    "section": "2.2 Getting started",
+    "text": "2.2 Getting started\n\n2.2.1 Installing and loading the required libraries\nBesides tidyverse, the following R packages will be used.\nggrepel: an R package provides geoms for ggplot2 to repel overlapping text labels.\nggthemes: an R package provides some extra themes, geoms, and scales for ‘ggplot2’.\nhrbrthemes: an R package provides typography-centric themes and theme components for ggplot2.\npatchwork: an R package for preparing composite figure created using ggplot2.\nCode chunk below will be used to check if these packages have been installed and also will load them into the working R environment.\n\npacman::p_load(ggrepel, patchwork, \n               ggthemes, hrbrthemes,\n               tidyverse)\n\n\n\n2.2.2 Importing data"
   }
 ]

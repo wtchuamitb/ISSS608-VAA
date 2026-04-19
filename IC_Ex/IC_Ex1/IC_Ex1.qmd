@@ -1,5 +1,5 @@
 ---
-title: "In-Class Exercise 1:</br>"
+title: "In-Class Exercise 1:</br>Exercise Name"
 author: "CHUA Wee Tian"
 date: "April 18, 2026"
 date-modified: "last-modified"
@@ -10,4 +10,10 @@ execute:
   freeze: true
 ---
 
-## 1.1 In-Class Exercise 1 Learning Outcome
+## 1.1 In-Class Exercise 1 Overview
+
+In this exercise... Tableau
+
+::: callout-note
+Superstore.xls
+:::

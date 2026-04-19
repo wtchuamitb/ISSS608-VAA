@@ -26,13 +26,12 @@ website:
     - text: "Group Project"
       href: "https://isss-608-vaa-pi.vercel.app/"
     right:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - href: about.qmd
+        text: About
 
 format:
   html:
-    theme: sandstone
+    theme: flaty
     css: styles.css
     toc: true
 
