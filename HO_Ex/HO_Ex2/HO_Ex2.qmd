@@ -56,7 +56,7 @@ The data file *Exam_data* consists of year end examination grades of a cohort of
 
 -   The continuous attributes are: MATHS, ENGLISH, SCIENCE
 
-### 2.3 Beyond ggplot2 Annotation: ggrepel ![](image/ggrepel.jpg){width="30" height="30"}
+## 2.3 Beyond ggplot2 Annotation: ggrepel ![](image/ggrepel.jpg){width="30" height="30"}
 
 One of the challenge in plotting statistical graph is annotation, especially with large number of data points.
 
@@ -531,7 +531,7 @@ patchwork & theme_economist()
 ```
 :::
 
-### 2.6 Reference
+## 2.6 Reference
 
 -   [Patchwork R package goes nerd viral](https://www.littlemissdata.com/blog/patchwork)
 -   [ggrepel](https://ggrepel.slowkow.com/)
