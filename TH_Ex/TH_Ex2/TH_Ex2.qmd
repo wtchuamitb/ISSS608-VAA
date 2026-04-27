@@ -10,4 +10,4 @@ execute:
   freeze: true
 ---
 
-## 2.1 Take-Home Exercise 2 Overview
+## 2.1 Take-Home Exercise 2

@@ -1,0 +1,13 @@
+---
+title: "Take-Home Exercise 3:</br>"
+author: "CHUA Wee Tian"
+date: "April 18, 2026"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+## 3.1 Take-Home Exercise 3

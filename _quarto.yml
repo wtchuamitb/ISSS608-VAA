@@ -11,10 +11,12 @@ website:
         href: "HO_Ex/HO_Ex1/HO_Ex1.html"
       - text: "Hands-On Exercise 2"
         href: "HO_Ex/HO_Ex2/HO_Ex2.html"
+      - text: "Hands-On Exercise 3a"
+        href: "HO_Ex/HO_Ex3/HO_Ex3a.html"
+      - text: "Hands-On Exercise 3b"
+        href: "HO_Ex/HO_Ex3/HO_Ex3b.html"
     - text: "In-Class Exercise"
       menu:
-      - text: "In-Class Exercise 1"
-        href: "IC_Ex/IC_Ex1/IC_Ex1.html"
       - text: "In-Class Exercise 2"
         href: "IC_Ex/IC_Ex2/IC_Ex2.html"
     - text: "Take-Home Exercise"
@@ -23,6 +25,8 @@ website:
         href: "TH_Ex/TH_Ex1/TH_Ex1.html"
       - text: "Take-Home Exercise 2"
         href: "TH_Ex/TH_Ex2/TH_Ex2.html"
+      - text: "Take-Home Exercise 3"
+        href: "TH_Ex/TH_Ex3/TH_Ex3.html"
     - text: "Group Project"
       href: "https://isss-608-vaa-pi.vercel.app/"
     right:

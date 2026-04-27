@@ -10,4 +10,4 @@ execute:
   freeze: true
 ---
 
-## 1.1 Take-Home Exercise 1 Learning Outcome
+## 1.1 Take-Home Exercise 1
