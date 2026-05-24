@@ -1,241 +1,136 @@
 [
   {
-    "objectID": "TH_Ex1_ES.html#executive-summary",
-    "href": "TH_Ex1_ES.html#executive-summary",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Executive Summary",
-    "text": "Executive Summary\nTH_Ex1_TR Visual Analytics Investigation\nISSS608 Visual Analytics and Applications\n\nThis presentation summarises the key findings derived from the motor insurance portfolio visual analytics investigation. The analysis applied advanced visual analytics techniques to identify patterns influencing profitability, volatility, and underwriting risk within the portfolio. Using both univariate and bivariate visualisations, the study explored claims behaviour, demographic segmentation, policy distribution, and underwriting performance. The findings provide actionable insights to support data-driven underwriting, pricing optimisation, and portfolio management."
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "",
+    "text": "Insurers often carry underperforming portfolios where the root causes of poor profitability and high volatility are unknown. Leveraging visual analytics can potentially help investigate trends in underlying loss drivers, while data enrichment using external data can help refine segmentation and underwriting strategy.\nThis report investigates profitability and volatility drivers in a motor insurance portfolio using advanced visual analytics methods in R. The analysis integrates univariate and bivariate visualisation approaches to uncover deeper insights into data distributions and identifying key factors influencing the profitability and volatility of the insurance portfolio.\n\n\n\nThe specific tasks of this study are:\n\nApply suitable univariate visual analytics techniques to explore the distributions and characteristics of numerical and categorical variables.\nApply suitable bivariate visual analytics techniques to investigate and statistically validate factors influencing the profitability and volatility of the insurance portfolio."
   },
   {
-    "objectID": "TH_Ex1_ES.html#study-objectives",
-    "href": "TH_Ex1_ES.html#study-objectives",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Study Objectives",
-    "text": "Study Objectives\n\nInvestigate profitability drivers within the insurance portfolio\nIdentify factors influencing claims volatility\nExplore demographic and vehicle-related risk patterns\nApply visual analytics techniques for business interpretation\nSupport underwriting and pricing decisions"
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#setting-the-scene",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#setting-the-scene",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "",
+    "text": "Insurers often carry underperforming portfolios where the root causes of poor profitability and high volatility are unknown. Leveraging visual analytics can potentially help investigate trends in underlying loss drivers, while data enrichment using external data can help refine segmentation and underwriting strategy.\nThis report investigates profitability and volatility drivers in a motor insurance portfolio using advanced visual analytics methods in R. The analysis integrates univariate and bivariate visualisation approaches to uncover deeper insights into data distributions and identifying key factors influencing the profitability and volatility of the insurance portfolio."
   },
   {
-    "objectID": "TH_Ex1_ES.html#analytical-areas",
-    "href": "TH_Ex1_ES.html#analytical-areas",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Analytical Areas",
-    "text": "Analytical Areas\n\nLoss ratio analysis\nClaims severity behaviour\nPortfolio concentration\nProfitability segmentation\nRisk distribution patterns\n\n\nThe objective of this investigation was to understand how underwriting variables influence profitability and claims behaviour within the motor insurance portfolio. The study applied visual analytics techniques to uncover hidden relationships between policy characteristics, demographic variables, and claims outcomes. The analysis also aimed to support more informed underwriting and pricing strategies through effective visual interpretation of complex insurance data."
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#the-tasks",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#the-tasks",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "",
+    "text": "The specific tasks of this study are:\n\nApply suitable univariate visual analytics techniques to explore the distributions and characteristics of numerical and categorical variables.\nApply suitable bivariate visual analytics techniques to investigate and statistically validate factors influencing the profitability and volatility of the insurance portfolio."
   },
   {
-    "objectID": "TH_Ex1_ES.html#data-preparation-process",
-    "href": "TH_Ex1_ES.html#data-preparation-process",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Data Preparation Process",
-    "text": "Data Preparation Process\n\nConverted variables into appropriate data types\nManaged missing and inconsistent values\nStandardised categorical variables\nCreated derived underwriting metrics"
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#load-packages",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#load-packages",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Load Packages",
+    "text": "Load Packages\nWe load the following R packages using the pacman::p_load() function:\n\ntidyverse: core collection of R packages designed for data science\nggrepel: to provides geoms for ggplot2 to repel overlapping text labels\nggthemes: to use additional themes for ggplot2\npatchwork: to prepare composite figure created using ggplot2\nggridges: to plot ridgeline plots\nggdist: for visualizations of distributions and uncertainty\nscales: provides the internal scaling infrastructure used by ggplot2\ncolorspace: provides a broad toolbox for color palettes\n\n\n\nCode\npacman::p_load(\n  tidyverse, ggrepel, ggthemes, ggridges, ggdist, colorspace, patchwork, scales\n)"
   },
   {
-    "objectID": "TH_Ex1_ES.html#derived-variables",
-    "href": "TH_Ex1_ES.html#derived-variables",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Derived Variables",
-    "text": "Derived Variables\n\n\n\nVariable\nPurpose\n\n\n\n\nLoss Ratio\nMeasures underwriting profitability\n\n\nClaim Frequency\nMeasures claim occurrence rate\n\n\nClaim Severity\nMeasures average claims cost\n\n\nProfitability Band\nSegments underwriting performance\n\n\nAge Band\nGroups drivers by demographic category\n\n\n\n\nThe data preparation stage improved analytical quality and ensured consistency across the portfolio dataset. Several derived variables were constructed to support underwriting analysis. Loss ratio was used to measure profitability, while claim severity and frequency helped quantify portfolio volatility. Profitability and demographic segmentation variables enabled deeper exploratory analysis and clearer visual comparisons."
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#import-data",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#import-data",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Import Data",
+    "text": "Import Data\nA real world motor vehicle insurance portfolio data set from a Spanish insurance company specialised in non-life insurance will be used in this study. The data set and its cookbook are available for download at Mendeley Data. We will import this dataset as “insurance”.\n\n\nCode\ninsurance &lt;- read_delim(\"data/Dataset of motor insurance portfolio.csv\")"
   },
   {
-    "objectID": "TH_Ex1_ES.html#visual-analytics-technique",
-    "href": "TH_Ex1_ES.html#visual-analytics-technique",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Visual Analytics Technique",
-    "text": "Visual Analytics Technique\n\nHistogram of Total Premium Distribution"
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#data-pre-processing",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#data-pre-processing",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Data Pre-Processing",
+    "text": "Data Pre-Processing\nWe first take a look at the data and check if there are any duplicate entries or missing values."
   },
   {
-    "objectID": "TH_Ex1_ES.html#key-findings",
-    "href": "TH_Ex1_ES.html#key-findings",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Key Findings",
-    "text": "Key Findings\n\nPremium values are heavily concentrated within lower ranges\nDistribution exhibits strong positive skewness\nSmaller proportion of high-premium policies contribute significant revenue"
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#glimpse-of-data",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#glimpse-of-data",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Glimpse of Data",
+    "text": "Glimpse of Data\nUsing the glimpse() function, we see that the dataset consists of 354,140 rows and 47 columns. It also shows the column names, column type, and the first few entries of each column.\n\n\nCode\nglimpse(insurance)\n\n\nRows: 354,140\nColumns: 47\n$ insured_id                  &lt;dbl&gt; 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, …\n$ year                        &lt;dbl&gt; 2022, 2022, 2023, 2024, 2022, 2023, 2024, …\n$ policy_type                 &lt;chr&gt; \"COMP_E\", \"COMP_E\", \"COMP_E\", \"COMP_E\", \"C…\n$ policy_status               &lt;chr&gt; \"C\", \"A\", \"A\", \"A\", \"A\", \"A\", \"A\", \"A\", \"A…\n$ business_type               &lt;chr&gt; \"NB\", \"P\", \"P\", \"P\", \"NB\", \"P\", \"P\", \"NB\",…\n$ payment_frequency           &lt;chr&gt; \"A\", \"A\", \"A\", \"A\", \"S\", \"S\", \"S\", \"A\", \"A…\n$ bonus_score                 &lt;chr&gt; \"G\", \"G\", \"G\", \"G\", \"G\", \"G\", \"G\", \"G\", \"G…\n$ driver_age                  &lt;dbl&gt; 48, 43, 44, 45, 45, 46, 47, 32, 33, 34, 39…\n$ vehicle_age                 &lt;dbl&gt; 22, 24, 25, 26, 26, 27, 28, 12, 13, 14, 20…\n$ age_driving_licence         &lt;dbl&gt; 26, 19, 19, 18, 19, 19, 19, 19, 19, 19, 19…\n$ fuel_type                   &lt;chr&gt; \"G\", \"D\", \"D\", \"D\", \"D\", \"D\", \"D\", \"D\", \"D…\n$ vehicle_value               &lt;dbl&gt; 149511.44, 65065.12, 65065.12, 65065.12, 5…\n$ seats                       &lt;dbl&gt; 4, 8, 8, 8, 7, 7, 7, 5, 5, 5, 5, 5, 5, 5, …\n$ power_to_weight_ratio       &lt;dbl&gt; 3.92, 10.15, 10.15, 10.15, 9.19, 9.19, 9.1…\n$ vehicle_brand               &lt;chr&gt; \"PORSCHE\", \"MERCEDES\", \"MERCEDES\", \"MERCED…\n$ municipality_type           &lt;chr&gt; \"I\", \"I\", \"I\", \"I\", \"I\", \"I\", \"I\", \"I\", \"I…\n$ circulation_area            &lt;chr&gt; \"U\", \"U\", \"U\", \"U\", \"R\", \"R\", \"R\", \"R\", \"R…\n$ total_premium               &lt;dbl&gt; 279.5576, 546.6234, 548.7526, 584.6324, 68…\n$ liability_premium           &lt;dbl&gt; 30.60232, 114.33336, 110.66689, 122.09253,…\n$ property_damage_premium     &lt;dbl&gt; 121.9127, 303.1060, 304.9560, 305.2251, 35…\n$ theft_premium               &lt;dbl&gt; 112.361489, 80.784824, 83.521384, 107.8868…\n$ fire_premium                &lt;dbl&gt; 3.832441, 7.826861, 6.151465, 5.842892, 7.…\n$ glass_premium               &lt;dbl&gt; 8.305788, 30.091751, 32.861626, 31.101584,…\n$ legal_protection_premium    &lt;dbl&gt; 2.043622, 7.812747, 7.655637, 10.084173, 6…\n$ occupants_premium           &lt;dbl&gt; 0.4992053, 2.6679084, 2.9395659, 2.3992827…\n$ total_claims                &lt;dbl&gt; 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, …\n$ liability_claims            &lt;dbl&gt; 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ liability_property_claims   &lt;dbl&gt; 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ liability_injury_claims     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ property_claims             &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, …\n$ theft_claims                &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ fire_claims                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ glass_claims                &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ legal_protection_claims     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ occupants_claims            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ total_incurred              &lt;dbl&gt; 0.000, 0.000, 233.013, 2586.361, 0.000, 0.…\n$ liability_incurred          &lt;dbl&gt; 0.000, 0.000, 233.013, 1035.000, 0.000, 0.…\n$ liability_property_incurred &lt;dbl&gt; 0.000, 0.000, 233.013, 1035.000, 0.000, 0.…\n$ liability_injury_incurred   &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, …\n$ property_incurred           &lt;dbl&gt; 0.000, 0.000, 0.000, 1551.361, 0.000, 0.00…\n$ theft_incurred              &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ fire_incurred               &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ glass_incurred              &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ legal_protection_incurred   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ occupants_incurred          &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ total_exposure              &lt;dbl&gt; 0.09863014, 1.00000000, 1.00000000, 1.0000…\n$ liability_exposure          &lt;dbl&gt; 0.09863014, 1.00000000, 1.00000000, 1.0000…"
   },
   {
-    "objectID": "TH_Ex1_ES.html#business-interpretation",
-    "href": "TH_Ex1_ES.html#business-interpretation",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Business Interpretation",
-    "text": "Business Interpretation\nThe portfolio is primarily composed of standard premium policies with limited concentration in higher-value customer segments.\n\nThe histogram demonstrated that most policies fall within relatively low premium ranges, while only a smaller subset of policies occupy higher premium levels. The positively skewed distribution indicates uneven premium concentration across the portfolio. This suggests that the insurer operates largely within a mass-market environment where profitability may depend on balancing portfolio scale and claims management efficiency."
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#check-for-duplicates",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#check-for-duplicates",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Check for Duplicates",
+    "text": "Check for Duplicates\nUsing the duplicated function, we see that there are no duplicate entries in the data.\n\n\nCode\ninsurance[duplicated(insurance),]\n\n\n# A tibble: 0 × 47\n# ℹ 47 variables: insured_id &lt;dbl&gt;, year &lt;dbl&gt;, policy_type &lt;chr&gt;,\n#   policy_status &lt;chr&gt;, business_type &lt;chr&gt;, payment_frequency &lt;chr&gt;,\n#   bonus_score &lt;chr&gt;, driver_age &lt;dbl&gt;, vehicle_age &lt;dbl&gt;,\n#   age_driving_licence &lt;dbl&gt;, fuel_type &lt;chr&gt;, vehicle_value &lt;dbl&gt;,\n#   seats &lt;dbl&gt;, power_to_weight_ratio &lt;dbl&gt;, vehicle_brand &lt;chr&gt;,\n#   municipality_type &lt;chr&gt;, circulation_area &lt;chr&gt;, total_premium &lt;dbl&gt;,\n#   liability_premium &lt;dbl&gt;, property_damage_premium &lt;dbl&gt;, …"
   },
   {
-    "objectID": "TH_Ex1_ES.html#visual-analytics-technique-1",
-    "href": "TH_Ex1_ES.html#visual-analytics-technique-1",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Visual Analytics Technique",
-    "text": "Visual Analytics Technique\n\nDensity Plot of Claims Incurred"
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#check-and-handle-missing-values",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#check-and-handle-missing-values",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Check and Handle Missing Values",
+    "text": "Check and Handle Missing Values\nWe run the below code to check for missing values.\n\n\nCode\ninsurance |&gt;\n  summarise(across(everything(),\n                   ~sum(is.na(.)))) |&gt;\n  pivot_longer(everything()) |&gt;\n  arrange(desc(value))\n\n\n# A tibble: 47 × 2\n   name                value\n   &lt;chr&gt;               &lt;int&gt;\n 1 fuel_type            1287\n 2 vehicle_value         513\n 3 vehicle_age             2\n 4 age_driving_licence     2\n 5 insured_id              0\n 6 year                    0\n 7 policy_type             0\n 8 policy_status           0\n 9 business_type           0\n10 payment_frequency       0\n# ℹ 37 more rows\n\n\nThe number of missing value is relatively low, so imputation is appropriate.\n\nMissing categorical values in fuel_type were recoded as “Unknown” to preserve observations while avoiding artificial assumptions.\nNumerical variables with minimal missing values were imputed using median values due to the skewed nature of insurance related data.\nMissing incurred claim amounts were replaced with zero under the assumption that absent records reflected no reported claims.\n\n\n\nCode\ninsurance &lt;- insurance |&gt;\n  mutate(\n    fuel_type = replace_na(fuel_type, \"Unknown\"),\n    vehicle_value = replace_na(\n      vehicle_value,\n      median(vehicle_value, na.rm = TRUE)\n    ),\n    vehicle_age = replace_na(\n      vehicle_age,\n      median(vehicle_age, na.rm = TRUE)\n    ),\n    age_driving_licence = replace_na(\n      age_driving_licence,\n      median(age_driving_licence, na.rm = TRUE)\n    ),\n    fire_incurred = replace_na(fire_incurred, 0),\n    occupants_incurred = replace_na(\n      occupants_incurred,\n      0\n    )\n  )\n\ninsurance |&gt;\n  summarise(across(everything(),\n                   ~sum(is.na(.)))) |&gt;\n  pivot_longer(everything()) |&gt;\n  arrange(desc(value))\n\n\n# A tibble: 47 × 2\n   name                value\n   &lt;chr&gt;               &lt;int&gt;\n 1 insured_id              0\n 2 year                    0\n 3 policy_type             0\n 4 policy_status           0\n 5 business_type           0\n 6 payment_frequency       0\n 7 bonus_score             0\n 8 driver_age              0\n 9 vehicle_age             0\n10 age_driving_licence     0\n# ℹ 37 more rows"
   },
   {
-    "objectID": "TH_Ex1_ES.html#key-findings-1",
-    "href": "TH_Ex1_ES.html#key-findings-1",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Key Findings",
-    "text": "Key Findings\n\nClaims distribution is highly right-skewed\nMajority of claims are relatively low in value\nSevere claims contribute disproportionately to volatility"
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#creating-derived-variables",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#creating-derived-variables",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Creating Derived Variables",
+    "text": "Creating Derived Variables\nSeveral derived variables were created to improve analytical depth and facilitate bivariate and multivariate visual analytics.\nThe following variables were first converted into numeric format to ensure that mathematical calculations can be performed correctly: total_claims, total_exposure, total_incurred and total_premium\n\nDerived Variables\nLoss Ratio - measures the relationship between claims incurred and premium earned. Lower loss ratio indicates stronger profitability and value greater than 1 imply claims incurred exceed premium income.\nProfitability Band - categorise policies into interpretable underwriting performance group.\n(&lt; 0.6 Profitable), (0.6 – 1.0 Marginal), (&gt; 1.0 Unprofitable)\nAge Group - simplify demographic analysis by grouping drivers into meaningful underwriting categories.\n(&lt; 30 Young), (30 – 60 Middle), (&gt; 60 Senior)\n\n\nCode\ninsurance &lt;- insurance |&gt;\n  mutate(\n    total_claims = as.numeric(total_claims),\n    total_exposure = as.numeric(total_exposure),\n    total_incurred = as.numeric(total_incurred),\n    total_premium = as.numeric(total_premium),\n\n    loss_ratio = if_else(\n      total_premium &gt; 0,\n      total_incurred / total_premium,\n      0\n    ),\n\n    profitability_band = case_when(\n      loss_ratio &lt; 0.6 ~ \"Profitable\",\n      loss_ratio &lt; 1 ~ \"Marginal\",\n      TRUE ~ \"Unprofitable\"\n    ),\n\n    age_band = case_when(\n      driver_age &lt; 30 ~ \"Young\",\n      driver_age &lt; 60 ~ \"Middle\",\n      TRUE ~ \"Senior\"\n    )\n  )"
   },
   {
-    "objectID": "TH_Ex1_ES.html#business-interpretation-1",
-    "href": "TH_Ex1_ES.html#business-interpretation-1",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Business Interpretation",
-    "text": "Business Interpretation\nA small number of extreme claims significantly increase underwriting risk and reserve uncertainty.\n\nThe density plot revealed a concentration of lower-value claims alongside a smaller number of severe claims. This distribution pattern is typical within insurance portfolios and demonstrates that claims volatility is driven largely by extreme events rather than average claims. The findings reinforce the importance of risk-based pricing, reinsurance strategies, and claims reserving controls."
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#distribution-of-total-premium",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#distribution-of-total-premium",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Distribution of Total Premium",
+    "text": "Distribution of Total Premium\nExamines the distribution of total premium values within the motor insurance portfolio. The objective is to understand: premium concentration patterns, pricing structure, variability of insurance premiums.\nThe analysis supports underwriting and pricing evaluation by identifying how premium values are distributed across policyholders and detecting whether the portfolio is concentrated within lower or higher premium ranges.\nThe histogram was selected because it effectively visualises distribution shape, highlights concentration and spread, reveals skewness, identifies potential outliers, supports exploratory portfolio analysis.\n\n\nCode\nggplot(\n  insurance,\n  aes(total_premium)\n) +\n\ngeom_histogram(\n  bins = 50,\n  fill = \"steelblue\",\n  color = \"white\"\n) +\n\nscale_y_continuous(\n  labels = scales::comma\n) +\n\nscale_x_continuous(\n  labels = scales::dollar,\n  breaks = seq(\n    0,\n    2000,\n    by = 500\n  )\n) +\n  \ncoord_cartesian(\n  xlim = c(0, 2000)\n) +\n\nlabs(\n  title = \"Distribution of Total Premium\",\n  x = \"Total Premium\",\n  y = \"Policy Count\"\n) +\n\ntheme_minimal()\n\n\n\n\n\n\n\n\n\nKey Insights\n\nThe premium distribution is highly right skewed, with most policies concentrated within lower premium ranges.\nA small number of high premium policies contribute disproportionately to total premium revenue, indicating portfolio heterogeneity.\nThe concentration of lower premium policies suggests strong exposure to mass market insurance segments and potentially competitive pricing conditions."
   },
   {
-    "objectID": "TH_Ex1_ES.html#visual-analytics-technique-2",
-    "href": "TH_Ex1_ES.html#visual-analytics-technique-2",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Visual Analytics Technique",
-    "text": "Visual Analytics Technique\n\nBar Chart of Profitability Bands"
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#claims-incurred-distribution",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#claims-incurred-distribution",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Claims Incurred Distribution",
+    "text": "Claims Incurred Distribution\nExamines the distribution of total incurred claims within the motor insurance portfolio. The objective is to understand: concentration of claim amounts, variability of losses, presence of extreme claim events.\nThe analysis supports underwriting and claims management by identifying how incurred claims are distributed across the portfolio and assessing the overall volatility of insurance losses.\nThe density plot was selected because it reveals distribution shape clearly, highlights skewness and concentration, reduces visual fragmentation compared to histograms, improves interpretation of continuous claims data.\n\n\nCode\nggplot(\n  insurance,\n  aes(x = total_incurred)\n) +\n\ngeom_density(\n  fill = \"firebrick\",\n  alpha = 0.6\n) +\n\nscale_x_continuous(\n  labels = scales::dollar,\n  breaks = seq(\n    0,\n    5000,\n    by = 500\n  )\n) +\n\ncoord_cartesian(\n  xlim = c(0, 5000)\n) +\n\nlabs(\n  title = \"Claims Incurred Distribution\",\n  x = \"Claims Incurred\",\n  y = \"Density\"\n) +\n\ntheme_minimal()\n\n\n\n\n\n\n\n\n\nKey Insights\n\nMost claims are concentrated within lower incurred claim values, indicating that minor claims dominate the portfolio.\nThe long right tail of the distribution highlights the presence of infrequent but severe high cost claims contributing to portfolio volatility.\nThe significant variability in claims severity suggests the importance of effective underwriting, reserving, and catastrophe risk management strategies."
   },
   {
-    "objectID": "TH_Ex1_ES.html#profitability-categories",
-    "href": "TH_Ex1_ES.html#profitability-categories",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Profitability Categories",
-    "text": "Profitability Categories\n\nProfitable\nMarginal\nUnprofitable"
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#profitability-segmentation",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#profitability-segmentation",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Profitability Segmentation",
+    "text": "Profitability Segmentation\nExamines the distribution of insurance policies across different profitability segments within the motor insurance portfolio. The objective is to evaluate the overall underwriting performance of the insurer by identifying the proportion of: profitable policies, marginally profitable policies, unprofitable policies.\nThe analysis supports portfolio assessment by revealing the balance between profitable and loss making insurance business segments.\nThe bar chart was selected because it enables clear comparison between profitability segments, simplifies interpretation of portfolio composition, highlights concentration differences effectively, supports intuitive business storytelling.\n\n\nCode\ninsurance |&gt;\n  \n  mutate(\n    profitability_band = factor(\n      profitability_band,\n      \n      levels = c(\n        \"Unprofitable\",\n        \"Profitable\",\n        \"Marginal\"\n      )\n    )\n  ) |&gt;\n  \n  ggplot(\n    aes(\n      x = profitability_band\n    )\n  ) +\n  \n  geom_bar(\n    aes(\n      y = after_stat(\n        count / sum(count)\n      )\n    ),\n    \n    fill = \"steelblue\"\n  ) +\n  \n  scale_y_continuous(\n    labels = scales::percent,\n    limits = c(0, 1)\n  ) +\n  \n  labs(\n    title = \"Profitability Segmentation\",\n    \n    x = \"Profitability Band\",\n    \n    y = \"Percentage of Policies\"\n  ) +\n  \n  theme_minimal()\n\n\n\n\n\n\n\n\n\nKey Insights\n\nThe portfolio is primarily concentrated within the profitable segment, indicating generally effective underwriting and pricing performance.\nA smaller proportion of policies fall within the unprofitable category, suggesting the presence of higher risk segments contributing disproportionately to claims costs.\nThe marginal segment highlights policies operating close to break even levels, indicating potential sensitivity to future claims volatility and profitability deterioration."
   },
   {
-    "objectID": "TH_Ex1_ES.html#key-findings-2",
-    "href": "TH_Ex1_ES.html#key-findings-2",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Key Findings",
-    "text": "Key Findings\n\nProfitable policies dominate the portfolio\nMarginal policies represent sensitive underwriting areas\nUnprofitable policies contribute elevated financial risk\n\n\nThe profitability segmentation visualisation categorised policies according to loss ratio performance. Most policies were classified as profitable, although marginal and unprofitable segments remain operationally significant. Marginal policies require close monitoring because relatively small increases in claims costs could quickly reduce profitability. Unprofitable policies represent areas where underwriting and pricing refinement may be necessary."
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#distribution-of-driver-age-group",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#distribution-of-driver-age-group",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Distribution of Driver Age Group",
+    "text": "Distribution of Driver Age Group\nExamines the distribution of policyholders across different driver age groups within the motor insurance portfolio. The objective is to understand the demographic composition of insured drivers and identify which age segments dominate the portfolio.\nThe analysis supports underwriting and risk segmentation by providing insight into the insurer’s exposure across different driver age categories.\nThe bar chart was selected because it clearly communicates category magnitude differences, enables rapid comparison between age groups, simplifies demographic interpretation, supports intuitive business storytelling.\n\n\nCode\ninsurance |&gt;\n  \n  mutate(\n    age_band = factor(\n      age_band,\n      \n      levels = c(\n        \"Young\",\n        \"Middle\",\n        \"Senior\"\n      )\n    )\n  ) |&gt;\n  \n  ggplot(\n    aes(age_band)\n  ) +\n  \n  geom_bar(\n    aes(\n      y = after_stat(\n        count / sum(count)\n      )\n    ),\n    \n    fill = \"steelblue\"\n  ) +\n  \n  scale_y_continuous(\n    labels = scales::percent,\n    limits = c(0, 1)\n  ) +\n  \n  labs(\n    title = \"Distribution of Driver Age Group\",\n    \n    x = \"Age Group\",\n    \n    y = \"Percentage of Policies\"\n  ) +\n  \n  theme_minimal()\n\n\n\n\n\n\n\n\n\nKey Insights\n\nThe portfolio is primarily concentrated within the middle aged driver segment, suggesting stronger exposure to relatively stable and experienced drivers.\nYoung drivers represent a smaller proportion of the portfolio but may contribute disproportionately to underwriting risk and claims frequency.\nSenior drivers form the smallest demographic segment, highlighting comparatively lower portfolio exposure to ageing driver risk factors."
   },
   {
-    "objectID": "TH_Ex1_ES.html#visual-analytics-technique-3",
-    "href": "TH_Ex1_ES.html#visual-analytics-technique-3",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Visual Analytics Technique",
-    "text": "Visual Analytics Technique\n\nPercentage Bar Chart of Driver Age Groups"
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#distribution-of-policy-type",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#distribution-of-policy-type",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Distribution of Policy Type",
+    "text": "Distribution of Policy Type\nExamines the distribution of policies across different policy types within the motor insurance portfolio. The objective is to understand the composition of insurance products offered and identify which coverage categories dominate the portfolio.\nThe analysis supports underwriting and portfolio management by revealing the concentration of policies within different insurance coverage structures.\nThe bar chart was selected because it clearly communicates differences in product concentration, enables rapid comparison between policy types, simplifies interpretation of portfolio composition, supports intuitive business storytelling.\n\n\nCode\ninsurance |&gt;\n  mutate(\n    policy_type = factor(\n      policy_type,\n      levels = c(\n        \"CC\",\n        \"COMP_E\",\n        \"TPG\",\n        \"COMP_N\",\n        \"TP\"\n      )\n    )\n  ) |&gt;\n\n  ggplot(\n    aes(\n      x = policy_type,\n      fill = policy_type\n    )\n  ) +\n\n  geom_bar() +\n\n  scale_fill_manual(\n    values = c(\n      \"CC\" = \"#7FC97F\",\n      \"COMP_E\" = \"#80B1D3\",\n      \"TPG\" = \"#F8766D\",\n      \"COMP_N\" = \"#B3DE69\",\n      \"TP\" = \"#FDB462\"\n    ),\n\n    breaks = c(\n      \"CC\",\n      \"COMP_E\",\n      \"TPG\",\n      \"COMP_N\",\n      \"TP\"\n    ),\n\n    labels = c(\n      \"CC\" = \"CC: Third-party liability combined\",\n      \"COMP_E\" = \"COMP_E: Comprehensive with excess\",\n      \"TPG\" = \"TPG: Third-party liability with glass coverage\",\n      \"COMP_N\" = \"COMP_N: Comprehensive without excess\",\n      \"TP\" = \"TP: Basic third-party liability coverage only\"\n    )\n  ) +\n\n  scale_y_continuous(\n    labels = scales::comma\n  ) +\n\n  labs(\n    title = \"Distribution of Policy Type\",\n    x = \"Policy Type\",\n    y = \"Policy Count\",\n    fill = \"Policy Description\"\n  ) +\n\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nKey Insights\n\nThe portfolio is concentrated within selected policy types, indicating stronger customer demand and underwriting focus in specific insurance products.\nComprehensive and third-party coverage products exhibit differing policy concentrations, reflecting variation in customer protection preferences and pricing considerations.\nThe presence of multiple policy categories demonstrates portfolio diversification, which supports underwriting balance and reduces dependence on a single product segment."
   },
   {
-    "objectID": "TH_Ex1_ES.html#key-findings-3",
-    "href": "TH_Ex1_ES.html#key-findings-3",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Key Findings",
-    "text": "Key Findings\n\nMiddle-aged drivers represent the largest portfolio segment\nYounger and senior drivers form smaller exposure groups\nPortfolio concentration may influence overall claims behaviour"
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#vehicle-value-vs-claims-incurred",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#vehicle-value-vs-claims-incurred",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Vehicle Value vs Claims Incurred",
+    "text": "Vehicle Value vs Claims Incurred\nExamines the relationship between vehicle value and total incurred claims within the motor insurance portfolio. The objective is to determine whether higher value vehicles are associated with larger insurance claims and to identify patterns, variability, and potential outliers within the portfolio.\nThe analysis supports underwriting and pricing evaluation by exploring how the value of insured vehicles influences financial claim exposure.\nThe scatter plot was selected because it reveals correlation patterns, identifies clustering behaviour, highlights outliers, supports trend analysis, enables detection of claims volatility.\n\n\nCode\nggplot(\n  insurance,\n  aes(\n    x = vehicle_value,\n    y = total_incurred\n  )\n) +\n\ngeom_point(\n  alpha = 0.5,\n  color = \"steelblue\"\n) +\n\nscale_y_continuous(\n  labels = scales::dollar,\n  breaks = seq(\n    0,\n    200000,\n    by = 50000\n  )\n) +\n\nscale_x_continuous(\n  labels = scales::dollar,\n  breaks = seq(\n    0,\n    200000,\n    by = 50000\n  )\n) +\n\ncoord_cartesian(\n  xlim = c(0, 200000),\n  ylim = c(0, 200000)\n) +\n\nlabs(\n  title = \"Vehicle Value vs Claims Incurred\",\n  x = \"Vehicle Value\",\n  y = \"Total Incurred Claims\"\n) +\n\ntheme_minimal()\n\n\n\n\n\n\n\n\n\nKey Insights\n\nHigher value vehicles generally tend to produce larger incurred claims, indicating a positive association between vehicle value and claim severity.\nMost observations are concentrated within lower vehicle values and moderate claims ranges, suggesting strong exposure to standard market segments.\nSeveral extreme claim observations highlight the presence of high severity loss events contributing disproportionately to portfolio volatility and underwriting risk."
   },
   {
-    "objectID": "TH_Ex1_ES.html#business-interpretation-2",
-    "href": "TH_Ex1_ES.html#business-interpretation-2",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Business Interpretation",
-    "text": "Business Interpretation\nDemographic concentration impacts underwriting exposure and pricing strategy.\n\nThe age group analysis showed that middle-aged drivers dominate the portfolio composition. This may reflect lower underwriting risk associated with more experienced drivers or targeted customer acquisition strategies. Younger and senior drivers form smaller portions of the portfolio but may present different claims risk characteristics that require specialised pricing and underwriting approaches."
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#profitability-segmentation-by-policy-type-and-year",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#profitability-segmentation-by-policy-type-and-year",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Profitability Segmentation by Policy Type and Year",
+    "text": "Profitability Segmentation by Policy Type and Year\nExamines the relationship between policy type, profitability segment, underwriting activity across years within the motor insurance portfolio. The objective is to identify how different insurance products perform across profitability categories over time and to detect concentration patterns within underwriting performance.\nThe analysis supports portfolio monitoring, underwriting evaluation, profitability assessment, product level performance analysis.\nThe heatmap was selected because it reveals concentration patterns clearly, supports comparison across multiple dimensions, highlights temporal changes, enables rapid identification of high density portfolio segments. Compared to tables or grouped bar charts, the heatmap provides a more compact and interpretable representation of multidimensional insurance data.\n\n\nCode\ninsurance |&gt;\n  \n  mutate(\n    \n    policy_type = factor(\n      policy_type,\n      levels = c(\n        \"CC\",\n        \"COMP_E\",\n        \"TPG\",\n        \"COMP_N\",\n        \"TP\"\n      )\n    ),\n    \n    profitability_band = factor(\n      profitability_band,\n      levels = c(\n        \"Unprofitable\",\n        \"Profitable\",\n        \"Marginal\"\n      )\n    )\n    \n  ) |&gt;\n  \n  count(\n    year,\n    policy_type,\n    profitability_band\n  ) |&gt;\n  \n  ggplot(\n    aes(\n      x = factor(year),\n      y = policy_type,\n      fill = n\n    )\n  ) +\n\n  geom_tile(\n    color = \"white\"\n  ) +\n\n  facet_wrap(\n    ~ profitability_band\n  ) +\n\n  scale_fill_continuous_sequential(\n    \n    palette = \"BluGrn\",\n\n    guide = guide_colorbar(\n      barwidth = 20,\n      barheight = 1.5,\n      title.position = \"top\",\n      title.hjust = 0.5\n    )\n  ) +\n\n  labs(\n    title = \"Profitability Segmentation by Policy Type and Year\",\n    x = \"Year\",\n    y = \"Policy Type\",\n    fill = \"Number of Policies\"\n  ) +\n\n  theme_minimal() +\n  \n  theme(\n    legend.position = \"bottom\"\n  )\n\n\n\n\n\n\n\n\n\nKey Insights\n\nCertain policy types exhibit stronger concentration within profitable segments, suggesting more effective underwriting and pricing performance.\nVariations in colour intensity across years reveal changing portfolio composition and profitability trends over time, supporting temporal underwriting evaluation.\nThe heatmap reveals portfolio imbalance across policy types, suggesting that certain insurance products dominate the insurer’s business mix and may contribute disproportionately to overall portfolio risk."
   },
   {
-    "objectID": "TH_Ex1_ES.html#visual-analytics-technique-4",
-    "href": "TH_Ex1_ES.html#visual-analytics-technique-4",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Visual Analytics Technique",
-    "text": "Visual Analytics Technique\n\nScatter Plot Analysis"
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#portfolio-composition-and-profitability-by-fuel-type",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#portfolio-composition-and-profitability-by-fuel-type",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Portfolio Composition and Profitability by Fuel Type",
+    "text": "Portfolio Composition and Profitability by Fuel Type\nExamines the relationship between fuel type distribution, portfolio composition, underwriting profitability within the motor insurance portfolio. The objective is to compare the proportion of diesel and gasoline vehicles within the portfolio, their corresponding average loss ratio performance.\nThe analysis supports underwriting and risk assessment by identifying whether certain fuel types contribute disproportionately to portfolio exposure or profitability risk.\nThe chart combines bar chart to represent policy distribution percentages and line chart to represent average loss ratio. A combination chart was selected because it effectively integrates portfolio composition analysis, profitability performance analysis within a single visualisation.\nThis technique was selected because it supports comparison between volume and profitability, enables multidimensional analysis,improves analytical efficiency, enhances business storytelling. Compared to separate charts, the combined visualisation allows users to evaluate whether the most common fuel types are also associated with stronger or weaker underwriting performance.\n\n\nCode\nfuel_summary &lt;- insurance |&gt;\n  \n  group_by(fuel_type) |&gt;\n  \n  summarise(\n    \n    policy_count = n(),\n    \n    policy_percentage = n() / nrow(insurance),\n    \n    avg_loss_ratio = mean(\n      loss_ratio,\n      na.rm = TRUE\n    )\n    \n  )\n\nggplot(\n  fuel_summary,\n  \n  aes(\n    x = reorder(\n      fuel_type,\n      policy_percentage\n    )\n  )\n) +\n\ngeom_col(\n  \n  aes(\n    y = policy_percentage\n  ),\n  \n  fill = \"steelblue\",\n  alpha = 0.8\n) +\n\nscale_x_discrete(\n  \n  labels = c(\n    D = \"Diesel\",\n    G = \"Gasoline\"\n  )\n) +\n\ngeom_line(\n  \n  aes(\n    y = avg_loss_ratio,\n    group = 1\n  ),\n  \n  color = \"firebrick\",\n  linewidth = 1.2\n) +\n\ngeom_point(\n  \n  aes(\n    y = avg_loss_ratio\n  ),\n  \n  color = \"firebrick\",\n  size = 3\n) +\n\nscale_y_continuous(\n  \n  name = \"Percentage of Policies\",\n  \n  labels = scales::percent,\n  \n  limits = c(0, 1),\n  \n  sec.axis = sec_axis(\n    \n    ~ .,\n    \n    labels = scales::percent,\n    \n    name = \"Average Loss Ratio\"\n  )\n) +\n\nlabs(\n  title = \"Portfolio Composition and Profitability by Fuel Type\",\n  x = \"Fuel Type\"\n) +\n\ntheme_minimal()\n\n\n\n\n\n\n\n\n\nKey Insights\n\nDiesel dominates the portfolio composition, indicating stronger underwriting exposure and customer concentration within that vehicle segment.\nDifferences in average loss ratio across fuel types suggest that underwriting profitability varies between diesel and gasoline vehicles.\nFuel types with both high portfolio concentration and elevated loss ratios may represent important areas of underwriting risk requiring closer monitoring and pricing refinement."
   },
   {
-    "objectID": "TH_Ex1_ES.html#key-findings-4",
-    "href": "TH_Ex1_ES.html#key-findings-4",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Key Findings",
-    "text": "Key Findings\n\nPositive relationship between vehicle value and incurred claims\nHigher-value vehicles generally produce larger claims\nConsiderable variability exists across observations"
-  },
-  {
-    "objectID": "TH_Ex1_ES.html#business-interpretation-3",
-    "href": "TH_Ex1_ES.html#business-interpretation-3",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Business Interpretation",
-    "text": "Business Interpretation\nVehicle value is an important predictor of claims severity and underwriting exposure.\n\nThe scatter plot demonstrated a positive relationship between vehicle value and total incurred claims. Higher-value vehicles generally generate more expensive claims because repair and replacement costs are typically higher. However, the wide spread of observations suggests that additional underwriting factors such as accident severity, driving behaviour, and coverage levels also influence claims outcomes."
-  },
-  {
-    "objectID": "TH_Ex1_ES.html#visual-analytics-technique-5",
-    "href": "TH_Ex1_ES.html#visual-analytics-technique-5",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Visual Analytics Technique",
-    "text": "Visual Analytics Technique\n\nCombination Chart (Portfolio Percentage and Loss Ratio)"
-  },
-  {
-    "objectID": "TH_Ex1_ES.html#key-findings-5",
-    "href": "TH_Ex1_ES.html#key-findings-5",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Key Findings",
-    "text": "Key Findings\n\nOne fuel category dominates portfolio exposure\nAverage loss ratio differs across fuel types\nPortfolio concentration and profitability vary simultaneously"
-  },
-  {
-    "objectID": "TH_Ex1_ES.html#business-interpretation-4",
-    "href": "TH_Ex1_ES.html#business-interpretation-4",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Business Interpretation",
-    "text": "Business Interpretation\nFuel type segmentation may improve underwriting precision and profitability monitoring.\n\nThe combination chart enabled simultaneous evaluation of portfolio composition and underwriting profitability across fuel types. One category represented a significantly larger share of the portfolio, while loss ratio differences suggested varying profitability characteristics between fuel segments. This supports the use of vehicle attributes within risk-based pricing and underwriting segmentation frameworks."
-  },
-  {
-    "objectID": "TH_Ex1_ES.html#visual-analytics-techniques",
-    "href": "TH_Ex1_ES.html#visual-analytics-techniques",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Visual Analytics Techniques",
-    "text": "Visual Analytics Techniques\n\nRidge Plot\nBox Plot"
-  },
-  {
-    "objectID": "TH_Ex1_ES.html#key-findings-6",
-    "href": "TH_Ex1_ES.html#key-findings-6",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Key Findings",
-    "text": "Key Findings\n\nGood claims histories are concentrated within middle-age groups\nBad claims categories display wider variability\nMedian driver age differs across claims groups"
-  },
-  {
-    "objectID": "TH_Ex1_ES.html#business-interpretation-5",
-    "href": "TH_Ex1_ES.html#business-interpretation-5",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Business Interpretation",
-    "text": "Business Interpretation\nDemographic characteristics influence claims behaviour and underwriting outcomes.\n\nThe ridge plot and box plot combination provided both distributional and statistical insight into claims behaviour across driver age groups. Drivers with good claims histories were more concentrated within middle-age ranges, while higher-risk claims behaviour exhibited broader demographic variation. Median age differences across claims groups suggest that driver age remains an important underwriting variable."
-  },
-  {
-    "objectID": "TH_Ex1_ES.html#visual-analytics-technique-6",
-    "href": "TH_Ex1_ES.html#visual-analytics-technique-6",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Visual Analytics Technique",
-    "text": "Visual Analytics Technique\n\nHeatmap with Profitability Facets"
-  },
-  {
-    "objectID": "TH_Ex1_ES.html#key-findings-7",
-    "href": "TH_Ex1_ES.html#key-findings-7",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Key Findings",
-    "text": "Key Findings\n\nCertain policy types dominate profitable segments\nSelected products exhibit higher unprofitable concentrations\nProfitability behaviour changes across years"
-  },
-  {
-    "objectID": "TH_Ex1_ES.html#business-interpretation-6",
-    "href": "TH_Ex1_ES.html#business-interpretation-6",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Business Interpretation",
-    "text": "Business Interpretation\nProduct-level monitoring is essential for underwriting optimisation and pricing refinement.\n\nThe heatmap analysis highlighted profitability concentration patterns across policy types and years. Darker heatmap regions represented areas of greater policy concentration. Certain products consistently demonstrated stronger underwriting performance, while others contributed disproportionately to unprofitable business segments. Temporal variation also revealed changes in underwriting behaviour over time."
-  },
-  {
-    "objectID": "TH_Ex1_ES.html#major-findings",
-    "href": "TH_Ex1_ES.html#major-findings",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Major Findings",
-    "text": "Major Findings\n\nPortfolio profitability is influenced by multiple interconnected variables\nClaims volatility is driven by a relatively small number of severe claims\nHigher-value vehicles increase underwriting exposure\nDemographic characteristics influence claims performance\nCertain policy types contribute disproportionate underwriting risk"
-  },
-  {
-    "objectID": "TH_Ex1_ES.html#value-of-visual-analytics",
-    "href": "TH_Ex1_ES.html#value-of-visual-analytics",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Value of Visual Analytics",
-    "text": "Value of Visual Analytics\n\nEnhances business interpretability\nSupports data-driven underwriting decisions\nImproves portfolio monitoring and profitability analysis\n\n\nThe investigation demonstrated that underwriting performance is shaped by a combination of demographic, vehicle-related, and product-level variables. Visual analytics techniques enabled hidden portfolio structures and claims behaviour patterns to be identified more effectively than traditional tabular analysis alone. These findings support more informed underwriting strategies and long-term profitability optimisation."
-  },
-  {
-    "objectID": "TH_Ex1_ES.html#conclusion",
-    "href": "TH_Ex1_ES.html#conclusion",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Conclusion",
-    "text": "Conclusion\nThe visual analytics investigation successfully identified key profitability drivers, claims severity patterns, and underwriting risk characteristics within the motor insurance portfolio. The integration of multiple visual analytics techniques improved understanding of portfolio structure and risk behaviour."
-  },
-  {
-    "objectID": "TH_Ex1_ES.html#recommendations",
-    "href": "TH_Ex1_ES.html#recommendations",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Recommendations",
-    "text": "Recommendations\n\nStrengthen risk-based pricing strategies\nMonitor marginal and unprofitable segments closely\nImprove demographic underwriting segmentation\nFocus on high-severity claims management\nContinue applying visual analytics for portfolio monitoring"
-  },
-  {
-    "objectID": "TH_Ex1_ES.html#final-insight",
-    "href": "TH_Ex1_ES.html#final-insight",
-    "title": "Motor Insurance Portfolio Visual Analytics",
-    "section": "Final Insight",
-    "text": "Final Insight\nVisual analytics transforms complex insurance data into interpretable business intelligence that supports more effective underwriting and strategic decision-making.\n\nThe study demonstrated the value of visual analytics for insurance portfolio evaluation and underwriting optimisation. The findings revealed important profitability and claims behaviour patterns that support more informed business decisions. Continued use of visual analytics techniques will strengthen portfolio monitoring, risk assessment, pricing refinement, and long-term underwriting performance."
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#driver-age-distribution-across-claims-risk",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#driver-age-distribution-across-claims-risk",
+    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "section": "Driver Age Distribution Across Claims Risk",
+    "text": "Driver Age Distribution Across Claims Risk\nExamines the relationship between driver age, historical claims behaviour, insurance risk categories within the motor insurance portfolio. The objective is to determine whether differences in driver age distribution exist across good, neutral, bad claims history segments.\nThe analysis supports underwriting and risk profiling by identifying how age characteristics vary across claims performance groups.\nThe ridge plot was selected because it visualises the overall distribution shape, highlights concentration patterns, enables comparison across groups, reveals skewness and spread differences.The box plot was selected because it displays medians, shows interquartile ranges, identifies variability, highlights potential outliers. While the ridge plot emphasises distribution shape, the box plot provides a more structured statistical comparison between risk categories. The combination of both techniques strengthens analytical depth and improves interpretability.\n\n\nCode\ninsurance &lt;- insurance |&gt;\n  mutate(\n    bonus_score = factor(\n      bonus_score,\n      levels = c(\"G\", \"N\", \"B\"),\n      labels = c(\n        G = \"Good Claims\",\n        N = \"Neutral Claims\",\n        B = \"Bad Claims\"\n      )\n    )\n  )\n\nridge_plot &lt;- insurance |&gt;\n  ggplot(\n    aes(\n      x = driver_age,\n      y = bonus_score,\n      fill = bonus_score\n    )\n  ) +\n  geom_density_ridges(\n    alpha = 0.7,\n    color = \"black\",\n    scale = 1.2\n  ) +\n  scale_fill_manual(\n    values = c(\n      \"#7FC97F\",\n      \"#80B1D3\",\n      \"#F8766D\"\n    )\n  ) +\n  \n  scale_x_continuous(\n    \n    breaks = c(\n      20,\n      40,\n      60,\n      80\n    ),\n    \n    limits = c(\n      15,\n      95\n    )\n  \n  ) +\n  \n  labs(\n    title = \"Driver Age Distribution Across Claims Risk\",\n    x = NULL,\n    y = NULL,\n    fill = \"Bonus Score\"\n  ) +\n  theme_minimal() +\n  theme(\n    legend.position = \"none\"\n  )\n\nbox_plot &lt;- insurance |&gt;\n  ggplot(\n    aes(\n      x = driver_age,\n      y = bonus_score,\n      fill = bonus_score\n    )\n  ) +\n  geom_boxplot(\n    alpha = 0.8,\n    outlier.alpha = 0.5\n  ) +\n  stat_summary(\n    fun = median,\n    geom = \"label\",\n    aes(label = round(after_stat(x), 1)),\n    fill = \"white\",\n    color = \"red\",\n    size = 3\n  ) +\n  scale_fill_manual(\n    values = c(\n      \"#7FC97F\",\n      \"#80B1D3\",\n      \"#F8766D\"\n    )\n  ) +\n  \n  scale_x_continuous(\n    \n    breaks = c(\n      20,\n      40,\n      60,\n      80\n    ),\n    \n    limits = c(\n      15,\n      95\n    )\n    \n  ) +\n  \n  labs(\n    x = \"Driver Age\",\n    y = NULL,\n    fill = \"Bonus Score\"\n  ) +\n  theme_minimal() +\n  theme(\n    legend.position = \"none\",\n  )\n\nridge_plot / box_plot\n\n\n\n\n\n\n\n\n\nKey Insights\n\nDrivers with good claims history appear more concentrated within middle-age groups, suggesting experience may contribute to lower insurance risk.\nThe bad claims segment exhibits greater variability in driver age distribution, indicating that higher risk claims behaviour spans multiple demographic groups.\nDifferences in median driver age across claims categories suggest that age may be an important factor influencing underwriting performance and claims experience."
   },
   {
     "objectID": "index.html",
@@ -1008,136 +903,94 @@
     "text": "Exercise 6"
   },
   {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
-    "section": "",
-    "text": "Insurers often carry underperforming portfolios where the root causes of poor profitability and high volatility are unknown. Leveraging visual analytics can potentially help investigate trends in underlying loss drivers, while data enrichment using external data can help refine segmentation and underwriting strategy.\nThis report investigates profitability and volatility drivers in a motor insurance portfolio using advanced visual analytics methods in R. The analysis integrates univariate and bivariate visualisation approaches to uncover deeper insights into data distributions and identifying key factors influencing the profitability and volatility of the insurance portfolio.\n\n\n\nThe specific tasks of this study are:\n\nApply suitable univariate visual analytics techniques to explore the distributions and characteristics of numerical and categorical variables.\nApply suitable bivariate visual analytics techniques to investigate and statistically validate factors influencing the profitability and volatility of the insurance portfolio."
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#introduction-and-objectives",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#introduction-and-objectives",
+    "title": "Visual Analytics for Data Discovery",
+    "section": "Introduction and Objectives",
+    "text": "Introduction and Objectives\n\nInvestigate profitability drivers within the insurance portfolio\nIdentify factors influencing claims volatility\nExplore demographic and vehicle related risk patterns\nApply visual analytics techniques for business interpretation\nSupport underwriting and pricing decisions\n\n\nThe objective of this investigation was to understand how underwriting variables influence profitability and claims behaviour within the motor insurance portfolio. The study applied visual analytics techniques to uncover hidden relationships between policy characteristics, demographic variables and claims outcomes. Using both univariate and bivariate visualisations, the findings provide actionable insights to support data driven underwriting, pricing optimisation and portfolio management."
   },
   {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#setting-the-scene",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#setting-the-scene",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
-    "section": "",
-    "text": "Insurers often carry underperforming portfolios where the root causes of poor profitability and high volatility are unknown. Leveraging visual analytics can potentially help investigate trends in underlying loss drivers, while data enrichment using external data can help refine segmentation and underwriting strategy.\nThis report investigates profitability and volatility drivers in a motor insurance portfolio using advanced visual analytics methods in R. The analysis integrates univariate and bivariate visualisation approaches to uncover deeper insights into data distributions and identifying key factors influencing the profitability and volatility of the insurance portfolio."
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#data-preparation-process",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#data-preparation-process",
+    "title": "Visual Analytics for Data Discovery",
+    "section": "Data Preparation Process",
+    "text": "Data Preparation Process\n\nManaged missing and inconsistent values\nConverted variables into appropriate data types\nStandardised categorical variables\nCreated derived underwriting metrics\n\n\nThe data preparation stage improved analytical quality and ensured consistency across the portfolio dataset. Several derived variables were constructed to support underwriting analysis."
   },
   {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#the-tasks",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#the-tasks",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
-    "section": "",
-    "text": "The specific tasks of this study are:\n\nApply suitable univariate visual analytics techniques to explore the distributions and characteristics of numerical and categorical variables.\nApply suitable bivariate visual analytics techniques to investigate and statistically validate factors influencing the profitability and volatility of the insurance portfolio."
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#derived-variables",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#derived-variables",
+    "title": "Visual Analytics for Data Discovery",
+    "section": "Derived Variables",
+    "text": "Derived Variables\n\n\n\nVariable\nPurpose\n\n\n\n\nLoss Ratio\nMeasures underwriting profitability\n\n\nProfitability Band\nSegments underwriting performance\n\n\nAge Group\nGroups drivers by demographic category\n\n\n\n\nLoss Ratio - measures the relationship between claims incurred and premium earned. Lower loss ratio indicates stronger profitability and value greater than 1 imply claims incurred exceed premium income.\nProfitability Band - categorise policies into interpretable underwriting performance group. (&lt; 0.6 Profitable), (0.6 – 1.0 Marginal), (&gt; 1.0 Unprofitable)\nAge Group - simplify demographic analysis by grouping drivers into meaningful underwriting categories. (&lt; 30 Young), (30 – 60 Middle), (&gt; 60 Senior)"
   },
   {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#load-packages",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#load-packages",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
-    "section": "Load Packages",
-    "text": "Load Packages\nWe load the following R packages using the pacman::p_load() function:\n\ntidyverse: core collection of R packages designed for data science\nggrepel: to provides geoms for ggplot2 to repel overlapping text labels\nggthemes: to use additional themes for ggplot2\npatchwork: to prepare composite figure created using ggplot2\nggridges: to plot ridgeline plots\nggdist: for visualizations of distributions and uncertainty\nscales: provides the internal scaling infrastructure used by ggplot2\ncolorspace: provides a broad toolbox for color palettes\n\n\n\nCode\npacman::p_load(\n  tidyverse, ggrepel, ggthemes, ggridges, ggdist, colorspace, patchwork, scales\n)"
-  },
-  {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#import-data",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#import-data",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
-    "section": "Import Data",
-    "text": "Import Data\nA real world motor vehicle insurance portfolio data set from a Spanish insurance company specialised in non-life insurance will be used in this study. The data set and its cookbook are available for download at Mendeley Data. We will import this dataset as “insurance”.\n\n\nCode\ninsurance &lt;- read_delim(\"data/Dataset of motor insurance portfolio.csv\")"
-  },
-  {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#data-pre-processing",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#data-pre-processing",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
-    "section": "Data Pre-Processing",
-    "text": "Data Pre-Processing\nWe first take a look at the data and check if there are any duplicate entries or missing values."
-  },
-  {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#glimpse-of-data",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#glimpse-of-data",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
-    "section": "Glimpse of Data",
-    "text": "Glimpse of Data\nUsing the glimpse() function, we see that the dataset consists of 354,140 rows and 47 columns. It also shows the column names, column type, and the first few entries of each column.\n\n\nCode\nglimpse(insurance)\n\n\nRows: 354,140\nColumns: 47\n$ insured_id                  &lt;dbl&gt; 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, …\n$ year                        &lt;dbl&gt; 2022, 2022, 2023, 2024, 2022, 2023, 2024, …\n$ policy_type                 &lt;chr&gt; \"COMP_E\", \"COMP_E\", \"COMP_E\", \"COMP_E\", \"C…\n$ policy_status               &lt;chr&gt; \"C\", \"A\", \"A\", \"A\", \"A\", \"A\", \"A\", \"A\", \"A…\n$ business_type               &lt;chr&gt; \"NB\", \"P\", \"P\", \"P\", \"NB\", \"P\", \"P\", \"NB\",…\n$ payment_frequency           &lt;chr&gt; \"A\", \"A\", \"A\", \"A\", \"S\", \"S\", \"S\", \"A\", \"A…\n$ bonus_score                 &lt;chr&gt; \"G\", \"G\", \"G\", \"G\", \"G\", \"G\", \"G\", \"G\", \"G…\n$ driver_age                  &lt;dbl&gt; 48, 43, 44, 45, 45, 46, 47, 32, 33, 34, 39…\n$ vehicle_age                 &lt;dbl&gt; 22, 24, 25, 26, 26, 27, 28, 12, 13, 14, 20…\n$ age_driving_licence         &lt;dbl&gt; 26, 19, 19, 18, 19, 19, 19, 19, 19, 19, 19…\n$ fuel_type                   &lt;chr&gt; \"G\", \"D\", \"D\", \"D\", \"D\", \"D\", \"D\", \"D\", \"D…\n$ vehicle_value               &lt;dbl&gt; 149511.44, 65065.12, 65065.12, 65065.12, 5…\n$ seats                       &lt;dbl&gt; 4, 8, 8, 8, 7, 7, 7, 5, 5, 5, 5, 5, 5, 5, …\n$ power_to_weight_ratio       &lt;dbl&gt; 3.92, 10.15, 10.15, 10.15, 9.19, 9.19, 9.1…\n$ vehicle_brand               &lt;chr&gt; \"PORSCHE\", \"MERCEDES\", \"MERCEDES\", \"MERCED…\n$ municipality_type           &lt;chr&gt; \"I\", \"I\", \"I\", \"I\", \"I\", \"I\", \"I\", \"I\", \"I…\n$ circulation_area            &lt;chr&gt; \"U\", \"U\", \"U\", \"U\", \"R\", \"R\", \"R\", \"R\", \"R…\n$ total_premium               &lt;dbl&gt; 279.5576, 546.6234, 548.7526, 584.6324, 68…\n$ liability_premium           &lt;dbl&gt; 30.60232, 114.33336, 110.66689, 122.09253,…\n$ property_damage_premium     &lt;dbl&gt; 121.9127, 303.1060, 304.9560, 305.2251, 35…\n$ theft_premium               &lt;dbl&gt; 112.361489, 80.784824, 83.521384, 107.8868…\n$ fire_premium                &lt;dbl&gt; 3.832441, 7.826861, 6.151465, 5.842892, 7.…\n$ glass_premium               &lt;dbl&gt; 8.305788, 30.091751, 32.861626, 31.101584,…\n$ legal_protection_premium    &lt;dbl&gt; 2.043622, 7.812747, 7.655637, 10.084173, 6…\n$ occupants_premium           &lt;dbl&gt; 0.4992053, 2.6679084, 2.9395659, 2.3992827…\n$ total_claims                &lt;dbl&gt; 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, …\n$ liability_claims            &lt;dbl&gt; 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ liability_property_claims   &lt;dbl&gt; 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ liability_injury_claims     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ property_claims             &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, …\n$ theft_claims                &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ fire_claims                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ glass_claims                &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ legal_protection_claims     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ occupants_claims            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ total_incurred              &lt;dbl&gt; 0.000, 0.000, 233.013, 2586.361, 0.000, 0.…\n$ liability_incurred          &lt;dbl&gt; 0.000, 0.000, 233.013, 1035.000, 0.000, 0.…\n$ liability_property_incurred &lt;dbl&gt; 0.000, 0.000, 233.013, 1035.000, 0.000, 0.…\n$ liability_injury_incurred   &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, …\n$ property_incurred           &lt;dbl&gt; 0.000, 0.000, 0.000, 1551.361, 0.000, 0.00…\n$ theft_incurred              &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ fire_incurred               &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ glass_incurred              &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ legal_protection_incurred   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ occupants_incurred          &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ total_exposure              &lt;dbl&gt; 0.09863014, 1.00000000, 1.00000000, 1.0000…\n$ liability_exposure          &lt;dbl&gt; 0.09863014, 1.00000000, 1.00000000, 1.0000…"
-  },
-  {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#check-for-duplicates",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#check-for-duplicates",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
-    "section": "Check for Duplicates",
-    "text": "Check for Duplicates\nUsing the duplicated function, we see that there are no duplicate entries in the data.\n\n\nCode\ninsurance[duplicated(insurance),]\n\n\n# A tibble: 0 × 47\n# ℹ 47 variables: insured_id &lt;dbl&gt;, year &lt;dbl&gt;, policy_type &lt;chr&gt;,\n#   policy_status &lt;chr&gt;, business_type &lt;chr&gt;, payment_frequency &lt;chr&gt;,\n#   bonus_score &lt;chr&gt;, driver_age &lt;dbl&gt;, vehicle_age &lt;dbl&gt;,\n#   age_driving_licence &lt;dbl&gt;, fuel_type &lt;chr&gt;, vehicle_value &lt;dbl&gt;,\n#   seats &lt;dbl&gt;, power_to_weight_ratio &lt;dbl&gt;, vehicle_brand &lt;chr&gt;,\n#   municipality_type &lt;chr&gt;, circulation_area &lt;chr&gt;, total_premium &lt;dbl&gt;,\n#   liability_premium &lt;dbl&gt;, property_damage_premium &lt;dbl&gt;, …"
-  },
-  {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#check-and-handle-missing-values",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#check-and-handle-missing-values",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
-    "section": "Check and Handle Missing Values",
-    "text": "Check and Handle Missing Values\nWe run the below code to check for missing values.\n\n\nCode\ninsurance |&gt;\n  summarise(across(everything(),\n                   ~sum(is.na(.)))) |&gt;\n  pivot_longer(everything()) |&gt;\n  arrange(desc(value))\n\n\n# A tibble: 47 × 2\n   name                value\n   &lt;chr&gt;               &lt;int&gt;\n 1 fuel_type            1287\n 2 vehicle_value         513\n 3 vehicle_age             2\n 4 age_driving_licence     2\n 5 insured_id              0\n 6 year                    0\n 7 policy_type             0\n 8 policy_status           0\n 9 business_type           0\n10 payment_frequency       0\n# ℹ 37 more rows\n\n\nThe number of missing value is relatively low, so imputation is appropriate.\n\nMissing categorical values in fuel_type were recoded as “Unknown” to preserve observations while avoiding artificial assumptions.\nNumerical variables with minimal missing values were imputed using median values due to the skewed nature of insurance related data.\nMissing incurred claim amounts were replaced with zero under the assumption that absent records reflected no reported claims.\n\n\n\nCode\ninsurance &lt;- insurance |&gt;\n  mutate(\n    fuel_type = replace_na(fuel_type, \"Unknown\"),\n    vehicle_value = replace_na(\n      vehicle_value,\n      median(vehicle_value, na.rm = TRUE)\n    ),\n    vehicle_age = replace_na(\n      vehicle_age,\n      median(vehicle_age, na.rm = TRUE)\n    ),\n    age_driving_licence = replace_na(\n      age_driving_licence,\n      median(age_driving_licence, na.rm = TRUE)\n    ),\n    fire_incurred = replace_na(fire_incurred, 0),\n    occupants_incurred = replace_na(\n      occupants_incurred,\n      0\n    )\n  )\n\ninsurance |&gt;\n  summarise(across(everything(),\n                   ~sum(is.na(.)))) |&gt;\n  pivot_longer(everything()) |&gt;\n  arrange(desc(value))\n\n\n# A tibble: 47 × 2\n   name                value\n   &lt;chr&gt;               &lt;int&gt;\n 1 insured_id              0\n 2 year                    0\n 3 policy_type             0\n 4 policy_status           0\n 5 business_type           0\n 6 payment_frequency       0\n 7 bonus_score             0\n 8 driver_age              0\n 9 vehicle_age             0\n10 age_driving_licence     0\n# ℹ 37 more rows"
-  },
-  {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#creating-derived-variables",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#creating-derived-variables",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
-    "section": "Creating Derived Variables",
-    "text": "Creating Derived Variables\nSeveral derived variables were created to improve analytical depth and facilitate bivariate and multivariate visual analytics.\nThe following variables were first converted into numeric format to ensure that mathematical calculations can be performed correctly: total_claims, total_exposure, total_incurred and total_premium\n\nDerived Variables\nLoss Ratio - measures the relationship between claims incurred and premium earned. Lower loss ratio indicates stronger profitability and value greater than 1 imply claims incurred exceed premium income.\nProfitability Band - categorise policies into interpretable underwriting performance group.\n(&lt; 0.6 Profitable), (0.6 – 1.0 Marginal), (&gt; 1.0 Unprofitable)\nAge Group - simplify demographic analysis by grouping drivers into meaningful underwriting categories.\n(&lt; 30 Young), (30 – 60 Middle), (&gt; 60 Senior)\n\n\nCode\ninsurance &lt;- insurance |&gt;\n  mutate(\n    total_claims = as.numeric(total_claims),\n    total_exposure = as.numeric(total_exposure),\n    total_incurred = as.numeric(total_incurred),\n    total_premium = as.numeric(total_premium),\n\n    loss_ratio = if_else(\n      total_premium &gt; 0,\n      total_incurred / total_premium,\n      0\n    ),\n\n    profitability_band = case_when(\n      loss_ratio &lt; 0.6 ~ \"Profitable\",\n      loss_ratio &lt; 1 ~ \"Marginal\",\n      TRUE ~ \"Unprofitable\"\n    ),\n\n    age_band = case_when(\n      driver_age &lt; 30 ~ \"Young\",\n      driver_age &lt; 60 ~ \"Middle\",\n      TRUE ~ \"Senior\"\n    )\n  )"
-  },
-  {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#distribution-of-total-premium",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#distribution-of-total-premium",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#distribution-of-total-premium",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#distribution-of-total-premium",
+    "title": "Visual Analytics for Data Discovery",
     "section": "Distribution of Total Premium",
-    "text": "Distribution of Total Premium\nExamines the distribution of total premium values within the motor insurance portfolio. The objective is to understand: premium concentration patterns, pricing structure, variability of insurance premiums.\nThe analysis supports underwriting and pricing evaluation by identifying how premium values are distributed across policyholders and detecting whether the portfolio is concentrated within lower or higher premium ranges.\nThe histogram was selected because it effectively visualises distribution shape, highlights concentration and spread, reveals skewness, identifies potential outliers, supports exploratory portfolio analysis.\n\n\nCode\nggplot(\n  insurance,\n  aes(total_premium)\n) +\n\ngeom_histogram(\n  bins = 50,\n  fill = \"steelblue\",\n  color = \"white\"\n) +\n\nscale_y_continuous(\n  labels = scales::comma\n) +\n\nscale_x_continuous(\n  labels = scales::dollar,\n  breaks = seq(\n    0,\n    2000,\n    by = 500\n  )\n) +\n  \ncoord_cartesian(\n  xlim = c(0, 2000)\n) +\n\nlabs(\n  title = \"Distribution of Total Premium\",\n  x = \"Total Premium\",\n  y = \"Policy Count\"\n) +\n\ntheme_minimal()\n\n\n\n\n\n\n\n\n\nKey Insights\n\nThe premium distribution is highly right skewed, with most policies concentrated within lower premium ranges.\nA small number of high premium policies contribute disproportionately to total premium revenue, indicating portfolio heterogeneity.\nThe concentration of lower premium policies suggests strong exposure to mass market insurance segments and potentially competitive pricing conditions."
+    "text": "Distribution of Total Premium\n\n\nKey Insights\n\nThe premium distribution is highly right skewed, with most policies concentrated within lower premium ranges.\nA small number of high premium policies contribute disproportionately to total premium revenue, indicating portfolio heterogeneity.\nThe concentration of lower premium policies suggests strong exposure to mass market insurance segments and potentially competitive pricing conditions."
   },
   {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#claims-incurred-distribution",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#claims-incurred-distribution",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#claims-incurred-distribution",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#claims-incurred-distribution",
+    "title": "Visual Analytics for Data Discovery",
     "section": "Claims Incurred Distribution",
-    "text": "Claims Incurred Distribution\nExamines the distribution of total incurred claims within the motor insurance portfolio. The objective is to understand: concentration of claim amounts, variability of losses, presence of extreme claim events.\nThe analysis supports underwriting and claims management by identifying how incurred claims are distributed across the portfolio and assessing the overall volatility of insurance losses.\nThe density plot was selected because it reveals distribution shape clearly, highlights skewness and concentration, reduces visual fragmentation compared to histograms, improves interpretation of continuous claims data.\n\n\nCode\nggplot(\n  insurance,\n  aes(x = total_incurred)\n) +\n\ngeom_density(\n  fill = \"firebrick\",\n  alpha = 0.6\n) +\n\nscale_x_continuous(\n  labels = scales::dollar,\n  breaks = seq(\n    0,\n    5000,\n    by = 500\n  )\n) +\n\ncoord_cartesian(\n  xlim = c(0, 5000)\n) +\n\nlabs(\n  title = \"Claims Incurred Distribution\",\n  x = \"Claims Incurred\",\n  y = \"Density\"\n) +\n\ntheme_minimal()\n\n\n\n\n\n\n\n\n\nKey Insights\n\nMost claims are concentrated within lower incurred claim values, indicating that minor claims dominate the portfolio.\nThe long right tail of the distribution highlights the presence of infrequent but severe high cost claims contributing to portfolio volatility.\nThe significant variability in claims severity suggests the importance of effective underwriting, reserving, and catastrophe risk management strategies."
+    "text": "Claims Incurred Distribution\n\n\nKey Insights\n\nMost claims are concentrated within lower incurred claim values, indicating that minor claims dominate the portfolio.\nThe long right tail of the distribution highlights the presence of infrequent but severe high cost claims contributing to portfolio volatility.\nThe significant variability in claims severity suggests the importance of effective underwriting, reserving, and catastrophe risk management strategies."
   },
   {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#profitability-segmentation",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#profitability-segmentation",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#profitability-segmentation",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#profitability-segmentation",
+    "title": "Visual Analytics for Data Discovery",
     "section": "Profitability Segmentation",
-    "text": "Profitability Segmentation\nExamines the distribution of insurance policies across different profitability segments within the motor insurance portfolio. The objective is to evaluate the overall underwriting performance of the insurer by identifying the proportion of: profitable policies, marginally profitable policies, unprofitable policies.\nThe analysis supports portfolio assessment by revealing the balance between profitable and loss making insurance business segments.\nThe bar chart was selected because it enables clear comparison between profitability segments, simplifies interpretation of portfolio composition, highlights concentration differences effectively, supports intuitive business storytelling.\n\n\nCode\ninsurance |&gt;\n  \n  mutate(\n    profitability_band = factor(\n      profitability_band,\n      \n      levels = c(\n        \"Unprofitable\",\n        \"Profitable\",\n        \"Marginal\"\n      )\n    )\n  ) |&gt;\n  \n  ggplot(\n    aes(\n      x = profitability_band\n    )\n  ) +\n  \n  geom_bar(\n    aes(\n      y = after_stat(\n        count / sum(count)\n      )\n    ),\n    \n    fill = \"steelblue\"\n  ) +\n  \n  scale_y_continuous(\n    labels = scales::percent,\n    limits = c(0, 1)\n  ) +\n  \n  labs(\n    title = \"Profitability Segmentation\",\n    \n    x = \"Profitability Band\",\n    \n    y = \"Percentage of Policies\"\n  ) +\n  \n  theme_minimal()\n\n\n\n\n\n\n\n\n\nKey Insights\n\nThe portfolio is primarily concentrated within the profitable segment, indicating generally effective underwriting and pricing performance.\nA smaller proportion of policies fall within the unprofitable category, suggesting the presence of higher risk segments contributing disproportionately to claims costs.\nThe marginal segment highlights policies operating close to break even levels, indicating potential sensitivity to future claims volatility and profitability deterioration."
+    "text": "Profitability Segmentation\n\n\nKey Insights\n\nThe portfolio is primarily concentrated within the profitable segment, indicating generally effective underwriting and pricing performance.\nA smaller proportion of policies fall within the unprofitable category, suggesting the presence of higher risk segments contributing disproportionately to claims costs.\nThe marginal segment highlights policies operating close to break even levels, indicating potential sensitivity to future claims volatility and profitability deterioration."
   },
   {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#distribution-of-driver-age-group",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#distribution-of-driver-age-group",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#distribution-of-driver-age-group",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#distribution-of-driver-age-group",
+    "title": "Visual Analytics for Data Discovery",
     "section": "Distribution of Driver Age Group",
-    "text": "Distribution of Driver Age Group\nExamines the distribution of policyholders across different driver age groups within the motor insurance portfolio. The objective is to understand the demographic composition of insured drivers and identify which age segments dominate the portfolio.\nThe analysis supports underwriting and risk segmentation by providing insight into the insurer’s exposure across different driver age categories.\nThe bar chart was selected because it clearly communicates category magnitude differences, enables rapid comparison between age groups, simplifies demographic interpretation, supports intuitive business storytelling.\n\n\nCode\ninsurance |&gt;\n  \n  mutate(\n    age_band = factor(\n      age_band,\n      \n      levels = c(\n        \"Young\",\n        \"Middle\",\n        \"Senior\"\n      )\n    )\n  ) |&gt;\n  \n  ggplot(\n    aes(age_band)\n  ) +\n  \n  geom_bar(\n    aes(\n      y = after_stat(\n        count / sum(count)\n      )\n    ),\n    \n    fill = \"steelblue\"\n  ) +\n  \n  scale_y_continuous(\n    labels = scales::percent,\n    limits = c(0, 1)\n  ) +\n  \n  labs(\n    title = \"Distribution of Driver Age Group\",\n    \n    x = \"Age Group\",\n    \n    y = \"Percentage of Policies\"\n  ) +\n  \n  theme_minimal()\n\n\n\n\n\n\n\n\n\nKey Insights\n\nThe portfolio is primarily concentrated within the middle aged driver segment, suggesting stronger exposure to relatively stable and experienced drivers.\nYoung drivers represent a smaller proportion of the portfolio but may contribute disproportionately to underwriting risk and claims frequency.\nSenior drivers form the smallest demographic segment, highlighting comparatively lower portfolio exposure to ageing driver risk factors."
+    "text": "Distribution of Driver Age Group\n\n\nKey Insights\n\nThe portfolio is primarily concentrated within the middle aged driver segment, suggesting stronger exposure to relatively stable and experienced drivers.\nYoung drivers represent a smaller proportion of the portfolio but may contribute disproportionately to underwriting risk and claims frequency.\nSenior drivers form the smallest demographic segment, highlighting comparatively lower portfolio exposure to ageing driver risk factors."
   },
   {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#distribution-of-policy-type",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#distribution-of-policy-type",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#distribution-of-policy-type",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#distribution-of-policy-type",
+    "title": "Visual Analytics for Data Discovery",
     "section": "Distribution of Policy Type",
-    "text": "Distribution of Policy Type\nExamines the distribution of policies across different policy types within the motor insurance portfolio. The objective is to understand the composition of insurance products offered and identify which coverage categories dominate the portfolio.\nThe analysis supports underwriting and portfolio management by revealing the concentration of policies within different insurance coverage structures.\nThe bar chart was selected because it clearly communicates differences in product concentration, enables rapid comparison between policy types, simplifies interpretation of portfolio composition, supports intuitive business storytelling.\n\n\nCode\ninsurance |&gt;\n  mutate(\n    policy_type = factor(\n      policy_type,\n      levels = c(\n        \"CC\",\n        \"COMP_E\",\n        \"TPG\",\n        \"COMP_N\",\n        \"TP\"\n      )\n    )\n  ) |&gt;\n\n  ggplot(\n    aes(\n      x = policy_type,\n      fill = policy_type\n    )\n  ) +\n\n  geom_bar() +\n\n  scale_fill_manual(\n    values = c(\n      \"CC\" = \"#7FC97F\",\n      \"COMP_E\" = \"#80B1D3\",\n      \"TPG\" = \"#F8766D\",\n      \"COMP_N\" = \"#B3DE69\",\n      \"TP\" = \"#FDB462\"\n    ),\n\n    breaks = c(\n      \"CC\",\n      \"COMP_E\",\n      \"TPG\",\n      \"COMP_N\",\n      \"TP\"\n    ),\n\n    labels = c(\n      \"CC\" = \"CC: Third-party liability combined\",\n      \"COMP_E\" = \"COMP_E: Comprehensive with excess\",\n      \"TPG\" = \"TPG: Third-party liability with glass coverage\",\n      \"COMP_N\" = \"COMP_N: Comprehensive without excess\",\n      \"TP\" = \"TP: Basic third-party liability coverage only\"\n    )\n  ) +\n\n  scale_y_continuous(\n    labels = scales::comma\n  ) +\n\n  labs(\n    title = \"Distribution of Policy Type\",\n    x = \"Policy Type\",\n    y = \"Policy Count\",\n    fill = \"Policy Description\"\n  ) +\n\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nKey Insights\n\nThe portfolio is concentrated within selected policy types, indicating stronger customer demand and underwriting focus in specific insurance products.\nComprehensive and third-party coverage products exhibit differing policy concentrations, reflecting variation in customer protection preferences and pricing considerations.\nThe presence of multiple policy categories demonstrates portfolio diversification, which supports underwriting balance and reduces dependence on a single product segment."
+    "text": "Distribution of Policy Type\n\n\nKey Insights\n\nThe portfolio is concentrated within selected policy types, indicating stronger customer demand and underwriting focus in specific insurance products.\nComprehensive and third-party coverage products exhibit differing policy concentrations, reflecting variation in customer protection preferences and pricing considerations.\nThe presence of multiple policy categories demonstrates portfolio diversification, which supports underwriting balance and reduces dependence on a single product segment."
   },
   {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#vehicle-value-vs-claims-incurred",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#vehicle-value-vs-claims-incurred",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#vehicle-value-vs-claims-incurred",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#vehicle-value-vs-claims-incurred",
+    "title": "Visual Analytics for Data Discovery",
     "section": "Vehicle Value vs Claims Incurred",
-    "text": "Vehicle Value vs Claims Incurred\nExamines the relationship between vehicle value and total incurred claims within the motor insurance portfolio. The objective is to determine whether higher value vehicles are associated with larger insurance claims and to identify patterns, variability, and potential outliers within the portfolio.\nThe analysis supports underwriting and pricing evaluation by exploring how the value of insured vehicles influences financial claim exposure.\nThe scatter plot was selected because it reveals correlation patterns, identifies clustering behaviour, highlights outliers, supports trend analysis, enables detection of claims volatility.\n\n\nCode\nggplot(\n  insurance,\n  aes(\n    x = vehicle_value,\n    y = total_incurred\n  )\n) +\n\ngeom_point(\n  alpha = 0.5,\n  color = \"steelblue\"\n) +\n\nscale_y_continuous(\n  labels = scales::dollar,\n  breaks = seq(\n    0,\n    200000,\n    by = 50000\n  )\n) +\n\nscale_x_continuous(\n  labels = scales::dollar,\n  breaks = seq(\n    0,\n    200000,\n    by = 50000\n  )\n) +\n\ncoord_cartesian(\n  xlim = c(0, 200000),\n  ylim = c(0, 200000)\n) +\n\nlabs(\n  title = \"Vehicle Value vs Claims Incurred\",\n  x = \"Vehicle Value\",\n  y = \"Total Incurred Claims\"\n) +\n\ntheme_minimal()\n\n\n\n\n\n\n\n\n\nKey Insights\n\nHigher value vehicles generally tend to produce larger incurred claims, indicating a positive association between vehicle value and claim severity.\nMost observations are concentrated within lower vehicle values and moderate claims ranges, suggesting strong exposure to standard market segments.\nSeveral extreme claim observations highlight the presence of high severity loss events contributing disproportionately to portfolio volatility and underwriting risk."
+    "text": "Vehicle Value vs Claims Incurred\n\n\nKey Insights\n\nHigher value vehicles generally tend to produce larger incurred claims, indicating a positive association between vehicle value and claim severity.\nMost observations are concentrated within lower vehicle values and moderate claims ranges, suggesting strong exposure to standard market segments.\nSeveral extreme claim observations highlight the presence of high severity loss events contributing disproportionately to portfolio volatility and underwriting risk."
   },
   {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#profitability-segmentation-by-policy-type-and-year",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#profitability-segmentation-by-policy-type-and-year",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#profitability-segmentation-by-policy-type-and-year",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#profitability-segmentation-by-policy-type-and-year",
+    "title": "Visual Analytics for Data Discovery",
     "section": "Profitability Segmentation by Policy Type and Year",
-    "text": "Profitability Segmentation by Policy Type and Year\nExamines the relationship between policy type, profitability segment, underwriting activity across years within the motor insurance portfolio. The objective is to identify how different insurance products perform across profitability categories over time and to detect concentration patterns within underwriting performance.\nThe analysis supports portfolio monitoring, underwriting evaluation, profitability assessment, product level performance analysis.\nThe heatmap was selected because it reveals concentration patterns clearly, supports comparison across multiple dimensions, highlights temporal changes, enables rapid identification of high density portfolio segments. Compared to tables or grouped bar charts, the heatmap provides a more compact and interpretable representation of multidimensional insurance data.\n\n\nCode\ninsurance |&gt;\n  \n  mutate(\n    \n    policy_type = factor(\n      policy_type,\n      levels = c(\n        \"CC\",\n        \"COMP_E\",\n        \"TPG\",\n        \"COMP_N\",\n        \"TP\"\n      )\n    ),\n    \n    profitability_band = factor(\n      profitability_band,\n      levels = c(\n        \"Unprofitable\",\n        \"Profitable\",\n        \"Marginal\"\n      )\n    )\n    \n  ) |&gt;\n  \n  count(\n    year,\n    policy_type,\n    profitability_band\n  ) |&gt;\n  \n  ggplot(\n    aes(\n      x = factor(year),\n      y = policy_type,\n      fill = n\n    )\n  ) +\n\n  geom_tile(\n    color = \"white\"\n  ) +\n\n  facet_wrap(\n    ~ profitability_band\n  ) +\n\n  scale_fill_continuous_sequential(\n    \n    palette = \"BluGrn\",\n\n    guide = guide_colorbar(\n      barwidth = 20,\n      barheight = 1.5,\n      title.position = \"top\",\n      title.hjust = 0.5\n    )\n  ) +\n\n  labs(\n    title = \"Profitability Segmentation by Policy Type and Year\",\n    x = \"Year\",\n    y = \"Policy Type\",\n    fill = \"Number of Policies\"\n  ) +\n\n  theme_minimal() +\n  \n  theme(\n    legend.position = \"bottom\"\n  )\n\n\n\n\n\n\n\n\n\nKey Insights\n\nCertain policy types exhibit stronger concentration within profitable segments, suggesting more effective underwriting and pricing performance.\nVariations in colour intensity across years reveal changing portfolio composition and profitability trends over time, supporting temporal underwriting evaluation.\nThe heatmap reveals portfolio imbalance across policy types, suggesting that certain insurance products dominate the insurer’s business mix and may contribute disproportionately to overall portfolio risk."
+    "text": "Profitability Segmentation by Policy Type and Year\n\n\nKey Insights\n\nCertain policy types exhibit stronger concentration within profitable segments, suggesting more effective underwriting and pricing performance.\nVariations in colour intensity across years reveal changing portfolio composition and profitability trends over time, supporting temporal underwriting evaluation.\nThe heatmap reveals portfolio imbalance across policy types, suggesting that certain insurance products dominate the insurer’s business mix and may contribute disproportionately to overall portfolio risk."
   },
   {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#portfolio-composition-and-profitability-by-fuel-type",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#portfolio-composition-and-profitability-by-fuel-type",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#portfolio-composition-and-profitability-by-fuel-type",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#portfolio-composition-and-profitability-by-fuel-type",
+    "title": "Visual Analytics for Data Discovery",
     "section": "Portfolio Composition and Profitability by Fuel Type",
-    "text": "Portfolio Composition and Profitability by Fuel Type\nExamines the relationship between fuel type distribution, portfolio composition, underwriting profitability within the motor insurance portfolio. The objective is to compare the proportion of diesel and gasoline vehicles within the portfolio, their corresponding average loss ratio performance.\nThe analysis supports underwriting and risk assessment by identifying whether certain fuel types contribute disproportionately to portfolio exposure or profitability risk.\nThe chart combines bar chart to represent policy distribution percentages and line chart to represent average loss ratio. A combination chart was selected because it effectively integrates portfolio composition analysis, profitability performance analysis within a single visualisation.\nThis technique was selected because it supports comparison between volume and profitability, enables multidimensional analysis,improves analytical efficiency, enhances business storytelling. Compared to separate charts, the combined visualisation allows users to evaluate whether the most common fuel types are also associated with stronger or weaker underwriting performance.\n\n\nCode\nfuel_summary &lt;- insurance |&gt;\n  \n  group_by(fuel_type) |&gt;\n  \n  summarise(\n    \n    policy_count = n(),\n    \n    policy_percentage = n() / nrow(insurance),\n    \n    avg_loss_ratio = mean(\n      loss_ratio,\n      na.rm = TRUE\n    )\n    \n  )\n\nggplot(\n  fuel_summary,\n  \n  aes(\n    x = reorder(\n      fuel_type,\n      policy_percentage\n    )\n  )\n) +\n\ngeom_col(\n  \n  aes(\n    y = policy_percentage\n  ),\n  \n  fill = \"steelblue\",\n  alpha = 0.8\n) +\n\nscale_x_discrete(\n  \n  labels = c(\n    D = \"Diesel\",\n    G = \"Gasoline\"\n  )\n) +\n\ngeom_line(\n  \n  aes(\n    y = avg_loss_ratio,\n    group = 1\n  ),\n  \n  color = \"firebrick\",\n  linewidth = 1.2\n) +\n\ngeom_point(\n  \n  aes(\n    y = avg_loss_ratio\n  ),\n  \n  color = \"firebrick\",\n  size = 3\n) +\n\nscale_y_continuous(\n  \n  name = \"Percentage of Policies\",\n  \n  labels = scales::percent,\n  \n  limits = c(0, 1),\n  \n  sec.axis = sec_axis(\n    \n    ~ .,\n    \n    labels = scales::percent,\n    \n    name = \"Average Loss Ratio\"\n  )\n) +\n\nlabs(\n  title = \"Portfolio Composition and Profitability by Fuel Type\",\n  x = \"Fuel Type\"\n) +\n\ntheme_minimal()\n\n\n\n\n\n\n\n\n\nKey Insights\n\nDiesel dominates the portfolio composition, indicating stronger underwriting exposure and customer concentration within that vehicle segment.\nDifferences in average loss ratio across fuel types suggest that underwriting profitability varies between diesel and gasoline vehicles.\nFuel types with both high portfolio concentration and elevated loss ratios may represent important areas of underwriting risk requiring closer monitoring and pricing refinement."
+    "text": "Portfolio Composition and Profitability by Fuel Type\n\n\nKey Insights\n\nDiesel dominates the portfolio composition, indicating stronger underwriting exposure and customer concentration within that vehicle segment.\nDifferences in average loss ratio across fuel types suggest that underwriting profitability varies between diesel and gasoline vehicles.\nFuel types with both high portfolio concentration and elevated loss ratios may represent important areas of underwriting risk requiring closer monitoring and pricing refinement."
   },
   {
-    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#driver-age-distribution-across-claims-risk",
-    "href": "TH_Ex/TH_Ex1/TH_Ex1_TR.html#driver-age-distribution-across-claims-risk",
-    "title": "Take-Home Exercise 1:Visual Analytics for Data Discovery",
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#driver-age-distribution-across-claims-risk",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#driver-age-distribution-across-claims-risk",
+    "title": "Visual Analytics for Data Discovery",
     "section": "Driver Age Distribution Across Claims Risk",
-    "text": "Driver Age Distribution Across Claims Risk\nExamines the relationship between driver age, historical claims behaviour, insurance risk categories within the motor insurance portfolio. The objective is to determine whether differences in driver age distribution exist across good, neutral, bad claims history segments.\nThe analysis supports underwriting and risk profiling by identifying how age characteristics vary across claims performance groups.\nThe ridge plot was selected because it visualises the overall distribution shape, highlights concentration patterns, enables comparison across groups, reveals skewness and spread differences.The box plot was selected because it displays medians, shows interquartile ranges, identifies variability, highlights potential outliers. While the ridge plot emphasises distribution shape, the box plot provides a more structured statistical comparison between risk categories. The combination of both techniques strengthens analytical depth and improves interpretability.\n\n\nCode\ninsurance &lt;- insurance |&gt;\n  mutate(\n    bonus_score = factor(\n      bonus_score,\n      levels = c(\"G\", \"N\", \"B\"),\n      labels = c(\n        G = \"Good Claims\",\n        N = \"Neutral Claims\",\n        B = \"Bad Claims\"\n      )\n    )\n  )\n\nridge_plot &lt;- insurance |&gt;\n  ggplot(\n    aes(\n      x = driver_age,\n      y = bonus_score,\n      fill = bonus_score\n    )\n  ) +\n  geom_density_ridges(\n    alpha = 0.7,\n    color = \"black\",\n    scale = 1.2\n  ) +\n  scale_fill_manual(\n    values = c(\n      \"#7FC97F\",\n      \"#80B1D3\",\n      \"#F8766D\"\n    )\n  ) +\n  \n  scale_x_continuous(\n    \n    breaks = c(\n      20,\n      40,\n      60,\n      80\n    ),\n    \n    limits = c(\n      15,\n      95\n    )\n  \n  ) +\n  \n  labs(\n    title = \"Driver Age Distribution Across Claims Risk\",\n    x = NULL,\n    y = NULL,\n    fill = \"Bonus Score\"\n  ) +\n  theme_minimal() +\n  theme(\n    legend.position = \"none\"\n  )\n\nbox_plot &lt;- insurance |&gt;\n  ggplot(\n    aes(\n      x = driver_age,\n      y = bonus_score,\n      fill = bonus_score\n    )\n  ) +\n  geom_boxplot(\n    alpha = 0.8,\n    outlier.alpha = 0.5\n  ) +\n  stat_summary(\n    fun = median,\n    geom = \"label\",\n    aes(label = round(after_stat(x), 1)),\n    fill = \"white\",\n    color = \"red\",\n    size = 3\n  ) +\n  scale_fill_manual(\n    values = c(\n      \"#7FC97F\",\n      \"#80B1D3\",\n      \"#F8766D\"\n    )\n  ) +\n  \n  scale_x_continuous(\n    \n    breaks = c(\n      20,\n      40,\n      60,\n      80\n    ),\n    \n    limits = c(\n      15,\n      95\n    )\n    \n  ) +\n  \n  labs(\n    x = \"Driver Age\",\n    y = NULL,\n    fill = \"Bonus Score\"\n  ) +\n  theme_minimal() +\n  theme(\n    legend.position = \"none\",\n  )\n\nridge_plot / box_plot\n\n\n\n\n\n\n\n\n\nKey Insights\n\nDrivers with good claims history appear more concentrated within middle-age groups, suggesting experience may contribute to lower insurance risk.\nThe bad claims segment exhibits greater variability in driver age distribution, indicating that higher risk claims behaviour spans multiple demographic groups.\nDifferences in median driver age across claims categories suggest that age may be an important factor influencing underwriting performance and claims experience."
+    "text": "Driver Age Distribution Across Claims Risk\n\n\nKey Insights\n\nDrivers with good claims history appear more concentrated within middle-age groups, suggesting experience may contribute to lower insurance risk.\nThe bad claims segment exhibits greater variability in driver age distribution, indicating that higher risk claims behaviour spans multiple demographic groups.\nDifferences in median driver age across claims categories suggest that age may be an important factor influencing underwriting performance and claims experience."
+  },
+  {
+    "objectID": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#conclusion",
+    "href": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#conclusion",
+    "title": "Visual Analytics for Data Discovery",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nVisual analytics successfully identified key profitability and risk drivers.\nPortfolio risk and profitability are unevenly distributed.\nDemographic characteristics significantly influence claims behaviour.\nAdvanced visual analytics techniques improved analytical interpretation and storytelling\nThe analysis provides strong business value for insurers."
   }
 ]
