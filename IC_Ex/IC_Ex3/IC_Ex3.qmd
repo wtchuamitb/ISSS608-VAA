@@ -1,0 +1,19 @@
+---
+title: "In-Class Exercise 3"
+author: "CHUA Wee Tian"
+date: "May 2, 2026"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+[Exercise 3a](https://public.tableau.com/app/profile/wee.tian.chua/viz/Book2_17777069687130/Story1?publish=yes)
+
+[![](image/image1.png){width="430"}](https://public.tableau.com/app/profile/wee.tian.chua/viz/Book2_17777069687130/Story1?publish=yes)
+
+[Exercise 3b](https://public.tableau.com/app/profile/wee.tian.chua/viz/Book2b_17777069060610/Sheet1?publish=yes)
+
+[![](image/image2.png){width="430"}](https://public.tableau.com/app/profile/wee.tian.chua/viz/Book2b_17777069060610/Sheet1?publish=yes)

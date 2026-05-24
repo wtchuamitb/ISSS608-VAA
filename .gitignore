@@ -1,0 +1,46 @@
+.Rproj.user
+.Rhistory
+.RData
+.httr-oauth
+.DS_Store
+.quarto
+
+/.quarto/
+**/*.quarto_ipynb
+
+/.quarto/
+data/
+**/*.quarto_ipynb
+.positai
+
+
+.Rproj.user
+.Rhistory
+.RData
+.httr-oauth
+.DS_Store
+
+/.quarto/
+data/
+**/*.quarto_ipynb
+.positai
+
+# Quarto rendered folders
+*_files/
+
+# Rendered HTML files
+*.html
+
+# Cache
+_cache/
+
+# Large datasets
+*.rds
+*.json
+*.csv
+
+# Quarto outputs
+.quarto/
+*_files/
+*.html
+_cache/

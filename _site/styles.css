@@ -1,0 +1,6 @@
+/* css styles */
+/* dropdown hover */
+.dropdown-menu .dropdown-item:hover {
+  background-color: #517699;
+  color: #ffffff;
+}

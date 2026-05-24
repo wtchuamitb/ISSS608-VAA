@@ -1,0 +1,19 @@
+---
+title: "In-Class Exercise 4"
+author: "CHUA Wee Tian"
+date: "May 9, 2026"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+[Exercise 4a](https://public.tableau.com/app/profile/wee.tian.chua/viz/InClassEx4showmethestatistics/Dashboard1)
+
+[![](image/Picture1.png){width="430"}](https://public.tableau.com/app/profile/wee.tian.chua/viz/InClassEx4showmethestatistics/Dashboard1)
+
+[Exercise 4b](https://public.tableau.com/app/profile/wee.tian.chua/viz/InClassEx4divergingstackbarchart/Dashboard1?publish=yes)
+
+[![](image/Picture2.png){width="430"}](https://public.tableau.com/app/profile/wee.tian.chua/viz/InClassEx4divergingstackbarchart/Dashboard1?publish=yes)

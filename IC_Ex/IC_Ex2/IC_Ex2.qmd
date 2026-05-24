@@ -1,0 +1,15 @@
+---
+title: "In-Class Exercise 2"
+author: "CHUA Wee Tian"
+date: "April 25, 2026"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+[Exercise 2](https://public.tableau.com/app/profile/wee.tian.chua/viz/Book1_17771005653500/Dashboard1?publish=yes)
+
+[![](image/image.png){width="430"}](https://public.tableau.com/app/profile/wee.tian.chua/viz/Book1_17771005653500/Dashboard1?publish=yes)

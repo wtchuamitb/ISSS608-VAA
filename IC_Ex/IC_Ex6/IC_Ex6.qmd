@@ -1,0 +1,16 @@
+---
+title: "In-Class Exercise 6"
+author: "CHUA Wee Tian"
+date: "May 23, 2026"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+[Exercise 6](https://wtchuamitb.shinyapps.io/Shiny_Demo/)
+
+[![](image/Picture1.png){width="430"}](https://wtchuamitb.shinyapps.io/Shiny_Demo/)
+

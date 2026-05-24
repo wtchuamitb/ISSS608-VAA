@@ -1,0 +1,19 @@
+---
+title: "In-Class Exercise 5"
+author: "CHUA Wee Tian"
+date: "May 16, 2026"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+[Exercise 5a](https://public.tableau.com/app/profile/wee.tian.chua/viz/Treemap_17789147786600/Treemapofnumberofunitsoldandunitpricebygeography?publish=yes)
+
+[![](image/Picture1.png){width="430"}](https://public.tableau.com/app/profile/wee.tian.chua/viz/Treemap_17789147786600/Treemapofnumberofunitsoldandunitpricebygeography?publish=yes)
+
+[Exercise 5b](https://public.tableau.com/app/profile/wee.tian.chua/viz/Book2_17777069687130/Treemapofnumberofunitsoldandunitpricebydate?publish=yes)
+
+[![](image/Picture2.png){width="430"}](https://public.tableau.com/app/profile/wee.tian.chua/viz/Book2_17777069687130/Treemapofnumberofunitsoldandunitpricebydate?publish=yes)
