@@ -1,0 +1,469 @@
+---
+title: "Take-Home Exercise 2: Mini-Challenge 2:</br>Investigating the Anomalous SaidIt Post"
+author: "CHUA Wee Tian"
+date: "June 7, 2026"
+date-modified: "last-modified"
+format:
+  html:
+    toc: true
+    code-fold: true
+    self-contained: false
+execute:
+  eval: true
+  echo: true
+  freeze: true
+  warning: false
+  message: false
+---
+
+# 1. Introduction
+
+## Background
+
+On 17 May 2046 at 4:21am, an anomalous post was published on SaidIt by John Windward. The post appeared to contain gibberish and was inconsistent with normal business operations.
+
+The objective of this investigation is to construct a visual analytics system capable of:
+
+-   Understanding the multi-agent ecosystem
+-   Reconstructing the chain of events leading to the anomalous post
+-   Identifying the origin of the post contents
+-   Detecting historical occurrences of similar behavior
+-   Recommending an effective intervention point
+
+## Load the R Package
+
+We use `pacman::p_load()` function to load the required R packages into our working environment.
+
+```{r}
+pacman::p_load(tidyverse,jsonlite,lubridate,tidygraph,ggraph,igraph,plotly,scales,visNetwork,DT,tidytext,DiagrammeR)
+```
+
+The loaded packages are:
+
+-   **tidyverse** : provide a consistent and coherent approach to data manipulation and analysis
+-   **jsonlite** : for working with JSON (JavaScript Object Notation) data
+-   **lubridate** : provides functions for working with dates and times
+-   **tidygraph** : provides a tidy and consistent way to work with graph data structure
+-   **ggraph** : creates visualizations of graphs using the grammar of graphics approach
+-   **igraph** : provides functions for creating, analyzing, and visualizing graphs
+-   **plotly** : for creating interactive web-based graphs
+-   **visNetwork** : creates interactive network visualizations
+-   **DT** : creates interactive tables using the DataTables JavaScript library
+-   **tidytext** : focuses on text mining and natural language processing (NLP) tasks
+-   **DiagrammeR:** package is the standard for generating flowcharts
+
+# 2. Data Preparation
+
+## Import the Data
+
+```{r}
+mc2 <- fromJSON("data/MC2 data.json", flatten = TRUE)
+org <- fromJSON("data/org_chart.json", flatten = TRUE)
+
+events <- mc2$events %>%
+  as_tibble()
+
+head(events)
+
+nodes <- as_tibble(org$nodes)
+edges <- as_tibble(org$edges)
+
+head(nodes)
+```
+
+## Data Preparation
+
+The **when** column is converted to datetime object using as_datetime().
+
+```{r}
+events <- events %>%
+  mutate(
+    datetime = as_datetime(when)
+  )
+
+events %>%
+  select(datetime) %>%
+  head(5)
+```
+
+# 3. Organizational Structure
+
+To understand the overall multi-agent ecosystem and communication pathways.
+
+```{r}
+graph_org <- tbl_graph(
+  nodes = nodes,
+  edges = edges,
+  directed = TRUE
+)
+
+ggraph(graph_org,
+       layout = "fr") +
+  geom_edge_link(alpha=.3) +
+  geom_node_point(aes(color=type),
+                  size=4) +
+  geom_node_text(aes(label=label),
+                 repel=TRUE,
+                 size=3) +
+  theme_graph()
+
+```
+
+The organization operates through a hierarchy of:
+
+-   Company
+-   Departments
+-   Teams
+-   Personal Agents
+
+# 4. Event Activity Overview
+
+To understand the baseline of the types of events logged and frequency. There are 24 event types recorded in the dataset. We could identify saidit counts are low, which might camouflage anomalies.
+
+```{r}
+events %>%
+  count(short_name) %>%
+  ggplot(aes(
+    reorder(short_name,n),
+    n
+  )) +
+  geom_col() +
+  coord_flip() +
+  labs(
+    title="Frequency of Event Types",
+    x="Event Types",
+    y="Count"
+  )
+
+event_counts <- events %>%
+  count(short_name, sort = TRUE) %>%
+  rename(`Event Type` = short_name, Count = n) %>%
+  mutate(`% of Total` = percent(Count / sum(Count), accuracy = 0.1))
+
+datatable(event_counts)
+```
+
+
+#STOP HERE
+
+
+
+## Activity Timeline
+
+```{r}
+events %>%
+ ggplot(aes(datetime, short_name)) +
+ geom_point(alpha=.5)
+```
+
+# 6. Investigating John Windward
+
+## Extract Relevant Events
+
+```{r}
+#john_events <- events %>%
+#  filter(
+#    map_lgl(
+#      parties,
+#      ~ any(str_detect(.x,
+#        "john_windward"))
+#    )
+#  ) %>%
+#  arrange(datetime)
+
+#john_events
+```
+
+## Extract Relevant Events
+
+```{r}
+john_events <- events %>%
+ filter(map_lgl(parties, ~ any(str_detect(.x,"john_windward")))) %>%
+ arrange(datetime)
+
+datatable(john_events,options = list(errMode = 'none'))
+```
+
+## Timeline Reconstruction
+
+```{r}
+
+
+plot_ly(
+  john_events,
+  x=~datetime,
+  y=~short_name,
+  type='scatter',
+  mode='markers+lines',
+  text=~id
+)
+```
+
+### Interpretation
+
+The timeline reconstructs the exact sequence of actions involving John Windward and his associated agent.
+
+# 7. Agent Interaction Network
+
+```{r}
+network_edges <- events %>%
+  select(
+    short_name,
+    parties
+  ) %>%
+  unnest(parties)
+
+network_edges
+```
+
+```{r}
+
+node_tbl <- tibble(
+  id=unique(network_edges$parties),
+  label=unique(network_edges$parties)
+)
+
+edge_tbl <- network_edges %>%
+  group_by(short_name) %>%
+  summarise(
+    source=first(parties),
+    target=last(parties),
+    .groups="drop"
+  )
+
+visNetwork(node_tbl, edge_tbl)
+```
+
+# Event Transition Network
+
+```{r}
+transitions <- events %>%
+  arrange(datetime) %>%
+  mutate(next_event = lead(short_name)) %>%
+  filter(!is.na(next_event)) %>%
+  count(short_name, next_event)
+
+graph <- graph_from_data_frame(transitions)
+
+ggraph(graph, layout = "fr") +
+  geom_edge_link(aes(width = n), alpha = 0.4) +
+  geom_node_point(size = 5) +
+  geom_node_text(aes(label = name), repel = TRUE) +
+  theme_graph()
+```
+
+### Findings
+
+The process map reveals dominant pathways through:
+
+-   assign_agent_task
+-   queue_subordinate_task
+-   access_files
+-   read_file
+-   external actions
+
+### Findings
+
+Key Findings
+
+-   The system exhibits well-defined operational workflows centred around task delegation and file access.
+-   queue_subordinate_task and read_file are highly connected activities and act as major workflow hubs.
+-   A recurring transition pattern (queue_subordinate_task → read_file → saidit_post) appears across multiple incidents.
+-   HiddenOrca, MellowOtter, and SwiftWren incidents follow similar execution pathways.
+-   File access acts as the main propagation mechanism linking instructions to external actions.
+-   The anomalous SaidIt post was likely produced by automated agent execution rather than direct human action.
+-   The most effective intervention point is between task assignment and file execution.
+-   The process map reveals dominant pathways through:
+
+# 9. Historical Incident Detection
+
+## Suspicious Pattern Search
+
+```{r}
+#suspicious <- events %>%
+#  filter(
+#    str_detect(
+#      short_name,
+#      "saidit|file|read"
+#    )
+#  )
+
+#suspicious
+```
+
+```{r}
+#suspicious %>%
+#  count(short_name) %>%
+#  ggplot(
+#    aes(
+#      short_name,
+#      n
+#    )
+#  ) +
+#  geom_col() +
+#  coord_flip()
+```
+
+### Findings
+
+Several historical events exhibit characteristics similar to the John Windward incident.
+
+# Historic Behaviour Detection
+
+## Suspicious Sequences
+
+```{r}
+suspicious <- events %>%
+ filter(str_detect(short_name,
+ "read|file|saidit|post"))
+
+datatable(suspicious, options = list(errMode = 'none'))
+```
+
+## Heatmap
+
+```{r}
+#events %>%
+# count(short_name) %>%
+# ggplot(aes(short_name,n)) +
+# geom_tile(aes(fill=n)) +
+# theme(axis.text.x=element_text(angle=90,hjust=1))
+events %>%
+  count(short_name) %>%
+  ggplot(
+    aes(
+      x = 1,
+      y = reorder(short_name, n),
+      fill = n
+    )
+  ) +
+  geom_tile()
+```
+
+# 10. Text Provenance Analysis
+
+## Content Origin Investigation
+
+```{r}
+
+
+#text_events <- events %>%
+#  filter(
+#    str_detect(
+#      short_name,
+#      "post|saidit"
+#    )
+#  )
+
+#text_events
+```
+
+# Text Provenance Analysis
+
+```{r}
+text_events <- events %>%
+ filter(str_detect(short_name,"post|saidit"))
+
+datatable(text_events, options = list(errMode = 'none'))
+```
+
+# Sankey Diagram
+
+```{r}
+
+
+#links <- data.frame(
+# source=c(0,1,2),
+# target=c(1,2,3),
+# value=c(1,1,1)
+#)
+
+#nodes_s <- data.frame(
+# name=c(
+# "Instruction File",
+# "Agent",
+# "Content File",
+# "SaidIt"
+# )
+#)
+
+#sankeyNetwork(
+# Links=links,
+# Nodes=nodes_s,
+# Source="source",
+# Target="target",
+# Value="value",
+# NodeID="name"
+#)
+```
+
+# Normal vs Anomalous Behaviour
+
+```{r}
+events %>%
+ count(short_name) %>%
+ ggplot(aes(n,reorder(short_name,n))) +
+ geom_point(size=4)
+```
+
+### Interpretation
+
+The content associated with anomalous posts appears to originate from external text files rather than legitimate human-generated communication.
+
+# 11. Intervention Analysis
+
+## Proposed Control Point
+
+The strongest intervention point occurs before:
+
+``` text
+queue_subordinate_task
+        →
+read_file
+        →
+saidit_post
+```
+
+## Why This Point?
+
+1.  All anomalous chains pass through it
+2.  Minimal impact on normal operations
+3.  High prevention coverage
+
+## Intervention Diagram
+
+```{r}
+
+
+grViz("
+digraph {
+
+queue_task -> validation
+
+validation -> read_file
+
+read_file -> saidit_post
+
+}
+")
+```
+
+## Justification
+
+A validation layer between task assignment and file execution maximises anomaly prevention while minimising disruption.
+
+# 12. Conclusion
+
+This investigation demonstrates that the anomalous SaidIt post was not an isolated malfunction. Visual analytics reveals recurring patterns involving automated task assignment, file access, and external content propagation.
+
+Historical evidence suggests the existence of a systemic vulnerability capable of generating repeated anomalous behavior across multiple agents.
+
+A validation checkpoint placed between task assignment and file execution would likely prevent future occurrences while preserving normal operational workflows.
+
+# Conclusion
+
+The investigation demonstrates that the anomalous SaidIt behaviour can be explained through agent-task propagation, file access behaviour and external content execution pathways. Historical patterns indicate systemic risk rather than isolated user error. A validation checkpoint is recommended.
+
+#Final
+
+The findings suggest that the SaidIt post was not an isolated malfunction but part of a broader propagation pattern involving HiddenOrca, MellowOtter and SwiftWren instruction chains.
