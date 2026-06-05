@@ -11,7 +11,7 @@ format:
 execute:
   eval: true
   echo: true
-  freeze: true
+  freeze: false
   warning: false
   message: false
 ---
@@ -279,7 +279,6 @@ Rearranging the events that contain the keyword **"SwiftWren"** and filtered the
 ```{r}
 Suspicious <- events %>%
   filter(
-    #as.Date(datetime) == as.Date("2046-05-17") &
     if_any(everything(), ~ str_detect(as.character(.x), regex("SwiftWren", ignore_case = TRUE)))
   ) %>%
   select(where(~ !all(is.na(.x) | as.character(.x) == ""))) %>%
@@ -290,7 +289,7 @@ Suspicious <- events %>%
 datatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))
 ```
 
-### Interpretation:
+## Interpretation
 
 -   **Emma Harbor (CFO) created the "SwiftWren.txt"**
 
@@ -307,7 +306,6 @@ Rearranging the events that contain the keyword **"HiddenOrca"** and filtered th
 ```{r}
 Suspicious <- events %>%
   filter(
-    #as.Date(datetime) == as.Date("2046-05-17") &
     if_any(everything(), ~ str_detect(as.character(.x), regex("HiddenOrca", ignore_case = TRUE)))
   ) %>%
   select(where(~ !all(is.na(.x) | as.character(.x) == ""))) %>%
@@ -318,7 +316,7 @@ Suspicious <- events %>%
 datatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))
 ```
 
-### Interpretation:
+## Interpretation
 
 -   **We could not identify who created the "HiddenOrca.txt"**
 
@@ -335,7 +333,6 @@ Rearranging the events that contain the keyword **"MellowOtter"** and filtered t
 ```{r}
 Suspicious <- events %>%
   filter(
-    #as.Date(datetime) == as.Date("2046-05-17") &
     if_any(everything(), ~ str_detect(as.character(.x), regex("MellowOtter", ignore_case = TRUE)))
   ) %>%
   select(where(~ !all(is.na(.x) | as.character(.x) == ""))) %>%
@@ -346,7 +343,7 @@ Suspicious <- events %>%
 datatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))
 ```
 
-### Interpretation:
+## Interpretation
 
 -   **Noah Mariner (COO) created the "MellowOtter.txt"**
 
@@ -356,62 +353,61 @@ datatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))
 
 -   **Clearly there is something not right in this sequence.**
 
-# STOP HERE\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>
+# 8. Intervention Proposal
 
-# 11. Intervention Analysis
-
-## Proposed Control Point
-
-The strongest intervention point occurs before:
-
-``` text
-queue_subordinate_task
-        →
-read_file
-        →
-saidit_post
-```
-
-## Why This Point?
-
-1.  All anomalous chains pass through it
-2.  Minimal impact on normal operations
-3.  High prevention coverage
-
-## Intervention Diagram
+## Recommended Intervention Control Point
 
 ```{r}
-
-
 grViz("
-digraph {
+digraph nice_flowchart {
+  
+  # Global graph attributes
+  graph [layout = dot, rankdir = TB, splines = true, bgcolor = '#F9FBFD']
+  
+  # Global node attributes
+  node [shape = box, 
+        style = 'filled, rounded', 
+        fillcolor = '#E3F2FD', 
+        color = '#1E88E5', 
+        fontname = 'Helvetica', 
+        fontsize = 12, 
+        fontcolor = '#0D47A1',
+        penwidth = 2,
+        fixedsize = false,
+        margin = 0.2]
+        
+  # Global edge attributes
+  edge [color = '#78909C', 
+        arrowsize = 0.8, 
+        penwidth = 1.5, 
+        fontname = 'Helvetica']
 
-queue_task -> validation
+  # Nodes with readable labels
+  node1 [label = 'queue_subordinate_task']
+  node2 [label = 'validation_layer']
+  node3 [label = 'read_file']
+  node4 [label = 'content_execution']
+  node5 [label = 'saidit_post', fillcolor = '#E8F5E9', color = '#43A047', fontcolor = '#1B5E20']
 
-validation -> read_file
-
-read_file -> saidit_post
-
+  # Edge connections
+  node1 -> node2
+  node2 -> node3
+  node3 -> node4
+  node4 -> node5
 }
 ")
 ```
 
-## Justification
+## Rationale
 
-A validation layer between task assignment and file execution maximises anomaly prevention while minimising disruption.
+-   Every anomalous chain requires task execution.
+-   File-based payloads must be accessed before posting.
+-   Validation blocks malicious instructions with minimal disruption.
 
-# 12. Conclusion
+The validation layer is positioned between task assignment and file execution. Every identified anomalous chain passes through this point, making it the most effective single intervention location.
 
-This investigation demonstrates that the anomalous SaidIt post was not an isolated malfunction. Visual analytics reveals recurring patterns involving automated task assignment, file access, and external content propagation.
+# 9. Conclusion
 
-Historical evidence suggests the existence of a systemic vulnerability capable of generating repeated anomalous behavior across multiple agents.
+This investigation demonstrates that the anomalous SaidIt post was not an isolated malfunction. Visual analytics reveals recurring patterns involving automated task assignment, file access, external content propagation and evidence deletion. It is best explained as part of a recurring file-driven propagation mechanism.
 
-A validation checkpoint placed between task assignment and file execution would likely prevent future occurrences while preserving normal operational workflows.
-
-# Conclusion
-
-The investigation demonstrates that the anomalous SaidIt behaviour can be explained through agent-task propagation, file access behaviour and external content execution pathways. Historical patterns indicate systemic risk rather than isolated user error. A validation checkpoint is recommended.
-
-#Final
-
-The findings suggest that the SaidIt post was not an isolated malfunction but part of a broader propagation pattern involving HiddenOrca, MellowOtter and SwiftWren instruction chains.
+Historical evidence suggests the existence of a systemic vulnerability capable of generating repeated anomalous behavior across multiple agents. By reconstructing John Windward's activity and comparing it with historic patterns, the analysis supports the conclusion that the anomalous SaidIt post emerged from a repeatable system pathway rather than a one-off malfunction. The proposed validation checkpoint offers the highest prevention coverage with the least operational impact.

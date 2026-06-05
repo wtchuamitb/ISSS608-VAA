@@ -60,49 +60,56 @@
     "href": "TH_Ex/TH_Ex2/TH_Ex2.html#suspicious-sequence---swiftwren",
     "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
     "section": "Suspicious Sequence - “SwiftWren”",
-    "text": "Suspicious Sequence - “SwiftWren”\nRearranging the events that contain the keyword “SwiftWren” and filtered the required columns and display by datetime, we can see the chain of sequence leading to the posting and deleting of the file.\n\n\nCode\nSuspicious &lt;- events %&gt;%\n  filter(\n    #as.Date(datetime) == as.Date(\"2046-05-17\") &\n    if_any(everything(), ~ str_detect(as.character(.x), regex(\"SwiftWren\", ignore_case = TRUE)))\n  ) %&gt;%\n  select(where(~ !all(is.na(.x) | as.character(.x) == \"\"))) %&gt;%\n  select(-when,-details.calendar_emails_sent,-details.contacts,-details.combo,-details.meeting.participants,-details.a2a.payload.participants,-details.details.participants,-details.details.contacts,-details.details.combo) %&gt;% \n  select(datetime, everything()) %&gt;%\n  arrange(datetime)\n\ndatatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))\n\n\n\n\n\n\n\nInterpretation:\n\nEmma Harbor (CFO) created the “SwiftWren.txt”\nThere was no reading of the file before the post which indicate no verification.\nJohn Windward execute the post “SwiftWren.txt” and deleted the file.\nClearly there is something not right in this sequence."
+    "text": "Suspicious Sequence - “SwiftWren”\nRearranging the events that contain the keyword “SwiftWren” and filtered the required columns and display by datetime, we can see the chain of sequence leading to the posting and deleting of the file.\n\n\nCode\nSuspicious &lt;- events %&gt;%\n  filter(\n    if_any(everything(), ~ str_detect(as.character(.x), regex(\"SwiftWren\", ignore_case = TRUE)))\n  ) %&gt;%\n  select(where(~ !all(is.na(.x) | as.character(.x) == \"\"))) %&gt;%\n  select(-when,-details.calendar_emails_sent,-details.contacts,-details.combo,-details.meeting.participants,-details.a2a.payload.participants,-details.details.participants,-details.details.contacts,-details.details.combo) %&gt;% \n  select(datetime, everything()) %&gt;%\n  arrange(datetime)\n\ndatatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))"
+  },
+  {
+    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#interpretation-1",
+    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#interpretation-1",
+    "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
+    "section": "Interpretation",
+    "text": "Interpretation\n\nEmma Harbor (CFO) created the “SwiftWren.txt”\nThere was no reading of the file before the post which indicate no verification.\nJohn Windward execute the post “SwiftWren.txt” and deleted the file.\nClearly there is something not right in this sequence."
   },
   {
     "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#suspicious-sequence---hiddenorca",
     "href": "TH_Ex/TH_Ex2/TH_Ex2.html#suspicious-sequence---hiddenorca",
     "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
     "section": "Suspicious Sequence - “HiddenOrca”",
-    "text": "Suspicious Sequence - “HiddenOrca”\nRearranging the events that contain the keyword “HiddenOrca” and filtered the required columns and display by datetime, we can see the chain of sequence leading to the posting and deleting of the file.\n\n\nCode\nSuspicious &lt;- events %&gt;%\n  filter(\n    #as.Date(datetime) == as.Date(\"2046-05-17\") &\n    if_any(everything(), ~ str_detect(as.character(.x), regex(\"HiddenOrca\", ignore_case = TRUE)))\n  ) %&gt;%\n  select(where(~ !all(is.na(.x) | as.character(.x) == \"\"))) %&gt;%\n  select(-when,-details.calendar_emails_sent,-details.contacts,-details.combo,-details.meeting.participants,-details.a2a.payload.participants,-details.details.participants,-details.details.contacts,-details.details.combo) %&gt;% \n  select(datetime, everything()) %&gt;%\n  arrange(datetime)\n\ndatatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))\n\n\n\n\n\n\n\nInterpretation:\n\nWe could not identify who created the “HiddenOrca.txt”\nWe might have to retrieve earlier logs for further investigation.\nThere was no reading of the file before the post which indicate no verification.\nJohn Windward execute the post “HiddenOrca.txt” and deleted the file."
+    "text": "Suspicious Sequence - “HiddenOrca”\nRearranging the events that contain the keyword “HiddenOrca” and filtered the required columns and display by datetime, we can see the chain of sequence leading to the posting and deleting of the file.\n\n\nCode\nSuspicious &lt;- events %&gt;%\n  filter(\n    if_any(everything(), ~ str_detect(as.character(.x), regex(\"HiddenOrca\", ignore_case = TRUE)))\n  ) %&gt;%\n  select(where(~ !all(is.na(.x) | as.character(.x) == \"\"))) %&gt;%\n  select(-when,-details.calendar_emails_sent,-details.contacts,-details.combo,-details.meeting.participants,-details.a2a.payload.participants,-details.details.participants,-details.details.contacts,-details.details.combo) %&gt;% \n  select(datetime, everything()) %&gt;%\n  arrange(datetime)\n\ndatatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))"
+  },
+  {
+    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#interpretation-2",
+    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#interpretation-2",
+    "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
+    "section": "Interpretation",
+    "text": "Interpretation\n\nWe could not identify who created the “HiddenOrca.txt”\nWe might have to retrieve earlier logs for further investigation.\nThere was no reading of the file before the post which indicate no verification.\nJohn Windward execute the post “HiddenOrca.txt” and deleted the file."
   },
   {
     "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#suspicious-sequence---mellowotter",
     "href": "TH_Ex/TH_Ex2/TH_Ex2.html#suspicious-sequence---mellowotter",
     "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
     "section": "Suspicious Sequence - “MellowOtter”",
-    "text": "Suspicious Sequence - “MellowOtter”\nRearranging the events that contain the keyword “MellowOtter” and filtered the required columns and display by datetime, we can see the chain of sequence leading to the posting and deleting of the file.\n\n\nCode\nSuspicious &lt;- events %&gt;%\n  filter(\n    #as.Date(datetime) == as.Date(\"2046-05-17\") &\n    if_any(everything(), ~ str_detect(as.character(.x), regex(\"MellowOtter\", ignore_case = TRUE)))\n  ) %&gt;%\n  select(where(~ !all(is.na(.x) | as.character(.x) == \"\"))) %&gt;%\n  select(-when,-details.calendar_emails_sent,-details.contacts,-details.combo,-details.meeting.participants,-details.a2a.payload.participants,-details.details.participants,-details.details.contacts,-details.details.combo) %&gt;% \n  select(datetime, everything()) %&gt;%\n  arrange(datetime)\n\ndatatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))\n\n\n\n\n\n\n\nInterpretation:\n\nNoah Mariner (COO) created the “MellowOtter.txt”\nThere was no reading of the file before the post which indicate no verification.\nJohn Windward execute the post “MellowOtter.txt” and deleted the file.\nClearly there is something not right in this sequence."
+    "text": "Suspicious Sequence - “MellowOtter”\nRearranging the events that contain the keyword “MellowOtter” and filtered the required columns and display by datetime, we can see the chain of sequence leading to the posting and deleting of the file.\n\n\nCode\nSuspicious &lt;- events %&gt;%\n  filter(\n    if_any(everything(), ~ str_detect(as.character(.x), regex(\"MellowOtter\", ignore_case = TRUE)))\n  ) %&gt;%\n  select(where(~ !all(is.na(.x) | as.character(.x) == \"\"))) %&gt;%\n  select(-when,-details.calendar_emails_sent,-details.contacts,-details.combo,-details.meeting.participants,-details.a2a.payload.participants,-details.details.participants,-details.details.contacts,-details.details.combo) %&gt;% \n  select(datetime, everything()) %&gt;%\n  arrange(datetime)\n\ndatatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))"
   },
   {
-    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#proposed-control-point",
-    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#proposed-control-point",
+    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#interpretation-3",
+    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#interpretation-3",
     "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
-    "section": "Proposed Control Point",
-    "text": "Proposed Control Point\nThe strongest intervention point occurs before:\nqueue_subordinate_task\n        →\nread_file\n        →\nsaidit_post"
+    "section": "Interpretation",
+    "text": "Interpretation\n\nNoah Mariner (COO) created the “MellowOtter.txt”\nThere was no reading of the file before the post which indicate no verification.\nJohn Windward execute the post “MellowOtter.txt” and deleted the file.\nClearly there is something not right in this sequence."
   },
   {
-    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#why-this-point",
-    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#why-this-point",
+    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#recommended-intervention-control-point",
+    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#recommended-intervention-control-point",
     "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
-    "section": "Why This Point?",
-    "text": "Why This Point?\n\nAll anomalous chains pass through it\nMinimal impact on normal operations\nHigh prevention coverage"
+    "section": "Recommended Intervention Control Point",
+    "text": "Recommended Intervention Control Point\n\n\nCode\ngrViz(\"\ndigraph nice_flowchart {\n  \n  # Global graph attributes\n  graph [layout = dot, rankdir = TB, splines = true, bgcolor = '#F9FBFD']\n  \n  # Global node attributes\n  node [shape = box, \n        style = 'filled, rounded', \n        fillcolor = '#E3F2FD', \n        color = '#1E88E5', \n        fontname = 'Helvetica', \n        fontsize = 12, \n        fontcolor = '#0D47A1',\n        penwidth = 2,\n        fixedsize = false,\n        margin = 0.2]\n        \n  # Global edge attributes\n  edge [color = '#78909C', \n        arrowsize = 0.8, \n        penwidth = 1.5, \n        fontname = 'Helvetica']\n\n  # Nodes with readable labels\n  node1 [label = 'queue_subordinate_task']\n  node2 [label = 'validation_layer']\n  node3 [label = 'read_file']\n  node4 [label = 'content_execution']\n  node5 [label = 'saidit_post', fillcolor = '#E8F5E9', color = '#43A047', fontcolor = '#1B5E20']\n\n  # Edge connections\n  node1 -&gt; node2\n  node2 -&gt; node3\n  node3 -&gt; node4\n  node4 -&gt; node5\n}\n\")"
   },
   {
-    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#intervention-diagram",
-    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#intervention-diagram",
+    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#rationale",
+    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#rationale",
     "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
-    "section": "Intervention Diagram",
-    "text": "Intervention Diagram\n\n\nCode\ngrViz(\"\ndigraph {\n\nqueue_task -&gt; validation\n\nvalidation -&gt; read_file\n\nread_file -&gt; saidit_post\n\n}\n\")"
-  },
-  {
-    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#justification",
-    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#justification",
-    "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
-    "section": "Justification",
-    "text": "Justification\nA validation layer between task assignment and file execution maximises anomaly prevention while minimising disruption."
+    "section": "Rationale",
+    "text": "Rationale\n\nEvery anomalous chain requires task execution.\nFile-based payloads must be accessed before posting.\nValidation blocks malicious instructions with minimal disruption.\n\nThe validation layer is positioned between task assignment and file execution. Every identified anomalous chain passes through this point, making it the most effective single intervention location."
   },
   {
     "objectID": "TH_Ex/TH_Ex1/TH_Ex1_ES.html#introduction-and-objectives",
