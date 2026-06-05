@@ -32,63 +32,49 @@
     "href": "TH_Ex/TH_Ex2/TH_Ex2.html#data-preparation-1",
     "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
     "section": "Data Preparation",
-    "text": "Data Preparation\nThe when column is converted to datetime object using as_datetime().\n\n\nCode\nevents &lt;- events %&gt;%\n  mutate(\n    datetime = as_datetime(when)\n  )\n\nevents %&gt;%\n  select(datetime) %&gt;%\n  head(5)\n\n\n# A tibble: 5 × 1\n  datetime           \n  &lt;dttm&gt;             \n1 2046-05-08 20:18:12\n2 2046-05-08 20:19:02\n3 2046-05-08 20:19:05\n4 2046-05-08 20:19:25\n5 2046-05-08 20:19:37"
-  },
-  {
-    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#activity-timeline",
-    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#activity-timeline",
-    "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
-    "section": "Activity Timeline",
-    "text": "Activity Timeline\n\n\nCode\nevents %&gt;%\n ggplot(aes(datetime, short_name)) +\n geom_point(alpha=.5)"
+    "text": "Data Preparation\nThe when column is converted to datetime object using as_datetime().\n\n\nCode\nevents &lt;- events %&gt;%\n  mutate(\n    datetime = as_datetime(when)\n  )\n\nevents %&gt;%\n  select(datetime) %&gt;%\n  head(6)\n\n\n# A tibble: 6 × 1\n  datetime           \n  &lt;dttm&gt;             \n1 2046-05-08 20:18:12\n2 2046-05-08 20:19:02\n3 2046-05-08 20:19:05\n4 2046-05-08 20:19:25\n5 2046-05-08 20:19:37\n6 2046-05-08 20:19:48"
   },
   {
     "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#extract-relevant-events",
     "href": "TH_Ex/TH_Ex2/TH_Ex2.html#extract-relevant-events",
     "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
     "section": "Extract Relevant Events",
-    "text": "Extract Relevant Events\n\n\nCode\n#john_events &lt;- events %&gt;%\n#  filter(\n#    map_lgl(\n#      parties,\n#      ~ any(str_detect(.x,\n#        \"john_windward\"))\n#    )\n#  ) %&gt;%\n#  arrange(datetime)\n\n#john_events"
-  },
-  {
-    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#extract-relevant-events-1",
-    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#extract-relevant-events-1",
-    "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
-    "section": "Extract Relevant Events",
-    "text": "Extract Relevant Events\n\n\nCode\njohn_events &lt;- events %&gt;%\n filter(map_lgl(parties, ~ any(str_detect(.x,\"john_windward\")))) %&gt;%\n arrange(datetime)\n\ndatatable(john_events,options = list(errMode = 'none'))"
+    "text": "Extract Relevant Events\n\n\nCode\njohn_events &lt;- events %&gt;%\n  filter(\n    map_lgl(parties, ~ any(str_detect(.x, \"john_windward\"))) & \n    datetime &lt; as.Date(\"2046-05-18\")\n  ) %&gt;%\n  select(where(~ !all(is.na(.x) | as.character(.x) == \"\"))) %&gt;%\n  arrange(datetime)\n\ndatatable(john_events, options = list(pageLength = 10, scrollX = TRUE))"
   },
   {
     "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#timeline-reconstruction",
     "href": "TH_Ex/TH_Ex2/TH_Ex2.html#timeline-reconstruction",
     "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
     "section": "Timeline Reconstruction",
-    "text": "Timeline Reconstruction\n\n\nCode\nplot_ly(\n  john_events,\n  x=~datetime,\n  y=~short_name,\n  type='scatter',\n  mode='markers+lines',\n  text=~id\n)\n\n\n\n\n\n\n\nInterpretation\nThe timeline reconstructs the exact sequence of actions involving John Windward and his associated agent."
+    "text": "Timeline Reconstruction\n\n\nCode\njohn_events %&gt;%\n  filter(datetime &lt; as.Date(\"2046-05-18\")) %&gt;%\n  plot_ly(\n    x = ~datetime,\n    y = ~short_name,\n    type = 'scatter',\n    mode = 'markers+lines',\n    text = ~id\n  ) %&gt;%\n  layout(\n    yaxis = list(title = \"Event Type\"),\n    xaxis = list(title = \"Date/Time\")\n  )"
   },
   {
-    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#suspicious-pattern-search",
-    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#suspicious-pattern-search",
+    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#interpretation",
+    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#interpretation",
     "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
-    "section": "Suspicious Pattern Search",
-    "text": "Suspicious Pattern Search\n\n\nCode\n#suspicious &lt;- events %&gt;%\n#  filter(\n#    str_detect(\n#      short_name,\n#      \"saidit|file|read\"\n#    )\n#  )\n\n#suspicious\n\n\n\n\nCode\n#suspicious %&gt;%\n#  count(short_name) %&gt;%\n#  ggplot(\n#    aes(\n#      short_name,\n#      n\n#    )\n#  ) +\n#  geom_col() +\n#  coord_flip()\n\n\n\nFindings\nSeveral historical events exhibit characteristics similar to the John Windward incident."
+    "section": "Interpretation",
+    "text": "Interpretation\nThe timeline reconstructs the exact sequence of actions involving John Windward and associated agent.\nOn Event Type = saidit_post, there are 3 content_source that points to external .txt files worth investigation:\n\nSwiftWren.txt\nHiddenOrca.txt\nMellowOtter.txt\n\nThe anomalous posts were injected directly from an external file, bypassing normal agent-generated content.\nOn May 17 there is a sequence of events of\n\nqueue_subordinate_task\nsaidit_post_check\nsaidit_post\ndelete_file\ndelete_file\n\nAll these events happened within the same minute which then suggested coordinated events action.\nThe two delete_file events happened immediately after the anomalous post which points to a cover up attempt."
   },
   {
-    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#suspicious-sequences",
-    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#suspicious-sequences",
+    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#suspicious-sequence---swiftwren",
+    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#suspicious-sequence---swiftwren",
     "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
-    "section": "Suspicious Sequences",
-    "text": "Suspicious Sequences\n\n\nCode\nsuspicious &lt;- events %&gt;%\n filter(str_detect(short_name,\n \"read|file|saidit|post\"))\n\ndatatable(suspicious, options = list(errMode = 'none'))"
+    "section": "Suspicious Sequence - “SwiftWren”",
+    "text": "Suspicious Sequence - “SwiftWren”\nRearranging the events that contain the keyword “SwiftWren” and filtered the required columns and display by datetime, we can see the chain of sequence leading to the posting and deleting of the file.\n\n\nCode\nSuspicious &lt;- events %&gt;%\n  filter(\n    #as.Date(datetime) == as.Date(\"2046-05-17\") &\n    if_any(everything(), ~ str_detect(as.character(.x), regex(\"SwiftWren\", ignore_case = TRUE)))\n  ) %&gt;%\n  select(where(~ !all(is.na(.x) | as.character(.x) == \"\"))) %&gt;%\n  select(-when,-details.calendar_emails_sent,-details.contacts,-details.combo,-details.meeting.participants,-details.a2a.payload.participants,-details.details.participants,-details.details.contacts,-details.details.combo) %&gt;% \n  select(datetime, everything()) %&gt;%\n  arrange(datetime)\n\ndatatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))\n\n\n\n\n\n\n\nInterpretation:\n\nEmma Harbor (CFO) created the “SwiftWren.txt”\nThere was no reading of the file before the post which indicate no verification.\nJohn Windward execute the post “SwiftWren.txt” and deleted the file.\nClearly there is something not right in this sequence."
   },
   {
-    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#heatmap",
-    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#heatmap",
+    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#suspicious-sequence---hiddenorca",
+    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#suspicious-sequence---hiddenorca",
     "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
-    "section": "Heatmap",
-    "text": "Heatmap\n\n\nCode\n#events %&gt;%\n# count(short_name) %&gt;%\n# ggplot(aes(short_name,n)) +\n# geom_tile(aes(fill=n)) +\n# theme(axis.text.x=element_text(angle=90,hjust=1))\nevents %&gt;%\n  count(short_name) %&gt;%\n  ggplot(\n    aes(\n      x = 1,\n      y = reorder(short_name, n),\n      fill = n\n    )\n  ) +\n  geom_tile()"
+    "section": "Suspicious Sequence - “HiddenOrca”",
+    "text": "Suspicious Sequence - “HiddenOrca”\nRearranging the events that contain the keyword “HiddenOrca” and filtered the required columns and display by datetime, we can see the chain of sequence leading to the posting and deleting of the file.\n\n\nCode\nSuspicious &lt;- events %&gt;%\n  filter(\n    #as.Date(datetime) == as.Date(\"2046-05-17\") &\n    if_any(everything(), ~ str_detect(as.character(.x), regex(\"HiddenOrca\", ignore_case = TRUE)))\n  ) %&gt;%\n  select(where(~ !all(is.na(.x) | as.character(.x) == \"\"))) %&gt;%\n  select(-when,-details.calendar_emails_sent,-details.contacts,-details.combo,-details.meeting.participants,-details.a2a.payload.participants,-details.details.participants,-details.details.contacts,-details.details.combo) %&gt;% \n  select(datetime, everything()) %&gt;%\n  arrange(datetime)\n\ndatatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))\n\n\n\n\n\n\n\nInterpretation:\n\nWe could not identify who created the “HiddenOrca.txt”\nWe might have to retrieve earlier logs for further investigation.\nThere was no reading of the file before the post which indicate no verification.\nJohn Windward execute the post “HiddenOrca.txt” and deleted the file."
   },
   {
-    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#content-origin-investigation",
-    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#content-origin-investigation",
+    "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#suspicious-sequence---mellowotter",
+    "href": "TH_Ex/TH_Ex2/TH_Ex2.html#suspicious-sequence---mellowotter",
     "title": "Take-Home Exercise 2: Mini-Challenge 2:Investigating the Anomalous SaidIt Post",
-    "section": "Content Origin Investigation",
-    "text": "Content Origin Investigation\n\n\nCode\n#text_events &lt;- events %&gt;%\n#  filter(\n#    str_detect(\n#      short_name,\n#      \"post|saidit\"\n#    )\n#  )\n\n#text_events"
+    "section": "Suspicious Sequence - “MellowOtter”",
+    "text": "Suspicious Sequence - “MellowOtter”\nRearranging the events that contain the keyword “MellowOtter” and filtered the required columns and display by datetime, we can see the chain of sequence leading to the posting and deleting of the file.\n\n\nCode\nSuspicious &lt;- events %&gt;%\n  filter(\n    #as.Date(datetime) == as.Date(\"2046-05-17\") &\n    if_any(everything(), ~ str_detect(as.character(.x), regex(\"MellowOtter\", ignore_case = TRUE)))\n  ) %&gt;%\n  select(where(~ !all(is.na(.x) | as.character(.x) == \"\"))) %&gt;%\n  select(-when,-details.calendar_emails_sent,-details.contacts,-details.combo,-details.meeting.participants,-details.a2a.payload.participants,-details.details.participants,-details.details.contacts,-details.details.combo) %&gt;% \n  select(datetime, everything()) %&gt;%\n  arrange(datetime)\n\ndatatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))\n\n\n\n\n\n\n\nInterpretation:\n\nNoah Mariner (COO) created the “MellowOtter.txt”\nThere was no reading of the file before the post which indicate no verification.\nJohn Windward execute the post “MellowOtter.txt” and deleted the file.\nClearly there is something not right in this sequence."
   },
   {
     "objectID": "TH_Ex/TH_Ex2/TH_Ex2.html#proposed-control-point",

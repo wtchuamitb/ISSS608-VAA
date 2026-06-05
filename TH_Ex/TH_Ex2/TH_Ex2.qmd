@@ -83,7 +83,7 @@ events <- events %>%
 
 events %>%
   select(datetime) %>%
-  head(5)
+  head(6)
 ```
 
 # 3. Organizational Structure
@@ -97,28 +97,41 @@ graph_org <- tbl_graph(
   directed = TRUE
 )
 
-ggraph(graph_org,
-       layout = "fr") +
-  geom_edge_link(alpha=.3) +
-  geom_node_point(aes(color=type),
-                  size=4) +
-  geom_node_text(aes(label=label),
-                 repel=TRUE,
-                 size=3) +
-  theme_graph()
+nodes_df <- graph_org %>% 
+  activate(nodes) %>% 
+  as_tibble() %>% 
+  mutate(
+    id = row_number(),         
+    group = type               
+  )
 
+edges_df <- graph_org %>% 
+  activate(edges) %>% 
+  as_tibble()                   
+
+visNetwork(nodes_df, edges_df) %>%
+  visIgraphLayout(layout = "layout_with_fr") %>%
+  visOptions(
+    highlightNearest = TRUE,
+    selectedBy = "group"        
+  ) %>%
+  visLegend(
+    position = "right",
+    main = "Legend"
+  ) %>%
+  visLayout(randomSeed = 123)
 ```
 
 The organization operates through a hierarchy of:
 
--   Company
--   Departments
--   Teams
--   Personal Agents
+-   Company (1)
+-   Department (6)
+-   Team (19)
+-   Person (49)
 
 # 4. Event Activity Overview
 
-To understand the baseline of the types of events logged and frequency. There are 24 event types recorded in the dataset. We could identify saidit counts are low, which might camouflage anomalies.
+To understand the baseline of the types of events logged and frequency.
 
 ```{r}
 events %>%
@@ -127,11 +140,11 @@ events %>%
     reorder(short_name,n),
     n
   )) +
-  geom_col() +
+  geom_col(fill = "steelblue") +
   coord_flip() +
   labs(
-    title="Frequency of Event Types",
-    x="Event Types",
+    title="Frequency of Event Type",
+    x="Event Type",
     y="Count"
   )
 
@@ -143,272 +156,207 @@ event_counts <- events %>%
 datatable(event_counts)
 ```
 
+::: callout-note
+-   There are 24 event types recorded in the dataset.
+-   We could identify saidit counts are low, which might camouflage anomalies.
+:::
 
-#STOP HERE
-
-
-
-## Activity Timeline
-
-```{r}
-events %>%
- ggplot(aes(datetime, short_name)) +
- geom_point(alpha=.5)
-```
-
-# 6. Investigating John Windward
-
-## Extract Relevant Events
-
-```{r}
-#john_events <- events %>%
-#  filter(
-#    map_lgl(
-#      parties,
-#      ~ any(str_detect(.x,
-#        "john_windward"))
-#    )
-#  ) %>%
-#  arrange(datetime)
-
-#john_events
-```
+# 5. Investigating John Windward
 
 ## Extract Relevant Events
 
 ```{r}
 john_events <- events %>%
- filter(map_lgl(parties, ~ any(str_detect(.x,"john_windward")))) %>%
- arrange(datetime)
+  filter(
+    map_lgl(parties, ~ any(str_detect(.x, "john_windward"))) & 
+    datetime < as.Date("2046-05-18")
+  ) %>%
+  select(where(~ !all(is.na(.x) | as.character(.x) == ""))) %>%
+  arrange(datetime)
 
-datatable(john_events,options = list(errMode = 'none'))
+datatable(john_events, options = list(pageLength = 10, scrollX = TRUE))
 ```
 
 ## Timeline Reconstruction
 
 ```{r}
-
-
-plot_ly(
-  john_events,
-  x=~datetime,
-  y=~short_name,
-  type='scatter',
-  mode='markers+lines',
-  text=~id
-)
-```
-
-### Interpretation
-
-The timeline reconstructs the exact sequence of actions involving John Windward and his associated agent.
-
-# 7. Agent Interaction Network
-
-```{r}
-network_edges <- events %>%
-  select(
-    short_name,
-    parties
+john_events %>%
+  filter(datetime < as.Date("2046-05-18")) %>%
+  plot_ly(
+    x = ~datetime,
+    y = ~short_name,
+    type = 'scatter',
+    mode = 'markers+lines',
+    text = ~id
   ) %>%
-  unnest(parties)
-
-network_edges
+  layout(
+    yaxis = list(title = "Event Type"),
+    xaxis = list(title = "Date/Time")
+  )
 ```
 
+## Interpretation
+
+The timeline reconstructs the exact sequence of actions involving John Windward and associated agent.
+
+On Event Type = saidit_post, there are 3 content_source that points to external .txt files worth investigation:
+
+-   **SwiftWren.txt**
+-   **HiddenOrca.txt**
+-   **MellowOtter.txt**
+
+The anomalous posts were injected directly from an external file, bypassing normal agent-generated content.
+
+On May 17 there is a sequence of events of
+
+-   queue_subordinate_task
+-   saidit_post_check
+-   saidit_post
+-   delete_file
+-   delete_file
+
+All these events happened within the same minute which then suggested coordinated events action.
+
+The two delete_file events happened immediately after the anomalous post which points to a cover up attempt.
+
+# 6. Agent Interaction Network
+
+John Windward is highlighted for ease of locating him within the company and he is the department lead for the Customer Support department.
+
 ```{r}
-
-node_tbl <- tibble(
-  id=unique(network_edges$parties),
-  label=unique(network_edges$parties)
-)
-
-edge_tbl <- network_edges %>%
-  group_by(short_name) %>%
-  summarise(
-    source=first(parties),
-    target=last(parties),
-    .groups="drop"
+nodes_df <- graph_org %>% 
+  activate(nodes) %>% 
+  as_tibble() %>% 
+  mutate(
+    id = row_number(),         
+    group = type,
+    color.border = ifelse(label == "John Windward", "red", NA),
+    borderWidth = ifelse(label == "John Windward", 3, 1)
   )
 
-visNetwork(node_tbl, edge_tbl)
-```
+edges_df <- graph_org %>% 
+  activate(edges) %>% 
+  as_tibble()                   
 
-# Event Transition Network
 
-```{r}
-transitions <- events %>%
-  arrange(datetime) %>%
-  mutate(next_event = lead(short_name)) %>%
-  filter(!is.na(next_event)) %>%
-  count(short_name, next_event)
-
-graph <- graph_from_data_frame(transitions)
-
-ggraph(graph, layout = "fr") +
-  geom_edge_link(aes(width = n), alpha = 0.4) +
-  geom_node_point(size = 5) +
-  geom_node_text(aes(label = name), repel = TRUE) +
-  theme_graph()
-```
-
-### Findings
-
-The process map reveals dominant pathways through:
-
--   assign_agent_task
--   queue_subordinate_task
--   access_files
--   read_file
--   external actions
-
-### Findings
-
-Key Findings
-
--   The system exhibits well-defined operational workflows centred around task delegation and file access.
--   queue_subordinate_task and read_file are highly connected activities and act as major workflow hubs.
--   A recurring transition pattern (queue_subordinate_task → read_file → saidit_post) appears across multiple incidents.
--   HiddenOrca, MellowOtter, and SwiftWren incidents follow similar execution pathways.
--   File access acts as the main propagation mechanism linking instructions to external actions.
--   The anomalous SaidIt post was likely produced by automated agent execution rather than direct human action.
--   The most effective intervention point is between task assignment and file execution.
--   The process map reveals dominant pathways through:
-
-# 9. Historical Incident Detection
-
-## Suspicious Pattern Search
-
-```{r}
-#suspicious <- events %>%
-#  filter(
-#    str_detect(
-#      short_name,
-#      "saidit|file|read"
-#    )
-#  )
-
-#suspicious
-```
-
-```{r}
-#suspicious %>%
-#  count(short_name) %>%
-#  ggplot(
-#    aes(
-#      short_name,
-#      n
-#    )
-#  ) +
-#  geom_col() +
-#  coord_flip()
-```
-
-### Findings
-
-Several historical events exhibit characteristics similar to the John Windward incident.
-
-# Historic Behaviour Detection
-
-## Suspicious Sequences
-
-```{r}
-suspicious <- events %>%
- filter(str_detect(short_name,
- "read|file|saidit|post"))
-
-datatable(suspicious, options = list(errMode = 'none'))
-```
-
-## Heatmap
-
-```{r}
-#events %>%
-# count(short_name) %>%
-# ggplot(aes(short_name,n)) +
-# geom_tile(aes(fill=n)) +
-# theme(axis.text.x=element_text(angle=90,hjust=1))
-events %>%
-  count(short_name) %>%
-  ggplot(
-    aes(
-      x = 1,
-      y = reorder(short_name, n),
-      fill = n
+visNetwork(nodes_df, edges_df) %>%
+  visIgraphLayout(layout = "layout_with_fr") %>%
+  visOptions(
+    highlightNearest = TRUE,
+    selectedBy = list(
+      variable = "label",       
+      style = 'width: 200px; height: 30px;' 
     )
-  ) +
-  geom_tile()
+  ) %>%
+  visLegend(
+    position = "right",
+    main = "Legend",
+    useGroups = TRUE,  
+    addNodes = list(   
+      list(
+        label = "John Windward", 
+        color = list(background = "lightblue", border = "red"),
+        borderWidth = 3
+      )
+    )
+  ) %>%
+  visLayout(randomSeed = 123)
 ```
 
-# 10. Text Provenance Analysis
+The organization operates through a hierarchy of:
 
-## Content Origin Investigation
+-   Company (1)
+-   Department (6)
+-   Team (19)
+-   Person (49)
+
+# 7. Tracing the Events
+
+## Suspicious Sequence - “SwiftWren”
+
+Rearranging the events that contain the keyword **"SwiftWren"** and filtered the required columns and display by datetime, we can see the chain of sequence leading to the posting and deleting of the file.
 
 ```{r}
+Suspicious <- events %>%
+  filter(
+    #as.Date(datetime) == as.Date("2046-05-17") &
+    if_any(everything(), ~ str_detect(as.character(.x), regex("SwiftWren", ignore_case = TRUE)))
+  ) %>%
+  select(where(~ !all(is.na(.x) | as.character(.x) == ""))) %>%
+  select(-when,-details.calendar_emails_sent,-details.contacts,-details.combo,-details.meeting.participants,-details.a2a.payload.participants,-details.details.participants,-details.details.contacts,-details.details.combo) %>% 
+  select(datetime, everything()) %>%
+  arrange(datetime)
 
-
-#text_events <- events %>%
-#  filter(
-#    str_detect(
-#      short_name,
-#      "post|saidit"
-#    )
-#  )
-
-#text_events
+datatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))
 ```
 
-# Text Provenance Analysis
+### Interpretation:
+
+-   **Emma Harbor (CFO) created the "SwiftWren.txt"**
+
+-   **There was no reading of the file before the post which indicate no verification.**
+
+-   **John Windward execute the post "SwiftWren.txt" and deleted the file.**
+
+-   **Clearly there is something not right in this sequence.**
+
+## Suspicious Sequence - “HiddenOrca”
+
+Rearranging the events that contain the keyword **"HiddenOrca"** and filtered the required columns and display by datetime, we can see the chain of sequence leading to the posting and deleting of the file.
 
 ```{r}
-text_events <- events %>%
- filter(str_detect(short_name,"post|saidit"))
+Suspicious <- events %>%
+  filter(
+    #as.Date(datetime) == as.Date("2046-05-17") &
+    if_any(everything(), ~ str_detect(as.character(.x), regex("HiddenOrca", ignore_case = TRUE)))
+  ) %>%
+  select(where(~ !all(is.na(.x) | as.character(.x) == ""))) %>%
+  select(-when,-details.calendar_emails_sent,-details.contacts,-details.combo,-details.meeting.participants,-details.a2a.payload.participants,-details.details.participants,-details.details.contacts,-details.details.combo) %>% 
+  select(datetime, everything()) %>%
+  arrange(datetime)
 
-datatable(text_events, options = list(errMode = 'none'))
+datatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))
 ```
 
-# Sankey Diagram
+### Interpretation:
+
+-   **We could not identify who created the "HiddenOrca.txt"**
+
+-   **We might have to retrieve earlier logs for further investigation.**
+
+-   **There was no reading of the file before the post which indicate no verification.**
+
+-   **John Windward execute the post "HiddenOrca.txt" and deleted the file.**
+
+## Suspicious Sequence - “MellowOtter”
+
+Rearranging the events that contain the keyword **"MellowOtter"** and filtered the required columns and display by datetime, we can see the chain of sequence leading to the posting and deleting of the file.
 
 ```{r}
+Suspicious <- events %>%
+  filter(
+    #as.Date(datetime) == as.Date("2046-05-17") &
+    if_any(everything(), ~ str_detect(as.character(.x), regex("MellowOtter", ignore_case = TRUE)))
+  ) %>%
+  select(where(~ !all(is.na(.x) | as.character(.x) == ""))) %>%
+  select(-when,-details.calendar_emails_sent,-details.contacts,-details.combo,-details.meeting.participants,-details.a2a.payload.participants,-details.details.participants,-details.details.contacts,-details.details.combo) %>% 
+  select(datetime, everything()) %>%
+  arrange(datetime)
 
-
-#links <- data.frame(
-# source=c(0,1,2),
-# target=c(1,2,3),
-# value=c(1,1,1)
-#)
-
-#nodes_s <- data.frame(
-# name=c(
-# "Instruction File",
-# "Agent",
-# "Content File",
-# "SaidIt"
-# )
-#)
-
-#sankeyNetwork(
-# Links=links,
-# Nodes=nodes_s,
-# Source="source",
-# Target="target",
-# Value="value",
-# NodeID="name"
-#)
+datatable(Suspicious, options = list(pageLength = 10, scrollX = TRUE))
 ```
 
-# Normal vs Anomalous Behaviour
+### Interpretation:
 
-```{r}
-events %>%
- count(short_name) %>%
- ggplot(aes(n,reorder(short_name,n))) +
- geom_point(size=4)
-```
+-   **Noah Mariner (COO) created the "MellowOtter.txt"**
 
-### Interpretation
+-   **There was no reading of the file before the post which indicate no verification.**
 
-The content associated with anomalous posts appears to originate from external text files rather than legitimate human-generated communication.
+-   **John Windward execute the post "MellowOtter.txt" and deleted the file.**
+
+-   **Clearly there is something not right in this sequence.**
+
+# STOP HERE\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>
 
 # 11. Intervention Analysis
 
