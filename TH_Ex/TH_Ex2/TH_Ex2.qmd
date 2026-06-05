@@ -11,7 +11,7 @@ format:
 execute:
   eval: true
   echo: true
-  freeze: false
+  freeze: true
   warning: false
   message: false
 ---
