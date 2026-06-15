@@ -46,6 +46,13 @@ website:
       - text: "Hands-On Exercise 8"
         href: "HO_Ex/HO_Ex8/HO_Ex8.html"
       - text: "---"
+      - text: "Hands-On Exercise 9a"
+        href: "HO_Ex/HO_Ex9/HO_Ex9a.html"
+      - text: "Hands-On Exercise 9b"
+        href: "HO_Ex/HO_Ex9/HO_Ex9b.html"
+      - text: "Hands-On Exercise 9c"
+        href: "HO_Ex/HO_Ex9/HO_Ex9c.html"
+      - text: "---"
     - text: "In-Class Exercise"
       menu:
       - text: "In-Class Exercise 2"
