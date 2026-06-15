@@ -1,0 +1,19 @@
+---
+title: "In-Class Exercise 8"
+author: "CHUA Wee Tian"
+date: "June 15, 2026"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+[Exercise 8a](https://public.tableau.com/app/profile/wee.tian.chua/viz/InClassEx8_17813299301770/Dashboard2?publish=yes)
+
+[![](image/Picture2.png){width="430"}](https://public.tableau.com/app/profile/wee.tian.chua/viz/InClassEx8_17813299301770/Dashboard2?publish=yes)
+
+[Exercise 8b](https://public.tableau.com/app/profile/wee.tian.chua/viz/InClassEx8b_17813361310840/Dashboard1?publish=yes)
+
+[![](image/Picture3.png){width="430"}](https://public.tableau.com/app/profile/wee.tian.chua/viz/InClassEx8b_17813361310840/Dashboard1?publish=yes)
