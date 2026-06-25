@@ -3,6 +3,9 @@ title: "Hands-On Exercise 10:</br>Information Dashboard Design: R methods"
 author: "CHUA Wee Tian"
 date: "June 21, 2026"
 date-modified: "last-modified"
+format:
+  html:
+    html-table-processing: none
 execute: 
   eval: true
   echo: true
